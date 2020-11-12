@@ -6,6 +6,12 @@ inference on Intel CPUs only.
 The software was validated on:
 - macOS\* 10.15, 64-bit
 
+## Table of content
+
+  - [Software Requirements](#software-requirements)
+  - [Build Steps](#build-steps)
+  - [Additional Build Options](#additional-build-options)
+
 ### Software Requirements
 
 - [CMake]\* 3.13 or higher
