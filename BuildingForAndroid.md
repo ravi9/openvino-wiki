@@ -2,6 +2,11 @@
 
 This section describes how to build Inference Engine for Android x86 (64-bit) operating systems.
 
+## Table of content
+
+  - [Software Requirements](#software-requirements-3)
+  - [Build Steps](#build-steps-3)
+
 ### Software Requirements
 
 - [CMake]\* 3.13 or higher
