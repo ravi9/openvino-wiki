@@ -22,7 +22,7 @@
 
 * Inference Engine architecture
 * [[GPU plugin architecture|GPUPluginArchitecture]]
-* [[HETERO plugin architecture|HeteroArchitecture]]
+* [[HETERO plugin architecture|HeteroPluginArchitecture]]
 
 ### Tests
 
