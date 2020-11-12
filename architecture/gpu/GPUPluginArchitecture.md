@@ -1,7 +1,7 @@
 # GPU plugin architecture
 
-- [[Source code structure|PluginStructure]]
-- [[Simplified workflow|WorkFlow]]
-- [[Memory formats|MemoryFormats]]
-- [[Kernels and kernel selectors|Kernels]]
-- [[Debug utils|DebugUtils]]
+- [[Source code structure|GPUPluginStructure]]
+- [[Simplified workflow|GPUPluginWorkFlow]]
+- [[Memory formats|GPUPluginMemoryFormats]]
+- [[Kernels and kernel selectors|GPUPluginKernels]]
+- [[Debug utils|GPUPluginDebugUtils]]
