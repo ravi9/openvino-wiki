@@ -1,5 +1,7 @@
 # GPU plugin architecture
 
+GPU plugin in [OpenVINO toolkit](https://github.com/openvinotoolkit/openvino) supports inference on Intel® GPUs starting from Gen8 architecture.
+
 - [[Source code structure|GPUPluginStructure]]
 - [[Simplified workflow|GPUPluginWorkFlow]]
 - [[Memory formats|GPUPluginMemoryFormats]]
