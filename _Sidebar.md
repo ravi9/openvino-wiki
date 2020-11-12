@@ -1,15 +1,15 @@
 * General resources
 * How to contribute
-    * [Contribute to code](contribute/ContributeCode.md)
-    * [Contribute to documentation](contribute/ContributeDocs.md)
+    * [[Contribute to code|contribute/ContributeCode]]
+    * [[Contribute to documentation|contribute/ContributeDocs]]
 * How to build
-    * [Building for different OSes](build/HowToBuildCode.md)
+    * [[Building for different OSes|HowToBuildCode]]
     * CMake options for custom compilation
     * Conditional compilation for particular models
 * Developer documentation
     * Inference Engine architecture
     * GPU plugin architecture
-    * [HETERO plugin architecture](architecture/HeteroArchitecture.md)
+    * [[HETERO plugin architecture|HeteroArchitecture]]
 * Tests
-    * [Inference Engine tests infrastructure](tests/InferenceEngineTestsInfrastructure.md)
-    * [How to measure test coverage?](tests/InferenceEngineTestsCoverage.md)
+    * [[Inference Engine tests infrastructure|InferenceEngineTestsInfrastructure]]
+    * [[How to measure test coverage?|InferenceEngineTestsCoverage]]
