@@ -8,7 +8,7 @@ Due to this reason source code of GPU plugin is located in 2 places:
  2. inference-engine/thirdparty/clDNN - this part is referred as "clDNN" or "cldnn"
 
 clDNN Plugin is a relatively small module that is responsible for:
- 1. [IE Plugin API](../Intro.md) implementation.
+ 1. [IE Plugin API](https://github.com/openvinotoolkit/openvino/blob/master/docs/IE_PLUGIN_DG/Intro.md) implementation.
  2. Translation of model from common IE semantic (CNNNetwork) into clDNN specific one (cldnn::topology) which is then compiled into
  gpu graph representation (cldnn::network).
  3. Processing of incoming InferRequests using clDNN objects.
