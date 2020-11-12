@@ -1,4 +1,4 @@
-# GPU plugin (CLDNN based) structure
+# GPU plugin structure
 
 Historically GPU plugin was built on top of standalone [clDNN library](https://github.com/intel/clDNN) for DNNs inference on Intel® GPUs,
 but at some point clDNN became a part of OpenVINO,
