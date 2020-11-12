@@ -9,7 +9,12 @@
 
 ## How to build
 
-* [[Building for different OSes|HowToBuildCode]]
+* [[Building for different OSes|HowToBuildCode]]:
+  * [[Windows* systems|BuildingForWindows]]
+  * [[Linux* Systems|BuildingForLinux]]
+  * [[macOS* Systems|BuildingForMacOS]]
+  * [[Android* Systems|BuildingForAndroid]]
+  * [[Raspbian Stretch* OS|BuildingForRaspbianStretchOS]]
 * CMake options for custom compilation
 * Conditional compilation for particular models
 
