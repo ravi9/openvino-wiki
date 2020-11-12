@@ -2,6 +2,13 @@
 
 > **NOTE**: Only the MYRIAD plugin is supported.
 
+## Table of content
+
+  - [Hardware Requirements](#hardware-requirements)
+  - [Native Compilation](#native-compilation)
+  - [Cross Compilation Using Docker\*](#cross-compilation-using-docker)
+  - [Additional Build Options](#additional-build-options)
+
 ### Hardware Requirements
 * Raspberry Pi\* 2 or 3 with Raspbian\* Stretch OS (32-bit). Check that it's CPU supports ARMv7 instruction set (`uname -m` command returns `armv7l`).
 
