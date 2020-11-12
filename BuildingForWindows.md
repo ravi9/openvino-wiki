@@ -5,9 +5,9 @@ The software was validated on:
 
 ## Table of content:
 
-  - [Software Requirements](#software-requirements-1)
-  - [Build Steps](#build-steps-1)
-  - [Additional Build Options](#additional-build-options-2)
+  - [Software Requirements](#software-requirements)
+  - [Build Steps](#build-steps)
+  - [Additional Build Options](#additional-build-options)
   - [Building Inference Engine with Ninja* Build System](#building-inference-engine-with-ninja-build-system)
 
 ### Software Requirements
