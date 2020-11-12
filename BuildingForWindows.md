@@ -1,14 +1,14 @@
 # Build OpenVINO™ Inference Engine for Windows* systems
 
+The software was validated on:
+- Microsoft\* Windows\* 10 (64-bit) with Visual Studio 2019
+
 ## Table of content:
 
   - [Software Requirements](#software-requirements-1)
   - [Build Steps](#build-steps-1)
   - [Additional Build Options](#additional-build-options-2)
   - [Building Inference Engine with Ninja* Build System](#building-inference-engine-with-ninja-build-system)
-
-The software was validated on:
-- Microsoft\* Windows\* 10 (64-bit) with Visual Studio 2019
 
 ### Software Requirements
 - [CMake]\*3.13 or higher
