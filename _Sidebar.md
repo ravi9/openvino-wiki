@@ -8,7 +8,7 @@
     * Conditional compilation for particular models
 * Developer documentation
     * Inference Engine architecture
-    * GPU plugin architecture
+    * [[GPU plugin architecture|GPUPluginArchitecture]]
     * [[HETERO plugin architecture|HeteroArchitecture]]
 * Tests
     * [[Inference Engine tests infrastructure|InferenceEngineTestsInfrastructure]]
