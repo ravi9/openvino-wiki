@@ -1,3 +1,4 @@
+* [[Home|Home]]
 * General resources
 * How to contribute
     * [[Contribute to code|ContributeCode]]
