@@ -1,7 +1,7 @@
 * General resources
 * How to contribute
-    * [[Contribute to code|contribute/ContributeCode]]
-    * [[Contribute to documentation|contribute/ContributeDocs]]
+    * [[Contribute to code|ContributeCode]]
+    * [[Contribute to documentation|ContributeDocs]]
 * How to build
     * [[Building for different OSes|HowToBuildCode]]
     * CMake options for custom compilation
