@@ -4,8 +4,8 @@ This section describes how to build Inference Engine for Android x86 (64-bit) op
 
 ## Table of content
 
-  - [Software Requirements](#software-requirements-3)
-  - [Build Steps](#build-steps-3)
+  - [Software Requirements](#software-requirements)
+  - [Build Steps](#build-steps)
 
 ### Software Requirements
 
