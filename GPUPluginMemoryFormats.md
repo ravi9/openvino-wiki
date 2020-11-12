@@ -1,4 +1,4 @@
-# GPU memory formats {#openvino_docs_gpu_plugin_memory_formats}
+# GPU memory formats
 
 The memory format descriptor in clDNN usually uses the following letters:
  - `b` - batch
