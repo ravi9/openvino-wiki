@@ -12,3 +12,4 @@
     * [HETERO plugin architecture](https://github.com/openvinotoolkit/openvino/wiki/HeteroArchitecture)
 * Tests
     * [Inference Engine tests infrastructure](https://github.com/openvinotoolkit/openvino/wiki/InferenceEngineTestsInfrastructure)
+    * [How to measure test coverage?](https://github.com/openvinotoolkit/openvino/wiki/InferenceEngineTestsCoverage)
