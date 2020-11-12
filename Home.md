@@ -9,7 +9,7 @@
 
 ## How to build
 
-* [[Building for different OSes|HowToBuildCode]]:
+* [[Building for different OSes|BuildingCode]]:
   * [[Windows* systems|BuildingForWindows]]
   * [[Linux* Systems|BuildingForLinux]]
   * [[macOS* Systems|BuildingForMacOS]]
