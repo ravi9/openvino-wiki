@@ -4,12 +4,12 @@
 
 ## How to contribute
 
-* [Contribute to code](https://github.com/openvinotoolkit/openvino/wiki/contribute/ContributeCode)
-* [Contribute to documentation](https://github.com/openvinotoolkit/openvino/wiki/contribute/ContributeDocs)
+* [Contribute to code](contribute/ContributeCode.md)
+* [Contribute to documentation](contribute/ContributeDocs.md)
 
 ## How to build
 
-* [Building for different OSes](https://github.com/openvinotoolkit/openvino/wiki/build/HowToBuildCode)
+* [Building for different OSes](build/HowToBuildCode.md)
 * CMake options for custom compilation
 * Conditional compilation for particular models
 
@@ -17,9 +17,9 @@
 
 * Inference Engine architecture
 * GPU plugin architecture
-* [HETERO plugin architecture](https://github.com/openvinotoolkit/openvino/wiki/architecture/HeteroArchitecture)
+* [HETERO plugin architecture](architecture/HeteroArchitecture.md)
 
 ### Tests
 
-* [Inference Engine tests infrastructure](https://github.com/openvinotoolkit/openvino/wiki/tests/InferenceEngineTestsInfrastructure)
-* [How to measure test coverage?](https://github.com/openvinotoolkit/openvino/wiki/tests/InferenceEngineTestsCoverage)
+* [Inference Engine tests infrastructure](tests/InferenceEngineTestsInfrastructure.md)
+* [How to measure test coverage?](tests/InferenceEngineTestsCoverage.md)
