@@ -8,6 +8,8 @@
   - [Native Compilation](#native-compilation)
   - [Cross Compilation Using Docker\*](#cross-compilation-using-docker)
   - [Additional Build Options](#additional-build-options)
+  - [(Optional) Additional Installation Steps for the Intel® Neural Compute Stick 2](#optional-additional-installation-steps-for-the-intel-neural-compute-stick-2)
+    - [For Linux, Raspbian Stretch* OS](#for-linux-raspbian-stretch-os)
 
 ### Hardware Requirements
 * Raspberry Pi\* 2 or 3 with Raspbian\* Stretch OS (32-bit). Check that it's CPU supports ARMv7 instruction set (`uname -m` command returns `armv7l`).
@@ -184,3 +186,41 @@ You can use the following additional build options:
 - nGraph-specific compilation options:
   `-DNGRAPH_ONNX_IMPORT_ENABLE=ON` enables the building of the nGraph ONNX importer.
   `-DNGRAPH_DEBUG_ENABLE=ON` enables additional debug prints.
+
+### (Optional) Additional Installation Steps for the Intel® Neural Compute Stick 2
+
+> **NOTE**: These steps are only required if you want to perform inference on the
+Intel® Neural Compute Stick 2 using the Inference Engine MYRIAD Plugin. See also
+[Intel® Neural Compute Stick 2 Get Started].
+
+#### For Linux, Raspbian\* Stretch OS 
+
+1. Add the current Linux user to the `users` group; you will need to log out and
+   log in for it to take effect:
+```sh
+sudo usermod -a -G users "$(whoami)"
+```
+
+2. To perform inference on Intel® Neural Compute Stick 2, install the USB rules
+as follows:
+```sh
+cat <<EOF > 97-myriad-usbboot.rules
+SUBSYSTEM=="usb", ATTRS{idProduct}=="2485", ATTRS{idVendor}=="03e7", GROUP="users", MODE="0666", ENV{ID_MM_DEVICE_IGNORE}="1"
+SUBSYSTEM=="usb", ATTRS{idProduct}=="f63b", ATTRS{idVendor}=="03e7", GROUP="users", MODE="0666", ENV{ID_MM_DEVICE_IGNORE}="1"
+EOF
+```
+```sh
+sudo cp 97-myriad-usbboot.rules /etc/udev/rules.d/
+```
+```sh
+sudo udevadm control --reload-rules
+```
+```sh
+sudo udevadm trigger
+```
+```sh
+sudo ldconfig
+```
+```sh
+rm 97-myriad-usbboot.rules
+```
