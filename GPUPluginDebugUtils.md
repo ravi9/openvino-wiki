@@ -1,4 +1,4 @@
-# GPU plugin debug utils {#openvino_docs_gpu_plugin_debug}
+# GPU plugin debug utils
 
 This document is a list of useful debug features / tricks that might be used to find root cause of performance / functional issues. Some of them
 are available by default, but some others might require plugin recompilation
