@@ -102,15 +102,5 @@ OpenVINO™, proceed to the Get Started guides:
 \* Other names and brands may be claimed as the property of others.
 
 
-[Intel® Distribution of OpenVINO™]:https://software.intel.com/en-us/openvino-toolkit
-[CMake]:https://cmake.org/download/
-[Install Intel® Graphics Compute Runtime for OpenCL™ Driver package 19.41.14441]:https://github.com/intel/compute-runtime/releases/tag/19.41.14441
-[MKL-DNN repository]:https://github.com/intel/mkl-dnn/releases/download/v0.19/mklml_lnx_2019.0.5.20190502.tgz
-[MKL-DNN repository for Windows]:(https://github.com/intel/mkl-dnn/releases/download/v0.19/mklml_win_2019.0.5.20190502.zip)
-[OpenBLAS]:https://sourceforge.net/projects/openblas/files/v0.2.14/OpenBLAS-v0.2.14-Win64-int64.zip/download
-[mingw64\* runtime dependencies]:https://sourceforge.net/projects/openblas/files/v0.2.14/mingw64_dll.zip/download
 [https://download.01.org/opencv/2020/openvinotoolkit]:https://download.01.org/opencv/2020/openvinotoolkit
 [build instructions]:https://docs.opencv.org/master/df/d65/tutorial_table_of_content_introduction.html
-[driver package]:https://downloadcenter.intel.com/download/29335/Intel-Graphics-Windows-10-DCH-Drivers
-[Intel® Neural Compute Stick 2 Get Started]:https://software.intel.com/en-us/neural-compute-stick/get-started
-[OpenBLAS]:https://sourceforge.net/projects/openblas/files/v0.2.14/OpenBLAS-v0.2.14-Win64-int64.zip/download

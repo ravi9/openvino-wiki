@@ -53,3 +53,5 @@ This section describes how to build Inference Engine for Android x86 (64-bit) op
   * `ANDROID_PLATFORM` - Android API version
   * `ANDROID_STL` specifies that shared C++ runtime is used. Copy `~/Downloads/android-ndk/sources/cxx-stl/llvm-libc++/libs/x86_64/libc++_shared.so` from Android NDK along with built binaries
 
+
+[CMake]:https://cmake.org/download/

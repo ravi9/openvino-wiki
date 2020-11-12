@@ -111,3 +111,10 @@ set TBBROOT=
 cmake -G Ninja -Wno-dev -DCMAKE_BUILD_TYPE=Release ..
 cmake --build . --config Release
 ```
+
+
+[CMake]:https://cmake.org/download/
+[MKL-DNN repository for Windows]:(https://github.com/intel/mkl-dnn/releases/download/v0.19/mklml_win_2019.0.5.20190502.zip)
+[OpenBLAS]:https://sourceforge.net/projects/openblas/files/v0.2.14/OpenBLAS-v0.2.14-Win64-int64.zip/download
+[mingw64\* runtime dependencies]:https://sourceforge.net/projects/openblas/files/v0.2.14/mingw64_dll.zip/download
+[driver package]:https://downloadcenter.intel.com/download/29335/Intel-Graphics-Windows-10-DCH-Drivers

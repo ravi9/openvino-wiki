@@ -224,3 +224,6 @@ sudo ldconfig
 ```sh
 rm 97-myriad-usbboot.rules
 ```
+
+
+[Intel® Neural Compute Stick 2 Get Started]:https://software.intel.com/en-us/neural-compute-stick/get-started

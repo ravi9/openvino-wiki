@@ -12,6 +12,7 @@ The software was validated on:
   - [Additional Build Options](#additional-build-options)
 
 ### Software Requirements
+
 - [CMake]\* 3.13 or higher
 - GCC\* 4.8 or higher to build the Inference Engine
 - Python 3.6 or higher for Inference Engine Python API wrapper
@@ -103,3 +104,8 @@ You can use the following additional build options:
 - nGraph-specific compilation options:
   `-DNGRAPH_ONNX_IMPORT_ENABLE=ON` enables the building of the nGraph ONNX importer.
   `-DNGRAPH_DEBUG_ENABLE=ON` enables additional debug prints.
+
+
+[CMake]:https://cmake.org/download/
+[Install Intel® Graphics Compute Runtime for OpenCL™ Driver package 19.41.14441]:https://github.com/intel/compute-runtime/releases/tag/19.41.14441
+[MKL-DNN repository]:https://github.com/intel/mkl-dnn/releases/download/v0.19/mklml_lnx_2019.0.5.20190502.tgz
