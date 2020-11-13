@@ -1,6 +1,7 @@
 # Build on Linux\* Systems
 
 The software was validated on:
+- Ubuntu\* 16.04 (64-bit) with default GCC\* 5.4.0
 - Ubuntu\* 18.04 (64-bit) with default GCC\* 7.5.0
 - Ubuntu\* 20.04 (64-bit) with default GCC\* 9.3.0
 - CentOS\* 7.6 (64-bit) with default GCC\* 4.8.5
@@ -17,7 +18,6 @@ The software was validated on:
 - GCC\* 4.8 or higher to build the Inference Engine
 - Python 3.6 or higher for Inference Engine Python API wrapper
 - (Optional) [Install Intel® Graphics Compute Runtime for OpenCL™ Driver package 19.41.14441].
-> **NOTE**: Building samples and demos from the Intel® Distribution of OpenVINO™ toolkit package requires CMake\* 3.10 or higher.
 
 ### Build Steps
 1. Clone submodules:
