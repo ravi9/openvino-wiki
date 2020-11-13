@@ -37,6 +37,8 @@ The open source version of Inference Engine includes the following plugins:
   - [[Android* Systems|BuildingForAndroid]]
   - [[Raspbian Stretch* OS|BuildingForRaspbianStretchOS]]
 
+> **NOTE**: Please, refer to a [[dedicated guide|https://github.com/openvinotoolkit/openvino/wiki/CMakeOptionsForCustomCompilation]] with CMake options which control OpenVINO build if you need a custom build.
+
 ## Use Custom OpenCV Builds for Inference Engine
 
 > **NOTE**: The recommended and tested version of OpenCV is 4.4.0.
