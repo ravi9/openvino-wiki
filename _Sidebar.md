@@ -5,7 +5,7 @@
     * [[Contribute to documentation|ContributeDocs]]
 * How to build
     * [[Building for different OSes|BuildingCode]]
-    * CMake options for custom compilation
+    * [[CMake options for custom compilation|CMakeOptionsForCustomCompilation]]
     * Conditional compilation for particular models
 * Developer documentation
     * Inference Engine architecture
