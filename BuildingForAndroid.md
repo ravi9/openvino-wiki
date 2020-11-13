@@ -1,6 +1,6 @@
 # Build on Android* Systems
 
-This section describes how to build Inference Engine for Android x86 (64-bit) operating systems.
+This section describes how to build Inference Engine for Android operating systems.
 
 ## Table of content
 
@@ -11,7 +11,6 @@ This section describes how to build Inference Engine for Android x86 (64-bit) op
 
 - [CMake]\* 3.13 or higher
 - Android NDK (this guide has been validated with r20 release)
-> **NOTE**: Building samples and demos from the Intel® Distribution of OpenVINO™ toolkit package requires CMake\* 3.10 or higher.
 
 ### Build Steps
 
@@ -49,7 +48,10 @@ This section describes how to build Inference Engine for Android x86 (64-bit) op
   make --jobs=$(nproc --all)
   ```
 
-  * `ANDROID_ABI` specifies target architecture (`x86_64`)
+  * `ANDROID_ABI` specifies target architecture:
+    * `x86_64` for x64 build
+    * `armeabi-v7a with NEON` for ARM with NEON support
+    * `arm64-v8a` for ARM 64 bits
   * `ANDROID_PLATFORM` - Android API version
   * `ANDROID_STL` specifies that shared C++ runtime is used. Copy `~/Downloads/android-ndk/sources/cxx-stl/llvm-libc++/libs/x86_64/libc++_shared.so` from Android NDK along with built binaries
 
