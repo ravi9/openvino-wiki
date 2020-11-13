@@ -144,10 +144,8 @@ with the following content:
       ```bash
       cmake -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_TOOLCHAIN_FILE="../cmake/arm.toolchain.cmake" \
-          -DTHREADS_PTHREAD_ARG="-pthread" \
-          -DENABLE_SSE42=OFF \
-          -DTHREADING=SEQ \
-          -DENABLE_GNA=OFF .. && make --jobs=$(nproc --all)
+          -DTHREADS_PTHREAD_ARG="-pthread" .. && \
+          make --jobs=$(nproc --all)
       ```
 
 7. Press **Ctrl+D** to exit from Docker. You can find the resulting binaries
