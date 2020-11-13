@@ -15,7 +15,6 @@ The software was validated on:
 - Microsoft\* Visual Studio 2017, 2019
 - (Optional) Intel® Graphics Driver for Windows* (26.20) [driver package].
 - Python 3.6 or higher for Inference Engine Python API wrapper
-> **NOTE**: Building samples and demos from the Intel® Distribution of OpenVINO™ toolkit package requires CMake\* 3.10 or higher.
 
 ### Build Steps
 
@@ -24,7 +23,7 @@ The software was validated on:
     git submodule update --init --recursive
     ```
 2. By default, the build enables the Inference Engine GPU plugin to infer models
-   on your Intel® Processor Graphics. This requires you to [download and install
+   on your Intel® Processor Graphics. This requires you to download and install
    the Intel® Graphics Driver for Windows (26.20) [driver package] before
    running the build. If you don't want to use the GPU plugin, use the
    `-DENABLE_CLDNN=OFF` CMake build option and skip the installation of the
@@ -41,13 +40,23 @@ The software was validated on:
 cmake -G "Visual Studio 15 2017 Win64" -DCMAKE_BUILD_TYPE=Release ..
 ```
 
-   For Microsoft\* Visual Studio 2019:
+   For Microsoft\* Visual Studio 2019 x64 architecture:
 ```sh
 cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=Release ..
 ```
 
+   For Microsoft\* Visual Studio 2019 ARM architecture:
+```sh
+cmake -G "Visual Studio 16 2019" -A ARM -DCMAKE_BUILD_TYPE=Release ..
+```
+
+   For Microsoft\* Visual Studio 2019 ARM64 architecture:
+```sh
+cmake -G "Visual Studio 16 2019" -A ARM64 -DCMAKE_BUILD_TYPE=Release ..
+```
+
 5. Build generated solution in Visual Studio or run
-   `cmake --build . --config Release` to build from the command line.
+   `cmake --build . --config Release --verbose -j8` to build from the command line.
 
 6. Before running the samples, add paths to the TBB and OpenCV binaries used for
    the build to the `%PATH%` environment variable. By default, TBB binaries are
