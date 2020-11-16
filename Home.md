@@ -2,8 +2,7 @@
 
 ## General resources
 
-## How to contribute
-
+* [[Getting started|GettingStarted]]
 * [[Contribute to code|ContributeCode]]
 * [[Contribute to documentation|ContributeDocs]]
 
