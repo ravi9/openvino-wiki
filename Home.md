@@ -27,6 +27,7 @@
 
 * [[Inference Engine tests infrastructure|InferenceEngineTestsInfrastructure]]
 * [[How to measure test coverage?|InferenceEngineTestsCoverage]]
+* [[Adding a regression tests for VPU|InferenceEngineTestsVPU]]
 
 ### Security Policy
 
