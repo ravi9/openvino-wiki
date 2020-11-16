@@ -4,6 +4,7 @@
     * [[Contribute|Contribute]]
 * [[How to build|https://github.com/openvinotoolkit/openvino/wiki#how-to-build]]
     * [[Building for different OSes|BuildingCode]]
+    * [[Building documentation|BuildingDocumentation]]
     * [[CMake options for custom compilation|CMakeOptionsForCustomCompilation]]
     * Conditional compilation for particular models
 * [[Developer documentation|https://github.com/openvinotoolkit/openvino/wiki#developer-documentation]]
