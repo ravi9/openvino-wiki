@@ -8,7 +8,7 @@ If you are not familiar with the mechanism - do not worry, it's very simple. Kee
 
 * Make sure you agree to contribute your code under [OpenVINO (Apache 2.0)] license.
 * If you are submitting a new module, you should go into [openvino_contrib] repository by default.
-* If you are going to fix a bug, check that it's still exists. This can be done by building the latest [releases/2020/3] branch (LTS release) or the latest master branch, and make sure that the error is still reproducible there. We do not fix bugs that only affect older non-LTS releases like 2020.2 for example.
+* If you are going to fix a bug, check that it's still exists. This can be done by building the latest [releases/2020/3] branch (LTS release) or the latest master branch, and make sure that the error is still reproducible there. We do not fix bugs that only affect older non-LTS releases like 2020.2 for example (more details about [[branching strategy|Branches]])
 * Make sure that nobody beat you into fixing or reporting the issue by doing a search on the [Github OpenVINO issues] page, and making sure that there isn't someone working on it. In the latter case you might provide support or suggestion in the issue or in the linked pull request.
 * If you have a question about the software, then this is **NOT** the right place. You should open up a question at the [OpenVINO forum]. In order to post a decent question from the start, feel free to read the official forum guidelines.
 
