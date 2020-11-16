@@ -39,6 +39,10 @@ Following these guidelines will increase the likelihood of your pull request bei
 * Try not to include "oops" commits - ones that just fix an error in the previous commit. If you have those, then before submitting [squash](#https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits) those fixes directly into the commits where they belong.
 * Make sure to choose the right base branch and to follow the [[Coding Style Guide|CodingStyleGuideLines]] for your code.
 * Make sure to add test for new functionality or test that reproduces fixed bug with related test data. Please do not add extra images or videos, if some of existing media files are suitable.
+* If you contribute to the documentation and want to add a new guide:
+   * Create a new markdown file in an appropriate folder.
+   * **REQUIRED:** The document title must contain a document label in a form: `{#openvino_docs_<name>}`. For example: `Deep Learning Network Intermediate Representation and Operation Sets in OpenVINO™ {#openvino_docs_MO_DG_IR_and_opsets}`.
+   * Add your file to the documentation structure. Open the documentation structure file [`docs/doxygen/ie_docs.xml`] and add your file path to the appropriate section.
 
 ## Testing and merging pull requests
 
@@ -54,3 +58,4 @@ As soon as the reviewer is fine with the pull request and Precommit likes your c
 [releases/2020/3]:https://github.com/openvinotoolkit/openvino/tree/releases/2020/3
 [Github OpenVINO issues]:https://github.com/openvinotoolkit/openvino/issues
 [OpenVINO forum]:https://community.intel.com/t5/Intel-Distribution-of-OpenVINO/bd-p/distribution-openvino-toolkit
+[`docs/doxygen/ie_docs.xml`]: https://github.com/openvinotoolkit/openvino/blob/master/docs/doxygen/ie_docs.xml
