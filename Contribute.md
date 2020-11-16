@@ -23,7 +23,7 @@ Before you open up anything on the OpenVINO GitHub page, be sure that you are at
 * Choose a base branch for your work. More details about branches and policies are here: [[Branches|Branches]]
 * Clone your fork to your computer.
 * Create a new branch (with a meaningful name) from the base branch you chose.
-* Modify / add the code following our [[Coding Style Guide|CodingStyleGuideLines]].
+* Modify / add the code following our [[Coding Style Guide|CodingStyleGuideLines]] and [[Documentation guidelines|CodingStyleGuideLinesDocumentation]].
 * Run testsuite locally:
     * execute each test binary from the artifacts directory, e.g. `<source dir>/bin/intel64/Release/ieFuncTests`
 * If you contribute to the documentation and want to add a new guide:
@@ -41,7 +41,7 @@ Following these guidelines will increase the likelihood of your pull request bei
 * Scope your PR to one issue. Before submitting, make sure the diff contains no unrelated changes. If you want to cover more than one issue, submit your changes for each as separate pull requests.
 * If you have added new functionality, you should update/create the relevant documentation, as well as add tests for it to the testsuite.
 * Try not to include "oops" commits - ones that just fix an error in the previous commit. If you have those, then before submitting [squash](#https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits) those fixes directly into the commits where they belong.
-* Make sure to choose the right base branch and to follow the [[Coding Style Guide|CodingStyleGuideLines]] for your code.
+* Make sure to choose the right base branch and to follow the [[Coding Style Guide|CodingStyleGuideLines]] for your code or [[Documentation guidelines|CodingStyleGuideLinesDocumentation]] you are changing documentation files.
 * Make sure to add test for new functionality or test that reproduces fixed bug with related test data. Please do not add extra images or videos, if some of existing media files are suitable.
 
 ## Testing and merging pull requests
