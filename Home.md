@@ -13,6 +13,7 @@
   * [[macOS* Systems|BuildingForMacOS]]
   * [[Android* Systems|BuildingForAndroid]]
   * [[Raspbian Stretch* OS|BuildingForRaspbianStretchOS]]
+* [[Building documentation|BuildingDocumentation]]
 * [[CMake options for custom compilation|CMakeOptionsForCustomCompilation]]
 * Conditional compilation for particular models
 
