@@ -1,6 +1,6 @@
 * [[Home|Home]]
 * [[General resources|https://github.com/openvinotoolkit/openvino/wiki#general-resources]]
-* [[How to contribute|https://github.com/openvinotoolkit/openvino/wiki#how-to-contribute]]
+    * [[Getting started|GettingStarted]]
     * [[Contribute to code|ContributeCode]]
     * [[Contribute to documentation|ContributeDocs]]
 * [[How to build|https://github.com/openvinotoolkit/openvino/wiki#how-to-build]]
