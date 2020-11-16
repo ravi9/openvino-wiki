@@ -1,5 +1,7 @@
 # CMake options for custom compilation
 
+This document contains CMake options, their description and default values, which can be used to build custom OpenVINO runtime using open-source version. In order to create custom runtime from  prebuilt OpenVINO release package, please, refer to [deployment manager] documentation.
+
 ## Table of content:
 
 * [Disable / enable plugins build and other components](#disable--enable-plugins-build-and-other-components)
@@ -112,3 +114,4 @@
 [pugixml]:https://pugixml.org/
 [ONNX]:https://onnx.ai/
 [protobuf]:https://github.com/protocolbuffers/protobuf
+[deployment manager]:https://docs.openvinotoolkit.org/latest/openvino_docs_install_guides_deployment_manager_tool.html
