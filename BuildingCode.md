@@ -72,13 +72,13 @@ before running the Inference Engine build:
 
 ## Add Inference Engine to Your Project
 
-For CMake projects, set the `InferenceEngine_DIR` environment variable:
+For CMake projects, set the `InferenceEngine_DIR` when you run CMake tool:
 
 ```sh
-export InferenceEngine_DIR=/path/to/openvino/build/
+cmake -DInferenceEngine_DIR=/path/to/openvino/build/ .
 ```
 
-Then you can find Inference Engine by `find_package`:
+Then you can find Inference Engine by [`find_package`]:
 
 ```cmake
 find_package(InferenceEngine REQUIRED)
@@ -106,3 +106,4 @@ OpenVINO™, proceed to the Get Started guides:
 
 [https://download.01.org/opencv/2020/openvinotoolkit]:https://download.01.org/opencv/2020/openvinotoolkit
 [build instructions]:https://docs.opencv.org/master/df/d65/tutorial_table_of_content_introduction.html
+[`find_package`]:https://cmake.org/cmake/help/latest/command/find_package.html
