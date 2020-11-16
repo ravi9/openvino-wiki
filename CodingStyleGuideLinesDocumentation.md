@@ -1,5 +1,12 @@
 # Documentation Guidelines
 
+## Table of content:
+
+* [Authoring Guidelines](#authoring-guidelines)
+* [Structure Guidelines](#structure-guidelines)
+* [Formatting Guidelines](#formatting-guidelines)
+* [Graphics Guidelines](#graphics-guidelines)
+
 ## Authoring Guidelines
 
 We want our documentation to be easy to read and understand. This section describes guidelines for writing documentation that is clear, concise, confident, and courteous.
