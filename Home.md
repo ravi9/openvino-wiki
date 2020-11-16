@@ -27,7 +27,7 @@
 
 * [[Inference Engine tests infrastructure|InferenceEngineTestsInfrastructure]]
 * [[How to measure test coverage?|InferenceEngineTestsCoverage]]
-* [[Inference Engine Fuzzing tests|InferenceEngineTestsFuzzing]]
+* [[Fuzzing tests|InferenceEngineTestsFuzzing]]
 * [[Adding a regression tests for VPU|InferenceEngineTestsVPU]]
 
 ### Security Policy
