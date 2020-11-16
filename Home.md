@@ -3,8 +3,7 @@
 ## General resources
 
 * [[Getting started|GettingStarted]]
-* [[Contribute to code|ContributeCode]]
-* [[Contribute to documentation|ContributeDocs]]
+* [[Contribute|Contribute]]
 
 ## How to build
 
