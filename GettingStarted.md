@@ -12,7 +12,7 @@ the OpenVINO™ Toolkit on Linux\*. With this guide, you will learn how to:
 ## Prerequisites
 1. This guide assumes that you have already cloned the `openvino` repo and 
    successfully built the Inference Engine and Samples using the 
-   [build instructions](build-instruction.md). 
+   [[build instructions|BuildingCode]]. 
 2. The original structure of the repository directories remains unchanged.
 
 > **NOTE**: Below, the directory to which the `openvino` repository is cloned is 
@@ -187,7 +187,7 @@ Now you are ready to run the Image Classification Sample Application.
 ## Run the Image Classification Sample Application
 
 The Inference Engine sample applications are automatically compiled when you 
-built the Inference Engine using the [build instructions](build-instruction.md). 
+built the Inference Engine using the [[build instructions|BuildingCode]]. 
 The binary files are located in the `<OPENVINO_DIR>/bin/intel64/Release` 
 directory.
 
@@ -216,7 +216,7 @@ To run the Image Classification sample application with an input image on the pr
 
    >**NOTE**: Running inference on VPU devices (Intel® Movidius™ Neural Compute 
    Stick or Intel® Neural Compute Stick 2) with the MYRIAD plugin requires 
-   performing [additional hardware configuration steps](build-instruction.md#optional-additional-installation-steps-for-the-intel-neural-compute-stick-2).
+   performing [additional hardware configuration steps](https://github.com/openvinotoolkit/openvino/wiki/BuildingForRaspbianStretchOS#optional-additional-installation-steps-for-the-intel-neural-compute-stick-2).
    ```sh
    ./classification_sample_async -i <OPENVINO_DIR>/scripts/demo/car.png -m <ir_dir>/squeezenet1.1.xml -d MYRIAD
    ```
@@ -248,7 +248,6 @@ classid probability label
 ## Additional Resources
 
 * [OpenVINO™ Release Notes](https://software.intel.com/en-us/articles/OpenVINO-RelNotes)
-* [Inference Engine build instructions](build-instruction.md)
 * [Introduction to Intel® Deep Learning Deployment Toolkit](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Introduction.html)
 * [Inference Engine Developer Guide](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Deep_Learning_Inference_Engine_DevGuide.html)
 * [Model Optimizer Developer Guide]
