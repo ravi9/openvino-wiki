@@ -6,7 +6,7 @@
     * [[Building for different OSes|BuildingCode]]
     * [[Building documentation|BuildingDocumentation]]
     * [[CMake options for custom compilation|CMakeOptionsForCustomCompilation]]
-    * Conditional compilation for particular models
+    * [[Conditional compilation for particular models|ConditionalCompilation]]
 * [[Developer documentation|https://github.com/openvinotoolkit/openvino/wiki#developer-documentation]]
     * Inference Engine architecture
     * [[GPU plugin architecture|GPUPluginArchitecture]]
