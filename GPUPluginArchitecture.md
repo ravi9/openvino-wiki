@@ -6,4 +6,5 @@ GPU plugin in [OpenVINO toolkit](https://github.com/openvinotoolkit/openvino) su
 - [[Simplified workflow|GPUPluginWorkFlow]]
 - [[Memory formats|GPUPluginMemoryFormats]]
 - [[Kernels and kernel selectors|GPUPluginKernels]]
+- [[GPU plugin operations enabling flow|GPUPluginOpsEnabling]]
 - [[Debug utils|GPUPluginDebugUtils]]
