@@ -15,7 +15,7 @@
   * [[Raspbian Stretch* OS|BuildingForRaspbianStretchOS]]
 * [[Building documentation|BuildingDocumentation]]
 * [[CMake options for custom compilation|CMakeOptionsForCustomCompilation]]
-* Conditional compilation for particular models
+* [[Conditional compilation for particular models|ConditionalCompilation]]
 
 ## Developer documentation
 
