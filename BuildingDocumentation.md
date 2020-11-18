@@ -14,15 +14,27 @@ In addition to usual build dependencies `doxygen` and `latex` must be installed:
 ### Windows
 
 * [miktex](https://miktex.org/)
-* [doxygen](http://doxygen.nl/files/doxygen-1.8.20-setup.exe)
+* [doxygen](http://doxygen.nl/files/doxygen-1.8.20-setup.exe) (version >= 1.8.20)
 * [Graphviz](https://graphviz.org/download/)
 
-### Ubuntu 18.04
+### Ubuntu systems
 
-* Latex, goxygen and graphviz
+* Latex and graphviz:
 
 ```sh
-apt-get install texlive-full graphviz doxygen
+apt-get install texlive-full graphviz
+```
+
+* goxygen version >= 1.8.20:
+
+```
+$ git clone https://github.com/doxygen/doxygen.git
+$ cd doxygen
+$ git checkout Release_1_8_20
+$ mkdir build
+$ cmake ..
+$ cmake --build . -j8
+$ sudo make install
 ```
 
 ## Building documentation
