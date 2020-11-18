@@ -30,7 +30,7 @@ Before you open up anything on the OpenVINO GitHub page, be sure that you are at
    * Create a new markdown file in an appropriate folder.
    * **REQUIRED:** The document title must contain a document label in a form: `{#openvino_docs_<name>}`. For example: `Deep Learning Network Intermediate Representation and Operation Sets in OpenVINO™ {#openvino_docs_MO_DG_IR_and_opsets}`.
    * Add your file to the documentation structure. Open the documentation structure file [`docs/doxygen/ie_docs.xml`] and add your file path to the appropriate section.
-* When you are done, push your branch to your GitHub fork; then create a pull request from your branch to the base branch (see https://help.github.com/articles/using-pull-requests for details).
+* When you are done, make sure that your branch is to date with latest state of the branch you want to contribute to (e.g. `git fetch upstream && git merge upstream/master`), push your branch to your GitHub fork; then create a pull request from your branch to the base branch (see https://help.github.com/articles/using-pull-requests for details).
 
 ## Making a good pull request
 
