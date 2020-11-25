@@ -49,6 +49,14 @@ Following these guidelines will increase the likelihood of your pull request bei
 * Your pull request will be automatically tested by OpenVINO's precommit (testing status are automatically reported as "green" or "red" circles in precommit steps on PR's page). If any builders have failed, you should fix the issue. To rerun the automatic builds just push changes to your branch on GitHub. No need to close pull request and open a new one!
 * Once all the builders are "green", one of OpenVINO developers will review your code. Reviewer could ask you to modify your pull request. Please provide timely response for reviewers (within weeks, not months), otherwise you submission could be postponed or even rejected.
 
+## PR review good practices
+* Originator is responsible for driving the review of changes and should ping reviewers periodically.
+* Originator should close comments from the Reviewer when it is resolved. The Reviewer may re-open the comment if he does not agree with the resolution.
+* Originator should request re-review from the Reviewer when all comments are resolved by pushing the button in the “Reviewers” section.
+* If it is still WIP and you want to check CI test results early then use _Draft_ PR.
+* Do **NOT** rewrite history (push -f) once you converted draft PR into regular one, add new commits instead. Looking at diffs makes review easier.
+* Write meaningful description of commits resulting from review. _"Addressing review comments"_ is **NOT** a good description! Having a quick look at good descriptions can tell you much what is going on in PR without a need to go through all of resolved comments.
+
 ## Merging PR
 
 As soon as the reviewer is fine with the pull request and Precommit likes your code and shows "green" status, the "Approved" review status is put, which signals OpenVINO maintainers that they can merge your pull request.
