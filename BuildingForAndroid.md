@@ -55,5 +55,10 @@ This section describes how to build Inference Engine for Android operating syste
   * `ANDROID_PLATFORM` - Android API version
   * `ANDROID_STL` specifies that shared C++ runtime is used. Copy `~/Downloads/android-ndk/sources/cxx-stl/llvm-libc++/libs/x86_64/libc++_shared.so` from Android NDK along with built binaries
 
+5. To reduce the binaries size, use `strip` tool from NDK:
+
+```bash
+~/Downloads/android-ndk/toolchains/llvm/prebuilt/linux-x86_64/x86_64-linux-android/bin/strip openvino/bin/intel64/Release/lib/*.so
+```
 
 [CMake]:https://cmake.org/download/
