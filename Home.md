@@ -20,7 +20,7 @@
 ## Developer documentation
 
 * Inference Engine architecture
-* [[GPU plugin architecture|GPUPluginArchitecture]]
+* [[GPU plugin |GPUPluginDevelopersDocs]]
 * [[HETERO plugin architecture|HeteroPluginArchitecture]]
 
 ### Tests
