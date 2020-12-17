@@ -31,7 +31,10 @@ On Windows OpenCL runtime is a part of the GPU driver, but on linux it should be
 
 
 ## 3. Make sure that user has all required permissions to work with GPU device
-TBD
+Add the current Linux user to the `video` group:
+```
+sudo usermod -a -G video "$(whoami)"
+```
 
 ## 4. Make sure that iGPU is enabled
 ```
