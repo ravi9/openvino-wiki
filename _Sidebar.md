@@ -9,7 +9,7 @@
     * [[Conditional compilation for particular models|ConditionalCompilation]]
 * [[Developer documentation|https://github.com/openvinotoolkit/openvino/wiki#developer-documentation]]
     * Inference Engine architecture
-    * [[GPU plugin docs|GPUPluginDevelopersDocs]]
+    * [[GPU plugin|GPUPluginDevelopersDocs]]
     * [[HETERO plugin architecture|HeteroPluginArchitecture]]
 * [[Tests|https://github.com/openvinotoolkit/openvino/wiki#tests]]
     * [[Inference Engine tests infrastructure|InferenceEngineTestsInfrastructure]]
