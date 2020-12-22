@@ -43,7 +43,7 @@ blocked format in cldnn: `b_fs_yx_fsv16`. First of all, let's understand what th
 this is 4D tensor.
 `fs=CeilDiv(f, block_size)`; `fs` means `feature slice` - the blocked dimension.
 The block size is specified in the format name: `fsv16` - `block_size = 16`, blocked dimension is `f`; `fsv` means `feature slice vector`
-Just like with any other layout, the coordinate of the rightmost dimension (`fsv`) is changed first, then coordinate to the left (`x`), and son on.
+Just like with any other layout, the coordinate of the rightmost dimension (`fsv`) is changed first, then coordinate to the left (`x`), and so on.
 
 Note: if the original `f` dimension is not divisible by block size (16 in this case), then it's aligned up to the first divisible value. These pad values
 are filled with zeroes.
