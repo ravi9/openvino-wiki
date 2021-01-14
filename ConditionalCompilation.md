@@ -38,6 +38,7 @@ Conditional compilation has two stages:
     2. `cmake --build <cmake_build_directory>`
 
 The "-niter 1 -nireq 1" flags are highly recommended for bencmark_app. Otherwise, the trace files will be very large.
+If you are using an application other than benchmark_app, remember to limit the number of inference requests and iterations.
 
 ## Building for devices with different ISA
 
