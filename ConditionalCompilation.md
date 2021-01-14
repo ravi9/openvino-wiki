@@ -32,10 +32,12 @@ Conditional compilation has two stages:
     1. Run CMake tool with options: `-DENABLE_PROFILING_ITT=ON -DSELECTIVE_BUILD=COLLECT`
     2. Select several models to be used in a specific application or target device
     3. Run target application under Intel SEAPI for code usage analysis using `-f stat` flag for each model. Statistics are generated in .csv format.  
-`sea_runtool.py -o ${MY_MODEL_RESULT} -f stat ! ./benchmark_app -m ${MY_MODEL}.xml`
+`sea_runtool.py -o ${MY_MODEL_RESULT} -f stat ! ./benchmark_app -niter 1 -nireq 1 -m ${MY_MODEL}.xml`
 2. Final build
     1. Run CMake tool with options: `-DSELECTIVE_BUILD=ON -DSELECTIVE_BUILD_STAT=${PATH_TO_STATISTICS_FILES}/*.csv`
     2. `cmake --build <cmake_build_directory>`
+
+The "-niter 1 -nireq 1" flags are highly recommended for bencmark_app. Otherwise, the trace files will be very large.
 
 ## Building for devices with different ISA
 
