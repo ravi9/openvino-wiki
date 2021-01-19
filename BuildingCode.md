@@ -39,6 +39,86 @@ The open source version of Inference Engine includes the following plugins:
 
 > **NOTE**: Please, refer to a [[dedicated guide|https://github.com/openvinotoolkit/openvino/wiki/CMakeOptionsForCustomCompilation]] with CMake options which control OpenVINO build if you need a custom build.
 
+## Installing
+
+Once project is built you can install OpenVINO™ Inference Engine into custom location:
+ 
+```
+cmake --install . --prefix <INSTALLDIR>
+```
+
+**Checking your installation:**
+
+1. Obtaining Open Moldel Zoo tools and models
+
+To have ability run samples and demo you need to clone Open Model Zoo repository and copy folder under `./deployment_tools` in your install directory:
+
+```
+git clone https://github.com/openvinotoolkit/open_model_zoo.git
+cmake -E copy_directory ./open_model_zoo/ <INSTALLDIR>/deployment_tools/open_model_zoo/
+```
+
+2. Adding OpenCV to your environment
+
+>You can find more info on OpenCV custom builds [here](#use-custom-opencv-builds-for-inference-engine).
+
+Open Model Zoo samples use OpenCV functionality to load images, so to use it for demo builds you need to provide path to your OpenCV custom build by setting `OpenCV_DIR` environment variable and add path OpenCV libraries to `LD_LIBRARY_PATH (Linux*)` or `PATH (Windows*)` variable before running demos.
+
+Linux:
+```sh
+export LD_LIBRARY_PATH=/path/to/opencv_install/lib/:$LD_LIBRARY_PATH
+export OpenCV_DIR=/path/to/opencv_install/cmake
+```
+
+Windows:
+```sh
+set PATH=/path/to/opencv_install/bin/;%PATH%
+set OpenCV_DIR=/path/to/opencv_install/cmake
+```
+
+3. Running demo
+
+To check your installation go to the demo directory and run Classification Demo:
+
+Linux:
+```sh
+cd <INSTALLDIR>/deployment_tools/demo
+./demo_squeezenet_download_convert_run.sh
+```
+
+Windows:
+```sh
+cd <INSTALLDIR>\deployment_tools\demo
+demo_squeezenet_download_convert_run.bat
+```
+
+<details>
+<summary>Result:</summary>
+<p>
+
+```
+Top 10 results:
+
+Image <INSTALLDIR>/deployment_tools/demo/car.png
+
+classid probability label
+------- ----------- -----
+817     0.6853030   sports car, sport car
+479     0.1835197   car wheel
+511     0.0917197   convertible
+436     0.0200694   beach wagon, station wagon, wagon, estate car, beach waggon, station waggon, waggon
+751     0.0069604   racer, race car, racing car
+656     0.0044177   minivan
+717     0.0024739   pickup, pickup truck
+581     0.0017788   grille, radiator grille
+468     0.0013083   cab, hack, taxi, taxicab
+661     0.0007443   Model T
+
+[ INFO ] Execution successful
+```
+</p>
+</details>
+
 ## Use Custom OpenCV Builds for Inference Engine
 
 > **NOTE**: The recommended and tested version of OpenCV is 4.4.0.
@@ -90,7 +170,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE ${InferenceEngine_LIBRARIES})
 Congratulations, you have built the Inference Engine. To get started with the
 OpenVINO™, proceed to the Get Started guides:
 
-* [Get Started with Deep Learning Deployment Toolkit on Linux*](get-started-linux.md)
+* [Get Started with Deep Learning Deployment Toolkit on Linux*](GettingStarted)
 
 ## Additional Resources
 
