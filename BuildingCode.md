@@ -9,6 +9,7 @@
   - [[macOS* Systems|BuildingForMacOS]]
   - [[Android* Systems|BuildingForAndroid]]
   - [[Raspbian Stretch* OS|BuildingForRaspbianStretchOS]]
+- [Installing](#installing)
 - [Use Custom OpenCV Builds for Inference Engine](#use-custom-opencv-builds-for-inference-engine)
 - [Add Inference Engine to Your Project](#add-inference-engine-to-your-project)
 - [Next Steps](#next-steps)
