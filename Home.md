@@ -13,6 +13,7 @@
   * [[macOS* Systems|BuildingForMacOS]]
   * [[Android* Systems|BuildingForAndroid]]
   * [[Raspbian Stretch* OS|BuildingForRaspbianStretchOS]]
+* [[Building in a Docker image|BuildingCode#building-in-a-docker-image]]
 * [[Installing|BuildingCode#installing]]
 * [[Building documentation|BuildingDocumentation]]
 * [[CMake options for custom compilation|CMakeOptionsForCustomCompilation]]
