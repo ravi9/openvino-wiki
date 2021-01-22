@@ -9,6 +9,7 @@
   - [[macOS* Systems|BuildingForMacOS]]
   - [[Android* Systems|BuildingForAndroid]]
   - [[Raspbian Stretch* OS|BuildingForRaspbianStretchOS]]
+- [Building in a Docker image](#building-in-a-docker-image)
 - [Installing](#installing)
 - [Use Custom OpenCV Builds for Inference Engine](#use-custom-opencv-builds-for-inference-engine)
 - [Add Inference Engine to Your Project](#add-inference-engine-to-your-project)
@@ -39,6 +40,9 @@ The open source version of Inference Engine includes the following plugins:
   - [[Raspbian Stretch* OS|BuildingForRaspbianStretchOS]]
 
 > **NOTE**: Please, refer to a [[dedicated guide|https://github.com/openvinotoolkit/openvino/wiki/CMakeOptionsForCustomCompilation]] with CMake options which control OpenVINO build if you need a custom build.
+
+## Building in a Docker image
+You can also build Intel® Distribution of OpenVINO™ toolkit in a Docker image by following this [guide](https://github.com/openvinotoolkit/docker_ci/tree/master/dockerfiles/ubuntu18/build_custom). 
 
 ## Installing
 
