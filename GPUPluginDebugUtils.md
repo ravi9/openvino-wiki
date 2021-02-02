@@ -197,3 +197,13 @@ constains buffer description, e.g:
 ```
 shape: [b:1, f:1280, x:1, y:1, z:1, w:1, g:1] (count: 1280, original format: b_fs_yx_fsv16)
 ```
+
+## Run int8 model on gen9 HW
+
+As gen9 hw doesn't have hardware acceleration, low precision transformations are disabled by default, thus quantized networks are executed in full precision (fp16 or fp32) with explicit execution of quantize operations.
+If you don't have gen12 HW, but want to debug network's accuracy or performance of simple operations (which doesn't require dp4a support), then you can enable low precision pipeline on gen9 using one of the following ways:
+1. Add `{PluginConfigInternalParams::KEY_LP_TRANSFORMS_MODE, PluginConfigParams::YES}` option to the plugin config
+2. Enforce `supports_imad = true` [here](https://github.com/openvinotoolkit/openvino/blob/master/inference-engine/thirdparty/clDNN/src/gpu/device_info.cpp#L226)
+3. Enforce `conf.enableInt8 = true` [here](https://github.com/openvinotoolkit/openvino/blob/master/inference-engine/src/cldnn_engine/cldnn_engine.cpp#L366)
+
+After that the plugin will run exactly the same scope of transformations as on gen12HW and generate similar kernels (small difference is possible due to different EUs count)
