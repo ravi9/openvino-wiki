@@ -20,7 +20,6 @@ While conditional compilation can reduce the libraries size, it has a significan
 
 In order to take advantage of the conditional compilation functionality, the following tools should be installed first:
 * [[Python|https://www.python.org]]
-* Intel® Single Event API ([[Intel® SEAPI|https://github.com/intel/IntelSEAPI]])
 
 ## Building for different models
 
@@ -31,11 +30,12 @@ Conditional compilation has two stages:
 1. Code usage analysis
     1. Run CMake tool with options: `-DENABLE_PROFILING_ITT=ON -DSELECTIVE_BUILD=COLLECT`
     2. Select several models to be used in a specific application or target device
-    3. Run target application under Intel SEAPI for code usage analysis using `-f stat` flag for each model. Statistics are generated in .csv format.  
-`sea_runtool.py -o ${MY_MODEL_RESULT} -f stat ! ./benchmark_app -niter 1 -nireq 1 -m ${MY_MODEL}.xml`
+    3. Use the target `sea_itt_lib` in order to build ITT collector
+    4. Run target application under the ITT collector for code usage analysis using `-f stat` flag for each model. Statistics are generated in .csv format.  
+`python thirdparty/itt_collector/runtool/sea_runtool.py --bindir ${OPENVINO_LIBRARY_DIR} -o ${MY_MODEL_RESULT} -f stat ! ./benchmark_app -niter 1 -nireq 1 -m ${MY_MODEL}.xml`
 2. Final build
-    1. Run CMake tool with options: `-DSELECTIVE_BUILD=ON -DSELECTIVE_BUILD_STAT=${PATH_TO_STATISTICS_FILES}/*.csv`
-    2. `cmake --build <cmake_build_directory>`
+    5. Run CMake tool with options: `-DSELECTIVE_BUILD=ON -DSELECTIVE_BUILD_STAT=${ABSOLUTE_PATH_TO_STATISTICS_FILES}/*.csv`
+    6. `cmake --build <cmake_build_directory>`
 
 The "-niter 1 -nireq 1" flags are highly recommended for bencmark_app. Otherwise, the trace files will be very large.
 If you are using an application other than benchmark_app, remember to limit the number of inference requests and iterations.
