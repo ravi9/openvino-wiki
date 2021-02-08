@@ -32,6 +32,7 @@ $ git clone https://github.com/doxygen/doxygen.git
 $ cd doxygen
 $ git checkout Release_1_8_20
 $ mkdir build
+$ cd build
 $ cmake ..
 $ cmake --build . -j8
 $ sudo make install
