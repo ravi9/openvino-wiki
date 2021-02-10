@@ -31,8 +31,8 @@ Conditional compilation has two stages:
     1. Run CMake tool with options: `-DENABLE_PROFILING_ITT=ON -DSELECTIVE_BUILD=COLLECT`
     2. Select several models to be used in a specific application or target device
     3. Use the target `sea_itt_lib` in order to build ITT collector
-    4. Run target application under the ITT collector for code usage analysis using `-f stat` flag for each model. Statistics are generated in .csv format.  
-`python thirdparty/itt_collector/runtool/sea_runtool.py --bindir ${OPENVINO_LIBRARY_DIR} -o ${MY_MODEL_RESULT} -f stat ! ./benchmark_app -niter 1 -nireq 1 -m ${MY_MODEL}.xml`
+    4. Run target application under the ITT collector for code usage analysis for each model. Statistics are generated in .csv format.  
+`python thirdparty/itt_collector/runtool/sea_runtool.py --bindir ${OPENVINO_LIBRARY_DIR} -o ${MY_MODEL_RESULT} ! ./benchmark_app -niter 1 -nireq 1 -m ${MY_MODEL}.xml`
 2. Final build
     1. Run CMake tool with options: `-DSELECTIVE_BUILD=ON -DSELECTIVE_BUILD_STAT=${ABSOLUTE_PATH_TO_STATISTICS_FILES}/*.csv`
     2. `cmake --build <cmake_build_directory>`
