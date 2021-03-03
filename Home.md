@@ -24,6 +24,7 @@
 * Inference Engine architecture
 * [[GPU plugin |GPUPluginDevelopersDocs]]
 * [[HETERO plugin architecture|HeteroPluginArchitecture]]
+* [[nGraph Shape and Value propagation|nGraphShapeAndValuePropagation]]
 
 ### Tests
 
