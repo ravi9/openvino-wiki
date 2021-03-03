@@ -1,6 +1,6 @@
 # CMake options for custom compilation
 
-This document contains CMake options, their description and default values, which can be used to build custom OpenVINO runtime using open-source version. In order to create custom runtime from  prebuilt OpenVINO release package, please, refer to [deployment manager] documentation.
+This document contains CMake options, their description and default values, which can be used to build custom OpenVINO runtime using open-source version. In order to create custom runtime from prebuilt OpenVINO release package, please, refer to [deployment manager] documentation, if you want to create custom runtime from opensource repository, please, refer to [Inference Engine Introduction] in order to understand all dependencies.
 
 ## Table of content:
 
@@ -70,6 +70,7 @@ This document contains CMake options, their description and default values, whic
     * `ON` is default for x86 platforms, not available for other platforms.
     * Affects only Inference Engine common part and preprocessing plugin, **does not affect mkldnn library**
 * `ENABLE_PROFILING_ITT` enables profiling with [Intel ITT and VTune]. Default is `OFF`, because it increases binary size.
+* `SELECTIVE_BUILD` enables [[Conditional compilation|ConditionalCompilation]] feature. Default is `OFF`.
 
 ## Test capabilities
 
@@ -115,3 +116,4 @@ This document contains CMake options, their description and default values, whic
 [ONNX]:https://onnx.ai/
 [protobuf]:https://github.com/protocolbuffers/protobuf
 [deployment manager]:https://docs.openvinotoolkit.org/latest/openvino_docs_install_guides_deployment_manager_tool.html
+[Inference Engine Introduction]:https://docs.openvinotoolkit.org/latest/openvino_docs_IE_DG_inference_engine_intro.html
