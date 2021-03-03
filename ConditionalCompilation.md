@@ -45,4 +45,8 @@ If you are using an application other than benchmark_app, remember to limit the 
 Building for devices with different ISA is quite similar to building for different models (see previous chapter).
 The differences are only in the code usage analysis step. The analysis step should be performed on target devices and all CSV files with statistics should be copied to the build machine. These files will be used for the final build.
 
+## Limitations
+
+* At the current moment we don't support Ninja build system for the conditional compilation build.
+
 
