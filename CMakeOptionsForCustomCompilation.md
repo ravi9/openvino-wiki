@@ -17,7 +17,7 @@ This document contains CMake options, their description and default values, whic
     * `ON` is default for x86 platforms, not available otherwise.
 * `ENABLE_GNA` enables GNA plugin compilation:
     * `ON` is default for x86 platforms, not available otherwise.
-* `ENABLE_VPU` enables VPU (Myriad, HDDL) components build:
+* `ENABLE_VPU` enables VPU (Myriad and HDDL only) components build:
     * `ON` is default.
 * `ENABLE_MYRIAD` enables MYRIAD plugin build:
     * `ON` is default.
