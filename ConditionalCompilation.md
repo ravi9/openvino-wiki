@@ -16,7 +16,7 @@ The following components can be excluded from the build:
 * jit kernels in a CPU plugin
 * arbitrary code that is not used for particular model inference
 
-However, conditional compilation has a significant drawback. **The OpenVINO will work only with a selected set of models and devices.**
+However, conditional compilation has a significant drawback - **the resulting OpenVINO runtime will work only with a limited set of models and devices.**
 
 To take advantage of conditional compilation, install the following tools:
 * [[Python|https://www.python.org]]
