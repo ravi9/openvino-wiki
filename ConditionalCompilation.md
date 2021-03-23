@@ -27,6 +27,8 @@ Conditional compilation has two stages:
 * Collecting information about code usage
 * Building the result binaries without unused components or parts
 
+To apply conditional compilation, follow the steps below:
+
 1. Perform code usage analysis:
     1. Run the CMake tool with the following options: `-DENABLE_PROFILING_ITT=ON -DSELECTIVE_BUILD=COLLECT`.
     2. Select several models to be used in a specific application or target device.
