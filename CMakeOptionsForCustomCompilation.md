@@ -1,6 +1,6 @@
 # CMake Options for Custom Compilation
 
-This document provides description and default values for CMake options that can be used to build a custom OpenVINO runtime using the open source version. For instructions on how to create a custom runtime from the prebuilt OpenVINO release package, refer to the [deployment manager] documentation. If you want to create a custom runtime from the open source repository, refer to the [Inference Engine Introduction] to understand all the dependencies.
+This document provides description and default values for CMake options that can be used to build a custom OpenVINO runtime using the open source version. For instructions on how to create a custom runtime from the prebuilt OpenVINO release package, refer to the [deployment manager] documentation. To understand all the dependencies when creating a custom runtime from the open source repository, refer to the [Inference Engine Introduction].
 
 ## Table of contents:
 
@@ -32,8 +32,8 @@ This document provides description and default values for CMake options that can
 * `ENABLE_TESTS` enables tests compilation:
     * `OFF` is default.
 * `NGRAPH_UNIT_TEST_ENABLE` enables ngraph unit tests:
-    * The value is the same as for the option `ENABLE_TESTS`.
-* `ENABLE_DOCS` enables build of OpenVINO documentation:
+    * The value is the same as for the `ENABLE_TESTS` option.
+* `ENABLE_DOCS` enables building the OpenVINO documentation:
     * `OFF` is default.
 * `IE_EXTRA_MODULES` specifies path to add extra OpenVINO modules to the build.
     * See [OpenVINO Contrib] to add extra modules from.
@@ -51,15 +51,15 @@ This document provides description and default values for CMake options that can
 
 * `ENABLE_LTO` boolean option to enable [Link Time Optimizations]:
     * `OFF` is default, because it takes longer time to link binaries.
-    * `ON` is enabled for OpenVINO release binaries
-    * Available on Unix compilers only like GCC or CLANG.
-    * Gives 30% decrease in binary size together with other optimizations option using to build OpenVINO.
-* `THREADING` points to OpenVINO threading interface:
-    * `TBB` is a default option, enables build with [Intel TBB] and `tbb::static_partitioner`.
-    * `TBB_AUTO` enables build with [Intel TBB].
-    * `OMP` enables build with Intel OpenMP.
-    * `SEQ` disable threading optimizations. Can be used in cases when TBB binaries are absent.
-    * **Note:** because TBB is a template library, it increase binary size because of multiple instantiations of `tbb::parallel_for`
+    * `ON` is enabled for OpenVINO release binaries.
+    * Available on Unix* compilers only like GCC or CLANG.
+    * Gives 30% decrease in binary size together with other optimization options used to build OpenVINO.
+* `THREADING` points to the OpenVINO threading interface:
+    * `TBB` is the default option, which enables build with [Intel TBB] and `tbb::static_partitioner`.
+    * `TBB_AUTO` enables building with [Intel TBB].
+    * `OMP` enables building with Intel OpenMP.
+    * `SEQ` disables threading optimizations. Can be used in cases when TBB binaries are absent.
+    * **Note:** because TBB is a template library, it increases binary size because of multiple instantiations of `tbb::parallel_for`
 * `ENABLE_SSE42` enables SSE4.2 optimizations:
     * `ON` is default for x86 platforms; not available for other platforms.
     * Affects only Inference Engine common part and preprocessing plugin, **does not affect the mkldnn library**
