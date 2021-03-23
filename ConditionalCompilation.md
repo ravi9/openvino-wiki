@@ -47,6 +47,6 @@ The differences are only in the code usage analysis step. The analysis step shou
 
 ## Limitations
 
-* At the current moment we don't support Ninja build system for the conditional compilation build.
+* Currently, Ninja build system is not supported for the conditional compilation build.
 
 
