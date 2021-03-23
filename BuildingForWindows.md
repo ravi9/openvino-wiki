@@ -12,7 +12,7 @@ The software was validated on:
 
 ### Software Requirements
 - [CMake]\*3.13 or higher
-- Microsoft\* Visual Studio 2017, 2019
+- Microsoft\* Visual Studio 2019, version 16.8 or later
 - (Optional) Intel® Graphics Driver for Windows* (26.20) [driver package].
 - Python 3.6 or higher for Inference Engine Python API wrapper
 
@@ -34,11 +34,6 @@ The software was validated on:
     ```
 4. In the `build` directory, run `cmake` to fetch project dependencies and
    generate a Visual Studio solution.
-
-   For Microsoft\* Visual Studio 2017:
-```sh
-cmake -G "Visual Studio 15 2017 Win64" -DCMAKE_BUILD_TYPE=Release ..
-```
 
    For Microsoft\* Visual Studio 2019 x64 architecture:
 ```sh
@@ -112,11 +107,7 @@ cmake -G "Visual Studio 16 2019" -A ARM64 -DCMAKE_BUILD_TYPE=Release ..
 ### Building Inference Engine with Ninja* Build System
 
 ```sh
-call "C:\Program Files (x86)\IntelSWTools\compilers_and_libraries_2018\windows\bin\ipsxe-comp-vars.bat" intel64 vs2017
-set CXX=icl
-set CC=icl
-:: clean TBBROOT value set by ipsxe-comp-vars.bat, required TBB package will be downloaded by openvino cmake script
-set TBBROOT=
+call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Auxiliary\Build\vcvars64.bat"
 cmake -G Ninja -Wno-dev -DCMAKE_BUILD_TYPE=Release ..
 cmake --build . --config Release
 ```
