@@ -21,8 +21,14 @@
 
 ## Developer documentation
 
-* Inference Engine architecture
 * [[nGraph architecture|nGraphArchitecture]]
+    * [[nGraph code structure|nGraphCodeStructure]]
+    * [[nGraph components|nGraphComponents]]
+    * Graph structure
+    * Transformations API
+    * nGraph operations enabling flow
+    * [[nGraph Debug capabilities|nGraphDebugCapabilities]]
+* Inference Engine architecture
 * [[GPU plugin |GPUPluginDevelopersDocs]]
 * [[HETERO plugin architecture|HeteroPluginArchitecture]]
 
