@@ -22,6 +22,7 @@
 ## Developer documentation
 
 * Inference Engine architecture
+* [[nGraph architecture|nGraphArchitecture]]
 * [[GPU plugin |GPUPluginDevelopersDocs]]
 * [[HETERO plugin architecture|HeteroPluginArchitecture]]
 
