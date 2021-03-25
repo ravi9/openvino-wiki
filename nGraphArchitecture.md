@@ -9,4 +9,4 @@ nGraph library in [OpenVINO toolkit](https://github.com/openvinotoolkit/openvino
 - Graph structure
 - Transformations API
 - nGraph operations enabling flow
-- Debug utils
+- [[nGraph Debug capabilities|nGraphDebugCapabilities]]
