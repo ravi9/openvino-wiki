@@ -10,6 +10,12 @@
 * [[Developer documentation|https://github.com/openvinotoolkit/openvino/wiki#developer-documentation]]
     * Inference Engine architecture
     * [[nGraph architecture|nGraphArchitecture]]
+        * [[nGraph code structure|nGraphCodeStructure]]
+        * [[nGraph components|nGraphComponents]]
+        * Graph structure
+        * Transformations API
+        * nGraph operations enabling flow
+        * [[nGraph Debug capabilities|nGraphDebugCapabilities]]
     * [[GPU plugin|GPUPluginDevelopersDocs]]
     * [[HETERO plugin architecture|HeteroPluginArchitecture]]
 * [[Tests|https://github.com/openvinotoolkit/openvino/wiki#tests]]
