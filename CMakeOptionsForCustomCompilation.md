@@ -1,8 +1,8 @@
-# CMake options for custom compilation
+# CMake Options for Custom Compilation
 
-This document contains CMake options, their description and default values, which can be used to build custom OpenVINO runtime using open-source version. In order to create custom runtime from  prebuilt OpenVINO release package, please, refer to [deployment manager] documentation.
+This document provides description and default values for CMake options that can be used to build a custom OpenVINO runtime using the open source version. For instructions on how to create a custom runtime from the prebuilt OpenVINO release package, refer to the [deployment manager] documentation. To understand all the dependencies when creating a custom runtime from the open source repository, refer to the [Inference Engine Introduction].
 
-## Table of content:
+## Table of contents:
 
 * [Disable / enable plugins build and other components](#disable--enable-plugins-build-and-other-components)
 * [Options affecting binary size](#options-affecting-binary-size)
@@ -12,12 +12,12 @@ This document contains CMake options, their description and default values, whic
 ## Disable / enable plugins build and other components
 
 * `ENABLE_MKL_DNN` enables CPU plugin compilation:
-    * `ON` is default for x86 platforms, `OFF` otherwise.
+    * `ON` is default for x86 platforms; `OFF`, otherwise.
 * `ENABLE_CLDNN` enables GPU plugin compilation:
-    * `ON` is default for x86 platforms, not available otherwise.
+    * `ON` is default for x86 platforms; not available, otherwise.
 * `ENABLE_GNA` enables GNA plugin compilation:
-    * `ON` is default for x86 platforms, not available otherwise.
-* `ENABLE_VPU` enables VPU (Myriad, HDDL) components build:
+    * `ON` is default for x86 platforms; not available, otherwise.
+* `ENABLE_VPU` enables VPU (Myriad and HDDL only) components build:
     * `ON` is default.
 * `ENABLE_MYRIAD` enables MYRIAD plugin build:
     * `ON` is default.
@@ -32,12 +32,12 @@ This document contains CMake options, their description and default values, whic
 * `ENABLE_TESTS` enables tests compilation:
     * `OFF` is default.
 * `NGRAPH_UNIT_TEST_ENABLE` enables ngraph unit tests:
-    * The value is the same as for the option `ENABLE_TESTS`.
-* `ENABLE_DOCS` enables build of OpenVINO documentation:
+    * The value is the same as for the `ENABLE_TESTS` option.
+* `ENABLE_DOCS` enables building the OpenVINO documentation:
     * `OFF` is default.
 * `IE_EXTRA_MODULES` specifies path to add extra OpenVINO modules to the build.
     * See [OpenVINO Contrib] to add extra modules from.
-* `USE_SYSTEM_PUGIXML` builds with system version of [pugixml] if it's available on the system.
+* `USE_SYSTEM_PUGIXML` builds with system version of [pugixml] if it is available on the system.
     * `OFF` is default.
     * [Inference Engine thirdparty pugixml] is used by default.
 * `NGRAPH_USE_PROTOBUF_LITE` compiles and links with [protobuf] lite:
@@ -51,26 +51,28 @@ This document contains CMake options, their description and default values, whic
 
 * `ENABLE_LTO` boolean option to enable [Link Time Optimizations]:
     * `OFF` is default, because it takes longer time to link binaries.
-    * `ON` is enabled for OpenVINO release binaries
-    * Available on Unix compilers only like GCC or CLANG.
-    * Gives 30% decrease in binary size together with other optimizations option using to build OpenVINO.
-* `THREADING` points to OpenVINO threading interface:
-    * `TBB` is a default option, enables build with [Intel TBB] and `tbb::static_partitioner`.
-    * `TBB_AUTO` enables build with [Intel TBB].
-    * `OMP` enables build with Intel OpenMP.
-    * `SEQ` disable threading optimizations. Can be used in cases when TBB binaries are absent.
-    * **Note:** because TBB is a template library, it increase binary size because of multiple instantiations of `tbb::parallel_for`
+    * `ON` is enabled for OpenVINO release binaries.
+    * Available on Unix* compilers only like GCC or CLANG.
+    * Gives 30% decrease in binary size together with other optimization options used to build OpenVINO.
+* `THREADING` points to the OpenVINO threading interface:
+    * `TBB` is the default option, which enables build with [Intel TBB] and `tbb::static_partitioner`.
+    * `TBB_AUTO` enables building with [Intel TBB].
+    * `OMP` enables building with Intel OpenMP.
+    * `SEQ` disables threading optimizations. Can be used in cases when TBB binaries are absent.
+    * **Note:** because TBB is a template library, it increases binary size because of multiple instantiations of `tbb::parallel_for`
 * `ENABLE_SSE42` enables SSE4.2 optimizations:
-    * `ON` is default for x86 platforms, not available for other platforms.
-    * Affects only Inference Engine common part and preprocessing plugin, **does not affect mkldnn library**
+    * `ON` is default for x86 platforms; not available for other platforms.
+    * Affects only Inference Engine common part and preprocessing plugin, **does not affect the mkldnn library**
 * `ENABLE_AVX2` enables AVX2 optimizations:
     * `ON` is default for x86 platforms, not available for other platforms.
-    * Affects only Inference Engine common part and preprocessing plugin, **does not affect mkldnn library**
+    * Affects only Inference Engine common part and preprocessing plugin, **does not affect the mkldnn library**
 * `ENABLE_AVX512F` enables AVX512 optimizations:
     * `ON` is default for x86 platforms, not available for other platforms.
-    * Affects only Inference Engine common part and preprocessing plugin, **does not affect mkldnn library**
-* `ENABLE_PROFILING_ITT` enables profiling with [Intel ITT and VTune]. Default is `OFF`, because it increases binary size.
-
+    * Affects only Inference Engine common part and preprocessing plugin, **does not affect the mkldnn library**
+* `ENABLE_PROFILING_ITT` enables profiling with [Intel ITT and VTune]. 
+    * `OFF` is default, because it increases binary size.
+* `SELECTIVE_BUILD` enables [[Conditional compilation|ConditionalCompilation]] feature.
+    * `OFF` is default.
 ## Test capabilities
 
 * `ENABLE_SANITIZER` builds with clang [address sanitizer] support:
@@ -89,7 +91,7 @@ This document contains CMake options, their description and default values, whic
 * `ENABLE_CLANG_FORMAT` enables [Clang format] code style check:
     * `ON` is default.
     * Used only for ngraph component.
-* `TREAT_WARNING_AS_ERROR` treats all warnings as error:
+* `TREAT_WARNING_AS_ERROR` treats all warnings as an error:
     * `OFF` is default.
 * `ENABLE_FASTER_BUILD` enables [precompiled headers] and [unity build] using CMake:
     * `OFF` is default.
@@ -115,3 +117,4 @@ This document contains CMake options, their description and default values, whic
 [ONNX]:https://onnx.ai/
 [protobuf]:https://github.com/protocolbuffers/protobuf
 [deployment manager]:https://docs.openvinotoolkit.org/latest/openvino_docs_install_guides_deployment_manager_tool.html
+[Inference Engine Introduction]:https://docs.openvinotoolkit.org/latest/openvino_docs_IE_DG_inference_engine_intro.html

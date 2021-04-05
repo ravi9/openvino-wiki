@@ -1,0 +1,133 @@
+digraph nGraph_Libs {
+    node [
+        style="filled"
+    ];
+    subgraph cluster_legend { 
+        label = "Legend";
+        dynamic_libraries [label="Dynamic libraries", style=filled, fillcolor="#aaf6b1"];
+        static_libraries [label="Static libraries", style=filled, fillcolor="#36badf"];
+        executable [label="Executable", style=filled, fillcolor="#fff2c8"] ;
+        node [shape=point]
+        {
+            rank=same
+            d0 [style = invis];
+            d1 [style = invis];
+            s0 [style = invis];
+            s1 [style = invis];
+        }
+        edge[ weight = 100  ];
+        d0 -> d1 [label="Private dependency", style=dashed]
+        s0 -> s1 [label="Public dependency"]
+        dynamic_libraries -> d1 [style=invis]
+        executable -> d0 [style=invis]
+    }
+    subgraph cluster_OV {
+        clusterrank=global;
+        style=filled;
+        color=lightgrey;
+        label="OpenVINO common libraries";
+
+        xbyak [shape=box3d, fillcolor="#36badf", label="xbyak\nJit assembler\l"]
+        conditional_compilation [shape=box3d, fillcolor="#36badf", label="conditional_compilation\nOpenVINO CC library\l"]
+
+        inference_engine [shape=box3d, fillcolor="#aaf6b1", label="inference_engine\nInference Engine library\l"]
+    }
+    subgraph cluster_nGraph {
+        clusterrank=global;
+        style=filled;
+        color=lightgrey;
+        label="nGraph core";
+
+        ngraph_reference [shape=box3d, fillcolor="#36badf", label="ngraph_reference\nnGraph reference implementations\l"]
+
+        ngraph_reference -> xbyak [style=dashed]
+
+        ngraph_builders [shape=box3d, fillcolor="#36badf", label="ngraph_builders\nOperation builders\l"]
+
+        // nGraph library {{{
+        nGraph [shape=box3d, fillcolor="#aaf6b1", label="ngraph\nnGraph core library\l"]
+
+        nGraph -> ngraph_reference [style=dashed]
+        nGraph -> ngraph_builders [style=dashed]
+        nGraph -> conditional_compilation [style=dashed]
+        // }}} nGraph library
+    }
+    subgraph cluster_ONNX_frontend {
+        clusterrank=global;
+        style=filled;
+        color=lightgrey;
+        label="ONNX frontend";
+
+        // ONNX common {{{
+        onnx_common [shape=box3d, fillcolor="#36badf", label="onnx_common\nONNX common utilities\l"]
+        onnx_common -> nGraph [style=dashed]
+        onnx_common -> onnx_proto
+        onnx_common -> onnx
+        onnx_common -> protobuf
+        // }}} ONNX common
+
+        // ONNX importer {{{
+        onnx_importer [shape=box3d, fillcolor="#aaf6b1", label="onnx_importer\nONNX importer library\l"]
+
+        onnx_importer -> nGraph;
+        onnx_importer -> ngraph_builders [style=dashed]
+
+        onnx [shape=box3d, fillcolor="#36badf", label="onnx\nONNX library\l"]
+        onnx_proto [shape=box3d, fillcolor="#aaf6b1", label="onnx proto\nONNX proto library\l"]
+        protobuf [shape=box3d, fillcolor="#aaf6b1", label="protobuf\nProtobuf library\l"]
+        onnx_importer -> onnx_common [style=dashed]
+        // }}} ONNX importer
+
+        // ONNX editor {{{
+        onnx_editor [shape=box3d, fillcolor="#36badf", label="onnx_editor\nONNX editor library\l"]
+        onnx_editor -> nGraph;
+        onnx_editor -> onnx_common [style=dashed]
+        // }}} ONNX editor
+    }
+    subgraph cluster_nGraph_tests {
+        clusterrank=global;
+        style=filled;
+        color=lightgrey;
+        label="nGraph tests";
+
+        gtest [shape=box3d, fillcolor="#36badf", label="gtest\nGoogle tests\l"]
+        // ngraph_backend {{{
+        ngraph_backend [shape=box3d, fillcolor="#aaf6b1", label="ngraph_backend\nnGraph backend API\l"]
+        ngraph_backend -> nGraph;
+        ngraph_backend -> ngraph_builders;
+        ngraph_backend -> ngraph_reference;
+        // }}} ngraph_backend
+
+        // interpreter_backend {{{
+        interpreter_backend [shape=box3d, fillcolor="#aaf6b1", label="interpreter_backend\nnGraph Interpreter backend\l"]
+        interpreter_backend -> ngraph_backend;
+        // }}} interpreter_backend
+
+        // ie_backend {{{
+        ie_backend [shape=box3d, fillcolor="#aaf6b1", label="ie_backend\nnGraph IE backend\l"]
+        ie_backend -> ngraph_backend;
+        ie_backend -> inference_engine;
+        // }}} ie_backend
+
+        // ngraph_test_util {{{
+        ngraph_test_util [shape=box3d, fillcolor="#36badf", label="ngraph_test_util\nTest utilities\l"]
+
+        ngraph_test_util -> nGraph;
+        ngraph_test_util -> ngraph_backend;
+        ngraph_test_util -> gtest;
+        ngraph_test_util -> onnx_common [style=dashed];
+        // }}} ngraph_test_util
+
+        // ngraph_unit_test {{{
+        ngraph_unit_test [shape=box3d, fillcolor="#fff2c8", label="unit-test\nnGraph unit tests\l"]
+        ngraph_unit_test -> conditional_compilation [style=dashed];
+        ngraph_unit_test -> ngraph_test_util [style=dashed];
+        ngraph_unit_test -> ngraph_builders [style=dashed];
+        ngraph_unit_test -> ie_backend [style=dashed];
+        ngraph_unit_test -> onnx_importer [style=dashed];
+        ngraph_unit_test -> onnx_editor [style=dashed];
+        ngraph_unit_test -> interpreter_backend [style=dashed];
+        // }}} ngraph_unit_test
+    }
+}
+

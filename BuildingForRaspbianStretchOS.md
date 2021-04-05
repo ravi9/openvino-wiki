@@ -109,6 +109,9 @@ with the following content:
       tar xf cmake-3.14.3.tar.gz && \
       (cd cmake-3.14.3 && ./bootstrap --parallel=$(nproc --all) && make --jobs=$(nproc --all) && make install) && \
       rm -rf cmake-3.14.3 cmake-3.14.3.tar.gz
+
+  RUN git config --global user.name "Your Name" && \
+      git config --global user.email "you@example.com"
   ```
 
   It uses the Debian\* Stretch (Debian 9) OS for compilation because it is a base of the Raspbian\* Stretch.
