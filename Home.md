@@ -28,10 +28,10 @@
     * Transformations API
     * nGraph operations enabling flow
     * [[nGraph Debug capabilities|nGraphDebugCapabilities]]
+    * [[nGraph Shape and Value propagation|nGraphShapeAndValuePropagation]]
 * Inference Engine architecture
 * [[GPU plugin |GPUPluginDevelopersDocs]]
 * [[HETERO plugin architecture|HeteroPluginArchitecture]]
-* [[nGraph Shape and Value propagation|nGraphShapeAndValuePropagation]]
 
 ### Tests
 
