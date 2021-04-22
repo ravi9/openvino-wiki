@@ -17,7 +17,7 @@ The Inference Engine sample applications are simple console applications that sh
    * Sample Output
    * See Also - section with useful links to proceed
 4. Please follow repo code style, we have linter checks for each PR.
-5. Please look at the basic `hello` samples.
+5. Please use the basic `hello` sample as a template to create your sample.
 6. One sample - one type of model and no more than 2 API special features.
 7. Each API feature should be documented with code snippets on our [OpenVINO Documentation site](https://docs.openvinotoolkit.org/)
 8. Sample should be developed with a one-source approach, without explicit pre/post-processing steps.
