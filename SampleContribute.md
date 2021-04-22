@@ -22,7 +22,8 @@ The Inference Engine sample applications are simple console applications that sh
 7. Each API feature should be documented with code snippets on our [OpenVINO Documentation site](https://docs.openvinotoolkit.org/)
 8. Sample should be developed with a one-source approach, without explicit pre/post-processing steps.
 9. Prefer C++/Python realizations for each sample (C is optional).
-10. Use name for sample in format: <model_type> <feature> <lang> Sample.
+10. Set name for your sample in format: "`model_type` `feature` `lang` Sample"
+     - `feature` is optional in case your sample represents a new model.
 
 Please take it in your mind before creating your sample.
 
