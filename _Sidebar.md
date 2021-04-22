@@ -18,7 +18,7 @@
     * Inference Engine architecture
     * [[GPU plugin|GPUPluginDevelopersDocs]]
     * [[HETERO plugin architecture|HeteroPluginArchitecture]]
-    * [[Sample for C++/C/Python API|SampleContribute]]
+    * [[Sample for IE C++/C/Python API|SampleContribute]]
 * [[Tests|https://github.com/openvinotoolkit/openvino/wiki#tests]]
     * [[Inference Engine tests infrastructure|InferenceEngineTestsInfrastructure]]
     * [[How to measure test coverage?|InferenceEngineTestsCoverage]]
