@@ -24,6 +24,7 @@ Before you open up anything on the OpenVINO GitHub page, be sure that you are at
 * Clone your fork to your computer.
 * Create a new branch (with a meaningful name) from the base branch you chose.
 * Modify / add the code following our [[Coding Style Guide|CodingStyleGuideLines]] and [[Documentation guidelines|CodingStyleGuideLinesDocumentation]].
+* If you want to add a new sample, please look at this [[Guide for contributing to C++/C/Python IE samples|SampleContribute]]
 * Run testsuite locally:
     * execute each test binary from the artifacts directory, e.g. `<source dir>/bin/intel64/Release/ieFuncTests`
 * If you contribute to the documentation and want to add a new guide:
