@@ -18,6 +18,7 @@ The Inference Engine sample applications are simple console applications that sh
    * See Also - section with useful links to proceed
 4. **REQUIRED:** The README title must contain a document label in a form: `{#openvino_inference_engine_<bridge>_sample_<name>}`. For example: `Style Transfer Python* Sample {#openvino_inference_engine_ie_bridges_python_sample_style_transfer_sample_README}`.
    * Add your file to the documentation structure. Open the documentation structure file [`docs/doxygen/openvino_docs.xml`] and add your file path and a sample name to the "IE Code Samples" section.
+   * Add link to your sample to docs/IE_DG/Samples_Overview.md 
 5. Please follow repo code style, we have linter checks for each PR.
 6. Please use the basic `hello` sample as a template to create your sample.
 7. One sample - one type of model and no more than 2 API special features.
