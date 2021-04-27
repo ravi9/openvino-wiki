@@ -20,12 +20,11 @@ The Inference Engine sample applications are simple console applications that sh
    * Add your file to the documentation structure. Open the documentation structure file [`docs/doxygen/openvino_docs.xml`] and add your file path and a sample name to the "IE Code Samples" section.
    * Add link to your sample to docs/IE_DG/Samples_Overview.md 
 5. Please follow repo code style, we have linter checks for each PR.
-6. Please use the basic `hello` sample as a template to create your sample.
-   * Common arguments:
-      -i / –input      - path to an input data
-      -m / –model      -  path to a model
-      -d / -device     - name of a device
-      -h / -help       - help message 
+6. Please use the basic `hello` sample as a template to create your sample. C/C++ `hello` samples work with only one input file and don't have argument parsers. Common arguments:
+      * -i / –-input      - path to an input data
+      * -m / –-model      -  path to a model
+      * -d / --device     - name of a device
+      * -h / --help       - help message 
 7. One sample - one type of model and no more than 2 API special features.
 8. Each API feature should be documented with code snippets on our [OpenVINO Documentation site](https://docs.openvinotoolkit.org/)
 9. Prefer sample development with a one-source approach, without explicit pre/post-processing steps if it is possible.
