@@ -40,12 +40,13 @@ $ sudo make install
 
 ## Building documentation
 
-You should run `cmake` as usual and it will find all dependencies automatically on Ubuntu systems, while on Windows we still need to specify paths to the installed dependencies:
+You should run `cmake` with `-DENABLE_DOCS=ON` and it will find all dependencies automatically on Ubuntu systems, while on Windows we still need to specify paths to the installed dependencies:
 
 ```sh
 cmake -DLATEX_COMPILER="C:/Program Files/MiKTeX/miktex/bin/x64/latex.exe" \
       -DDOXYGEN_DOT_EXECUTABLE="C:/Program Files (x86)/Graphviz2.38/bin/dot.exe" \
       -DDOXYGEN_EXECUTABLE="C:/Program Files/doxygen/bin/doxygen.exe" \
+      -DENABLE_DOCS=ON \
 ```
 
 Once the dependencies are found, the project must generated using CMake. The target `openvino_docs` must be built to generate doxygen documentation, the generated files can be found at `<binary dir>/docs/html/index.html`
