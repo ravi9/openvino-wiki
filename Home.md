@@ -30,6 +30,7 @@
     * [[nGraph Debug capabilities|nGraphDebugCapabilities]]
     * [[nGraph Shape and Value propagation|nGraphShapeAndValuePropagation]]
 * Inference Engine architecture
+* [[CPU plugin |CPUPluginDevelopersDocs]]
 * [[GPU plugin |GPUPluginDevelopersDocs]]
 * [[HETERO plugin architecture|HeteroPluginArchitecture]]
 
