@@ -86,9 +86,9 @@ You can use the following additional build options:
 
 - To build the Python API wrapper:
   1. Install all additional packages listed in the
-     `/inference-engine/ie_bridges/python/requirements.txt` file:
+     `/inference-engine/ie_bridges/python/src/requirements-dev.txt` file:
      ```sh
-     pip install -r requirements.txt
+     pip install -r requirements-dev.txt
      ```
   2. Use the `-DENABLE_PYTHON=ON` option. To specify an exact Python version, use the following
      options:
