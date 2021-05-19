@@ -16,6 +16,7 @@
         * nGraph operations enabling flow
         * [[nGraph Debug capabilities|nGraphDebugCapabilities]]
     * Inference Engine architecture
+    * [[CPU plugin|CPUPluginDevelopersDocs]]
     * [[GPU plugin|GPUPluginDevelopersDocs]]
     * [[HETERO plugin architecture|HeteroPluginArchitecture]]
     * [[Sample for IE C++/C/Python API|SampleContribute]]
