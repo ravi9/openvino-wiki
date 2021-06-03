@@ -41,3 +41,4 @@
 * [[How to measure test coverage?|InferenceEngineTestsCoverage]]
 * [[Fuzzing tests|InferenceEngineTestsFuzzing]]
 * [[Adding a regression tests for VPU|InferenceEngineTestsVPU]]
+* [[Conformance-tests]]
