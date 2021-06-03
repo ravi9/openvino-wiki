@@ -1,0 +1,21 @@
+# SnippetS
+This document describes the design and rationale for snippets code generator.
+
+We believe that core **CNN operators (convolution, gemm, fully connected) are limited by compute, the rest is memory bound**. Math approximations (like transcendental functions) are rare in emerging workloads and could be treated with the same machinery. **Snippets designed to optimize topology for memory**, while leaving compute intensive kernels for backend developers.
+
+We believe **potential speedup is proportional to shrink in memory-walked bytes**. So we can transform the problem to a task to optimize for memory walks, whatever pattern snippet has and operations it contains. Number of memory walks should be less or equal to handcrafted optimizations.This guarantees performance improvements over the previous approach ( excluding corner cases caused by cache effects). Shrinkage factor might be encoded to some cost function in future evolution of code generator. Snippets generator provides diagnostics to estimate this shrinkage factor.
+
+We design SnippetS generator for back-end developers. The main purpose of inventing snippets code generator is an **operator fusion**, **register allocation** and **target kernel generation** decomposition. This allows modifications (like new fusion support) and feature extensions (like new operation support) to be done in a single point of modification and avoid combinatorial explosion for fusions/types/architectures etc.
+
+We believe that creating a full-fledged compiler or usage of existing compiler infrastructure (like LLVM & MLIR) is superfluous. We aim to provide a **flexible and performant framework for operation fusions**, leaving micro optimizations (e.g. instruction scheduling) to the backend H/W.
+
+We do not aim to invent a DSL for SnippetS and would like to keep it this way. DSL gives users more flexibility to express uncommon operations. However, the shift towards an approach to encode topologies with elementary operations followed by smart enough fusions is already expressive and performant enough.
+
+**Snippet** is a compiled compute **kernel** generated from a subgraph using SnippetS code generator for specific architecture with a **scheduling domain**. Using this scheduling domain and calling convention backend can execute generated compute kernels. For the first generation, snippets are **statically scheduled towards the output domain**. Multi-output snippets are supported if all outputs are broadcast-compatible in a sense that domains for all outputs can be broadcasted from one root domain which defines snippet schedule. It’s a subject of extension for future generations.
+
+We use nGraph as the highest level IR for subgraph representation and lowering transformations. **Opset1** is a base operation set for code generation. We aim to **keep the minimal possible and sufficient operation set** (or ISA) and keep it **RISC-like** (memory and compute decomposed).
+
+**One subgraph corresponds to one snippet**. Operations which cannot be scheduled by a single schedule should not be placed in the same subgraph. Snippet somewhat conceptually close to OpenCL kernel without a restriction to express only embarrassingly parallel tasks.
+**Subgraph** once extracted from full topology IR is **treated as an operation and data flow descriptor in scalar notation** (similar to OpenCL/CUDA). Tensor sizes are used for defining scheduling domain and detecting broadcasts/reductions.
+
+We split operations into 3 groups: **layout-oblivious (LOO), layout-aware(-tolerant) and layout-dependent**. **Layout-oblivious** operation semantics and implementation are completely agnostic to a specific layout in which tensors are placed in memory. For example, elements-wise math and ReLU does in this category. Implementation **layout-aware** operation depends on the layout of input/output tensors. For example, convolutions and other block-wise kernels or layout repaks. For **layout-specific** operation semantics and implementation depends on the layout. For example, the Yolo region. Patterns to fuse constructed in terms of taxonomy above.
