@@ -77,5 +77,105 @@ Lowering is a sequence of subgraph (snippet body) traversal passes to generate a
 1. Schedule generation
 1. Target code emission
 
+### Common optimizations
+
+Constants are treated as inputs for a subgraph with an exception for scalar cases (since we don’t need to schedule them). `snippets::op::Scalar` is used to represent this kind of constants.
+
+If such Scalar comes as a second input of Power operation, it’s replaced with `snippets::op::PowerStatic`.
+
+### Canonicalization
+
+The goal of this step is to apply target independent and schedule related optimizations and to make snippet **schedulable**.
+
+#### Domain normalization
+
+All input and output shapes are normalized to 6D for future schedule generation. If shape propagation fails or leads to inconsistent output shapes an exception is raised.
+
+Layout assigned by user code and passed to a `generate` function is propagated through subgraph on this step as well. Layout is passed to a generate function as a `BlockedShapeVector` which is a `std::vector<BlockedShape>` , while `BlockedShape` is `std::tuple<ngraph::Shape, ngraph::AxisVector, ngraph::element::Type>`. For example, if backend supports `NCHW16c` layout and tensor has size of `<1, 42, 17, 31>` and hold single precision floating point this structure should be `std::make_tuple(ngraph::Shape {1, 3, 17, 31, 16}, ngraph::AxisVector {0, 1, 2, 3, 1}, ngraph::element::f32);`. This allows generic layout representation.
+
+#### Dialect conversion
+
+The goal for this step is to transform a subgraph (body function) into a form possible to code generation. Input for this step is subgraph in a canonical form output is a subgraph in snippets dialect.
+
+Snippet or kernel is formed around the subgraph body in a sequence of traversal steps. Let’s walk through these steps with the smallest possible subgraph which contains out of single `[Add]` operation. 
+
+While we extract subgraphs with the tokenization part we explicitly insert Parameters and Results to its body to form a complete nGraph Function.
+
+```
+Parameter       Parameter
+    |               |
+    |               |
+    +------Add------+
+            |
+            |
+         Result
+```
+
+This function represents operation dependencies in scalar (similar to OpenCL) notation while shapes of tensors are used to generate schedules. At this point kernel-schedule decomposition is made (similar to Halide/OpenCL/TVM)
+
+##### Explicit memory operations
+
+As a next step explicit memory operations are placed for each input and output. `InsertLoad` and `InsertStore` passes derived from `MatcherPass`.
+
+```
+Parameter       Parameter
+    |               |
+    |               |
+  Load             Load
+    |               |
+    |               |
+    +------Add------+
+            |
+            |
+          Store
+            |
+            |
+         Result
+```
+
+By default, memory operations assumes vector memory access, if scalar access is needed special passes `ReplaceLoadsWithScalarLoads` and `ReplaceStoresWithScalarStores`  should be executed.
+
+##### Explicit broadcast
+
+For each operation in body function inputs are checked against broadcasting. In case of parameters to be broadcasted explicit broadcast operation is generated. For example, if for the subgraph above we have `<1, 42, 17, 31>` and `<1, 42, 17, 1>` resulting subgraph is going to be
+
+```
+Parameter <1, 42, 17, 31>    Parameter <1, 42, 17, 1>
+    |                               |
+    |                               |
+  Load <1, 42, 17, 31>          Load <1, 42, 17, 1>
+    |                               |
+    |                               |
+    |                       BroadcastMove <1, 42, 17, 31>
+    |                               |
+    |                               |
+    +--------------Add--------------+
+                    |
+                    |
+                  Store <1, 42, 17, 31>
+                    |  
+                    |
+                 Result <1, 42, 17, 31>
+```
+
+If load followed by broadcast is detected then this pair is replaced by a single Broadcast load instruction. Like the following
+
+```
+Parameter       Parameter
+    |               |
+    |               |
+  Load        BroadcastLoad
+    |               |
+    |               |
+    +------Add------+
+            |
+            |
+          Store
+            |
+            |
+         Result
+```
+
+Broadcast and regular streaming vector load is possible from the same pointer. Broadcast load should always go before streaming load. Broadcast load for non the most varying dimension is not generated, however it affects the generated schedule.
 
 
