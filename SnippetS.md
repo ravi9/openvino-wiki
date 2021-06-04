@@ -71,7 +71,9 @@ If a potential subgraph doesn’t meet any of criteria above, the procedure cont
 Lowering is a sequence of subgraph (snippet body) traversal passes to generate a compute kernel out of subgraphs of operations extracted by tokenization.
 
 1. Common optimizations
-1. Canonicalization for snippets dialect
+1. Canonicalization
+  1. Domain normalization
+  1. Conversion to snippets dialect
 1. Target-specific optimizations
 1. Register allocation
 1. Schedule generation
@@ -177,5 +179,13 @@ Parameter       Parameter
 ```
 
 Broadcast and regular streaming vector load is possible from the same pointer. Broadcast load should always go before streaming load. Broadcast load for non the most varying dimension is not generated, however it affects the generated schedule.
+
+### Target-specific optimizations
+
+Target developers can plug in to the code generation pipeline some specific optimizations with passing `ngraph::pass::Manager` into `generate` function of `subgraph`. **Passes are executed on subgraph in canonical form converted to a snippet dialect**.
+
+### Register allocation
+
+Canonicalized subgraph in a snippets dialect forms a basic block or region inside a snippet (kernel). Registers are allocated globally for the whole subgraph. Since all operations for a subgraph are assumed to be vector, only vector registers are allocated for the first generation of SnippetS. Linear scan register allocation algorithm is used. Register allocator is implemented as a function pass `ngraph::snippets::pass::AssignRegisters` and store allocated registers for each node into `rt_info`. `rt_info` for a node holds a register for Node's output.
 
 
