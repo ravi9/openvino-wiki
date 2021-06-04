@@ -72,8 +72,8 @@ Lowering is a sequence of subgraph (snippet body) traversal passes to generate a
 
 1. Common optimizations
 1. Canonicalization
-  1. Domain normalization
-  1. Conversion to snippets dialect
+    1. Domain normalization
+    1. Conversion to snippets dialect
 1. Target-specific optimizations
 1. Register allocation
 1. Schedule generation
