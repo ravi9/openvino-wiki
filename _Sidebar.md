@@ -19,6 +19,7 @@
     * [[CPU plugin|CPUPluginDevelopersDocs]]
     * [[GPU plugin|GPUPluginDevelopersDocs]]
     * [[HETERO plugin architecture|HeteroPluginArchitecture]]
+    * [[SnippetS design guide|snippets]]
     * [[Sample for IE C++/C/Python API|SampleContribute]]
 * [[Tests|https://github.com/openvinotoolkit/openvino/wiki#tests]]
     * [[Inference Engine tests infrastructure|InferenceEngineTestsInfrastructure]]
