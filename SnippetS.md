@@ -184,8 +184,10 @@ Broadcast and regular streaming vector load is possible from the same pointer. B
 
 Target developers can plug in to the code generation pipeline some specific optimizations with passing `ngraph::pass::Manager` into `generate` function of `subgraph`. **Passes are executed on subgraph in canonical form converted to a snippet dialect**.
 
+*It might be also extended to provide an interface for target independent optimizations in future*
+
 ### Register allocation
 
 Canonicalized subgraph in a snippets dialect forms a basic block or region inside a snippet (kernel). Registers are allocated globally for the whole subgraph. Since all operations for a subgraph are assumed to be vector, only vector registers are allocated for the first generation of SnippetS. Linear scan register allocation algorithm is used. Register allocator is implemented as a function pass `ngraph::snippets::pass::AssignRegisters` and store allocated registers for each node into `rt_info`. `rt_info` for a node holds a register for Node's output. *However, this part should be refactored batter, either to become target independent or use target specific abstraction to acquire a new register*
 
-
+### Schedule generation 
