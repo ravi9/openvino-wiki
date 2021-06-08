@@ -191,3 +191,89 @@ Target developers can plug in to the code generation pipeline some specific opti
 Canonicalized subgraph in a snippets dialect forms a basic block or region inside a snippet (kernel). Registers are allocated globally for the whole subgraph. Since all operations for a subgraph are assumed to be vector, only vector registers are allocated for the first generation of SnippetS. Linear scan register allocation algorithm is used. Register allocator is implemented as a function pass `ngraph::snippets::pass::AssignRegisters` and store allocated registers for each node into `rt_info`. `rt_info` for a node holds a register for Node's output. *However, this part should be refactored batter, either to become target independent or use target specific abstraction to acquire a new register*
 
 ### Schedule generation 
+
+The goal of this step is to transform subgraphs in a scalar notation into kernel functions callable from user code. `Kernel` and `Tile` operations are introduced for this purpose. Each of this operation has a constructor from code region described as a collection of operation and operands pairs `Kernel(const std::vector<std::pair<std::shared_ptr<ngraph::snippets::Emitter>, ngraph::snippets::RegInfo>>& region);`. 
+
+If we return to example above this comes to a following hierarchical IR. If we limit scope to layout oblivious operations with broadcasting support, tile could be generated as a single loop over the most warning dimension. The second `Tile` is generated to handle tails and can be omitted if not needed. Special pass replaces memory operations on vector to scalar versions for tail subgraph. 
+
+```
++--------------------------------------------------+
+|                                                  |
+|                      Kernel                      |
+|   +-------------------------------------------+  |
+|   |                                           |  |
+|   |                   Tile                    |  |
+|   |                                           |  |
+|   |         Parameter     Parameter           |  |
+|   |             |             |               |  |
+|   |             |             |               |  |
+|   |           Load          Load              |  |
+|   |             |             |               |  |
+|   |             |             |               |  |
+|   |             +-----Add-----+               |  |
+|   |                    |                      |  |
+|   |                    |                      |  |
+|   |                  Store                    |  |
+|   |                    |                      |  |
+|   |                    |                      |  |
+|   |                 Result                    |  |
+|   |                                           |  |
+|   +-------------------------------------------+  |
+|                                                  |
+|   +-------------------------------------------+  |
+|   |                                           |  |
+|   |                   Tile                    |  |
+|   |                                           |  |
+|   |         Parameter     Parameter           |  |
+|   |             |             |               |  |
+|   |             |             |               |  |
+|   |        ScalarLoad     ScalarLoad          |  |
+|   |             |             |               |  |
+|   |             |             |               |  |
+|   |             +-----Add-----+               |  |
+|   |                    |                      |  |
+|   |                    |                      |  |
+|   |               ScalarStore                 |  |
+|   |                    |                      |  |
+|   |                    |                      |  |
+|   |                 Result                    |  |
+|   |                                           |  |
+|   +-------------------------------------------+  |
+|                                                  |
+|   +-------------------------------------------+  |
+|   |                                           |  |
+|   |                   Data                    |  |
+|   |                                           |  |
+|   +-------------------------------------------+  |
+|                                                  |
++--------------------------------------------------+
+```
+
+Where
+*  `Kernel` constants a collection of the tiles, corresponds to a Subgraph node and responsible for function signature generation, calls generators for all tiles and data sections
+* `Tile` contains single subgraph body, vector or scalar
+* `Data` corresponds to data section aggregated for all nodes in all Tile’s subgraphs
+
+### Target code emission
+
+Target code emission is table based. Target is responsible for filling `jitters` table field in `Generator` class. 
+
+```
+std::map<const ngraph::DiscreteTypeInfo, std::function<std::shared_ptr<Emitter>(std::shared_ptr<ngraph::Node>)>> jitters;
+```
+
+Each nGraph node is mapped to a convertor function which creates `Emitter` form this node. Each specific emitter should extend from `Emitter`. It is used to map this node to target code and has `emit_code` and `emit_data` methods. `emit_data` is used during data section generation.
+
+For minimal code generator support target should provide emitters for the following operations
+
+* `Kernel`
+* `Tile`
+* `Data`
+* `Load`
+* `ScalarLoad`
+* `BroadcastLoad`
+* `Store`
+* `ScalarStore`
+
+Once a schedule is generated, target code is emitted from a kernel in Generator::generate method by executing Kernel::emit_code function. Since Kernel and Tile represents hierarchical
+
