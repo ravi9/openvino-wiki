@@ -262,7 +262,11 @@ Target code emission is table based. Target is responsible for filling `jitters`
 std::map<const ngraph::DiscreteTypeInfo, std::function<std::shared_ptr<Emitter>(std::shared_ptr<ngraph::Node>)>> jitters;
 ```
 
-Each nGraph node is mapped to a convertor function which creates `Emitter` form this node. Each specific emitter should extend from `Emitter`. It is used to map this node to target code and has `emit_code` and `emit_data` methods. `emit_data` is used during data section generation.
+#### Interface with a target
+
+An OpenVINO plugin is treated as a target for snippets.
+
+Each nGraph node is mapped to a convertor function which creates `Emitter` form this node. Each specific emitter should extend from `Emitter`. It is used to map this node to target code and has `emit_code` and `emit_data` methods. `emit_data` is used during data section generation. All operations from snippets dialect which are legal for code generation should be expressed as operations derived from nGraph Op as well as Emitter derived snippets::Emitter class which knows how to translate this Op to Target specific ISA. (ex. xbyak is a jit backend for CPU plugin).
 
 For minimal code generator support target should provide emitters for the following operations
 
@@ -277,3 +281,14 @@ For minimal code generator support target should provide emitters for the follow
 
 Once a schedule is generated, target code is emitted from a kernel in Generator::generate method by executing Kernel::emit_code function. Since Kernel and Tile represents hierarchical
 
+#### Dialect extensibility
+
+Target can potentially extend snippets dialect with target specific operation for code emission. It should implement:
+
+* nGraph operation (ex. `class FMA : public ngraph::op::Op`)
+* Emitter for this operation (ex. `class FmaEmitter : public Emitter` )
+* register this pair in `jitters` map
+
+## Calling convention
+
+Parameters for a generated snippet are split into schedule-invariant and schedule-dependent. Schedule-invariant parameters include pointers to input/output tensors and strides for each of them with the same rank as scheduling domain.
