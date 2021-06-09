@@ -33,7 +33,9 @@
 * [[CPU plugin |CPUPluginDevelopersDocs]]
 * [[GPU plugin |GPUPluginDevelopersDocs]]
 * [[HETERO plugin architecture|HeteroPluginArchitecture]]
-* [[SnippetS design guide|SnippetS]]
+* Snippets
+    * [[SnippetS design guide|SnippetS]]
+    * [[CPU target for SnippetS code generator|cpuTarget]]
 
 ### Tests
 
