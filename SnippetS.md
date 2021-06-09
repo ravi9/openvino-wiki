@@ -292,3 +292,9 @@ Target can potentially extend snippets dialect with target specific operation fo
 ## Calling convention
 
 Parameters for a generated snippet are split into schedule-invariant and schedule-dependent. Schedule-invariant parameters include pointers to input/output tensors and strides for each of them with the same rank as scheduling domain.
+
+## Diagnostics
+
+### Reference mode
+
+Subgraph can be executed with nGraph references if no generator is present.
