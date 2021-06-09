@@ -19,7 +19,7 @@
     * [[CPU plugin|CPUPluginDevelopersDocs]]
     * [[GPU plugin|GPUPluginDevelopersDocs]]
     * [[HETERO plugin architecture|HeteroPluginArchitecture]]
-    * Snippets
+    * [[Snippets|SS]]
         * [[SnippetS design guide|SnippetS]]
         * [[CPU target for SnippetS code generator|cpuTarget]]
     * [[Sample for IE C++/C/Python API|SampleContribute]]
