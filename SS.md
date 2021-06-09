@@ -1,0 +1,2 @@
+# SnippetS developers documentation
+
