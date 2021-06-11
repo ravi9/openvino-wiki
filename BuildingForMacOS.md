@@ -42,11 +42,6 @@ You can use the following additional build options:
 
 - Internal JIT GEMM implementation is used by default.
 
-- To switch to the optimized MKL-ML\* GEMM implementation, use `-DGEMM=MKL` and
-  `-DMKLROOT=<path_to_MKL>` cmake options to specify a path to unpacked MKL-ML
-  with the `include` and `lib` folders. MKL-ML\* [package for Mac] can be downloaded
-  [here](https://github.com/intel/mkl-dnn/releases/download/v0.19/mklml_mac_2019.0.5.20190502.tgz)
-
 - Threading Building Blocks (TBB) is used by default. To build the Inference
   Engine with OpenMP* threading, set the `-DTHREADING=OMP` option.
 
