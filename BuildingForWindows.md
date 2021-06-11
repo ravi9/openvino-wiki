@@ -63,17 +63,6 @@ cmake -G "Visual Studio 16 2019" -A ARM64 -DCMAKE_BUILD_TYPE=Release ..
 
 - Internal JIT GEMM implementation is used by default.
 
-- To switch to OpenBLAS GEMM implementation, use the `-DGEMM=OPENBLAS` CMake
-  option and specify path to OpenBLAS using the `-DBLAS_INCLUDE_DIRS=<OPENBLAS_DIR>\include`
-  and `-DBLAS_LIBRARIES=<OPENBLAS_DIR>\lib\libopenblas.dll.a` options. Download
-  a prebuilt OpenBLAS\* package via the [OpenBLAS] link. mingw64* runtime
-  dependencies can be downloaded via the [mingw64\* runtime dependencies] link.
-
-- To switch to the optimized MKL-ML\* GEMM implementation, use the
-  `-DGEMM=MKL` and `-DMKLROOT=<path_to_MKL>` CMake options to specify a path to
-  unpacked MKL-ML with the `include` and `lib` folders. MKL-ML\* package can be
-  downloaded from the Intel&reg; [MKL-DNN repository for Windows].
-
 - Threading Building Blocks (TBB) is used by default. To build the Inference
   Engine with OpenMP* threading, set the `-DTHREADING=OMP` option.
 
