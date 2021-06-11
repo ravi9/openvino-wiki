@@ -198,6 +198,8 @@ constains buffer description, e.g:
 shape: [b:1, f:1280, x:1, y:1, z:1, w:1, g:1] (count: 1280, original format: b_fs_yx_fsv16)
 ```
 
+Note: currently only OpenCL buffers support dumping, so please disable USM support by setting `supports_usm = false` in `inference-engine/thirdparty/clDNN/src/gpu/device_info.cpp`. 
+
 ## Run int8 model on gen9 HW
 
 As gen9 hw doesn't have hardware acceleration, low precision transformations are disabled by default, thus quantized networks are executed in full precision (fp16 or fp32) with explicit execution of quantize operations.
