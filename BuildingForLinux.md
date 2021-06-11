@@ -55,18 +55,6 @@ The software was validated on:
 
 You can use the following additional build options:
 
-- The default build uses an internal JIT GEMM implementation.
-
-- To switch to an OpenBLAS\* implementation, use the `GEMM=OPENBLAS` option with
-  `BLAS_INCLUDE_DIRS` and `BLAS_LIBRARIES` CMake options to specify a path to the
-  OpenBLAS headers and library. For example, the following options on CentOS\*:
-  `-DGEMM=OPENBLAS -DBLAS_INCLUDE_DIRS=/usr/include/openblas -DBLAS_LIBRARIES=/usr/lib64/libopenblas.so.0`.
-
-- To switch to the optimized MKL-ML\* GEMM implementation, use `-DGEMM=MKL`
-  and `-DMKLROOT=<path_to_MKL>` CMake options to specify a path to unpacked
-  MKL-ML with the `include` and `lib` folders. MKL-ML\* package can be downloaded
-  from the Intel® [MKL-DNN repository].
-
 - Threading Building Blocks (TBB) is used by default. To build the Inference
   Engine with OpenMP\* threading, set the `-DTHREADING=OMP` option.
 
