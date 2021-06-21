@@ -26,7 +26,7 @@
     * [[nGraph components|nGraphComponents]]
     * Graph structure
     * Transformations API
-    * [[nGraph operations enabling flow|nGraph-operations-enabling-flow]]
+    * [[nGraph operations enabling flow|nGraphOperationsEnablingFlow]]
     * [[nGraph Debug capabilities|nGraphDebugCapabilities]]
     * [[nGraph Shape and Value propagation|nGraphShapeAndValuePropagation]]
 * Inference Engine architecture
