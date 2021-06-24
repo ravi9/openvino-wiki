@@ -22,9 +22,10 @@ clDNN library itself is responsible for:
 As clDNN Plugin source code structure is relatively simple, let's more focus on the structure of clDNN:
 ```
 - inferene-engine/thirdparty/clDNN - root clDNN folder
- - api/ - clDNN library API. Contains API headers for all supported primitives, clDNN graph representation, GPU context API and so on
- - api_extension/ - some internal primitives that are not supposed to be used by clDNN users (clDNN Plugin)
- - common/ - [Google Tests framework](https://github.com/google/googletest) and OpenCL™ utils (ICD and [Khronos OpenCL™ API Headers](https://github.com/KhronosGroup/OpenCL-Headers.git))
+ - api/cldnn/ - clDNN library API
+   - graph/ - headers for graph representations
+   - primitives/ - primitive definitions for all supported operations
+   - runtime/ - abstraction for execution runtime entities (memory, device, engine, etc)
  - kernel_selector/ - OpenCL™ kernels (host+device parts) + utils for optimal kernels selection
    - common/ - definition of some generic classes/structures used in kernel_selector
    - core/ - kernels, kernel selectors, and kernel parameters definitions
@@ -37,6 +38,8 @@ As clDNN Plugin source code structure is relatively simple, let's more focus on 
    - gpu/ - definition of nodes and other gpu specific structures
    - graph_optimizer/ - passes for graph transformations
    - include/ - headers with graph nodes and runtime
+ - runtime/ - static library with runtime implementation
+    - ocl/ - implementation for OpenCL™ based runtime
  - tests/ - unit tests
  - tutorial/ - examples how to work with clDNN api
  - utils/
