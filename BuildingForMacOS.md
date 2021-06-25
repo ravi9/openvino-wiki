@@ -17,6 +17,7 @@ The software was validated on:
 - [CMake]\* 3.13 or higher
 - Clang\* compiler from Xcode\* 10.1 or higher
 - Python\* 3.6 or higher for the Inference Engine Python API wrapper
+- libusb library (e.g., **brew install libusb**)
 
 ### Build Steps
 
