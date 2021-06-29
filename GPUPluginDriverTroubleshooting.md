@@ -47,6 +47,7 @@ $ cat /sys/devices/pci0000\:00/0000\:00\:02.0/enable
 $ cat /etc/OpenCL/vendors/intel.icd 
 /usr/lib/x86_64-linux-gnu/intel-opencl/libigdrcl.so
 ```
+Note: path to the runtime lib may vary in different driver versions
 
 ## 6. Use LD_DEBUG=libs to trace loaded libraries
 More details: https://github.com/bashbaug/OpenCLPapers/blob/markdown/OpenCLOnLinux.md
