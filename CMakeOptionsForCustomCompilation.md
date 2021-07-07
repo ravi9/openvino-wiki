@@ -37,7 +37,7 @@ This document provides description and default values for CMake options that can
     * `OFF` is default.
 * `IE_EXTRA_MODULES` specifies path to add extra OpenVINO modules to the build.
     * See [OpenVINO Contrib] to add extra modules from.
-* `USE_SYSTEM_PUGIXML` builds with system version of [pugixml] if it is available on the system.
+* `ENABLE_SYSTEM_PUGIXML` builds with system version of [pugixml] if it is available on the system.
     * `OFF` is default.
     * [Inference Engine thirdparty pugixml] is used by default.
 * `NGRAPH_USE_PROTOBUF_LITE` compiles and links with [protobuf] lite:
@@ -79,7 +79,7 @@ This document provides description and default values for CMake options that can
     * `OFF` is default.
 * `ENABLE_THREAD_SANITIZER` builds with clang [thread-sanitizer] support:
     * `OFF` is default.
-* `COVERAGE` adds option to enable coverage. See dedicated guide [[how to measure test coverage|InferenceEngineTestsCoverage]]:
+* `ENABLE_COVERAGE` adds option to enable coverage. See dedicated guide [[how to measure test coverage|InferenceEngineTestsCoverage]]:
     * `OFF` is default.
 * `ENABLE_FUZZING` enables instrumentation of code for fuzzing:
     * `OFF` is default.
