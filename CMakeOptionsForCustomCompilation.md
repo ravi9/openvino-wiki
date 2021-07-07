@@ -27,8 +27,6 @@ This document provides description and default values for CMake options that can
     * `ON` is default.
 * `ENABLE_PYTHON` enables [Python] API build:
     * `OFF` is default.
-* `ENABLE_JAVA` enables [Java] API build:
-    * `OFF` is default.
 * `ENABLE_TESTS` enables tests compilation:
     * `OFF` is default.
 * `NGRAPH_UNIT_TEST_ENABLE` enables ngraph unit tests:
