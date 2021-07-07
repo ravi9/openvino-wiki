@@ -51,10 +51,7 @@ Native compilation of the Inference Engine is the most straightforward solution.
 5. Build the Inference Engine:
 
   ```bash
-  cmake -DCMAKE_BUILD_TYPE=Release \
-        -DENABLE_SSE42=OFF \
-        -DTHREADING=SEQ \
-        -DENABLE_GNA=OFF .. && make
+  cmake -DCMAKE_BUILD_TYPE=Release -DTHREADING=SEQ .. && make
   ```
 
 ### Cross Compilation Using Docker*
