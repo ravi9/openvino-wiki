@@ -30,6 +30,8 @@ The open source version of Inference Engine includes the following plugins:
 | GNA plugin           | Intel® Speech Enabling Developer Kit, Amazon Alexa\* Premium Far-Field Developer Kit, Intel® Pentium® Silver processor J5005, Intel® Celeron® processor J4005, Intel® Core™ i3-8121U processor |
 | MYRIAD plugin        | Intel® Neural Compute Stick 2 powered by the Intel® Movidius™ Myriad™ X |
 | Heterogeneous plugin | Heterogeneous plugin enables computing for inference on one network on several Intel® devices. |
+| [MULTI plugin](https://docs.openvinotoolkit.org/latest/openvino_docs_IE_DG_supported_plugins_MULTI.html) | Automatic inference on multiple devices simultaneously|
+| [AUTO plugin](https://docs.openvinotoolkit.org/latest/openvino_docs_IE_DG_supported_plugins_AUTO.html) | Automatic device selection |
 
 ## Building for different OSes
 
