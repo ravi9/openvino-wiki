@@ -3,6 +3,27 @@
 This document is a list of useful debug features / tricks that might be used to find root cause of performance / functional issues. Some of them
 are available by default, but some others might require plugin recompilation
 
+## Debug Config
+`Debug_config` is an infra structure that contains number of easy-to-use debugging features. It has various control parameters. You can check list of parameters from the source code `cldnn::debug_configuration`.
+
+### How to use it
+First, this feature should be enabled from cmake configuration `GPU_DEBUG_CONFIG`. When openvino is released, it is turned off by default.
+The parameters should be set from environment variable when calling inference engine API.
+```
+OV_GPU_Verbose=1 ./benchmark_app ...      # Run benchmark_app with OV_GPU_Verbose option
+OV_GPU_DumpLayersPath="cldnn/" ./benchmark_app ...   # Run benchmark_app and store intermediate buffers into cldnn/ directory.
+```
+
+### List of parameters
+
+* `OV_GPU_Verbose`: Verbose execution. Currently, Verbose=1 and 2 are supported.
+* `OV_GPU_PrintMultiKernelPerf`: Print kernel latency for multi-kernel primitives. This is turned on by setting 1. Execution time is printed.
+* `OV_GPU_DisableUsm`: Disable the usage of usm (unified shared memory). This is turned on by setting 1.
+* `OV_GPU_DumpGraphs`: Dump optimized graph into the path that this variable points. This is turned on by setting 1.
+* `OV_GPU_DumpLayersPath`: Enable intermediate buffer dump and store the tensors. This is turned on by setting the destination path into this variable. You can check the exact layer name from `OV_GPU_Verbose=1`.
+* `OV_GPU_DumpLayers`: Dump intermediate buffers only for the layers that this variable specifies. Multiple layers can be specified with space delimiter. Dump feature should be enabled through `OV_GPU_DumpLayersPath`
+* `OV_GPU_DumpLayersDstOnly`: When dumping intermediate buffer, dump destination buffer only. This is turned on by setting 1.
+
 ## Dump execution graph
 The execution graph (also known as runtime graph) is a device specific graph after all transformations applied by the plugin. It's a very useful
 feature for performance analysis and it allows to quickly find a source of performance regressions. Execution graph is can be retrieved from the plugin
@@ -82,14 +103,16 @@ relu                OPTIMIZED_OUT  layerType: ReLU               realTime: 0    
 Total time: 53877 microseconds
 ```
 
-So it allows to quickly check exeucution time of some operation on the device and make sure that correct primitive is used. Also, the output can be easily
+So it allows to quickly check execution time of some operation on the device and make sure that correct primitive is used. Also, the output can be easily
 converted into .csv format and then used to collect any kind of statistics (e.g. execution time distribution by layer types).
 
 ## Graph dumps
 
 clDNN plugin allows to dump some info about intermediate stages in graph optimizer.
 
-How to enable the dumps:
+* You can dump source code from `OV_GPU_DumpGraphs` of debug config. For the usage of debug config, please see above section.
+
+* Alternative, you can also enable the dumps from the application source code:
 clDNN plugin has the special internal config option `graph_dumps_dir` which can be set from the user app via plugin config:
 ```cpp
 Core ie;
@@ -98,7 +121,7 @@ device_config[CLDNN_CONFIG_KEY(GRAPH_DUMPS_DIR)] = "/some/existing/path/";
 ie.SetConfig(device_config, "GPU");
 ```
 
-or it can be specified inside the plugin with the following plugin recompilation:
+* or it can be specified inside the plugin with the following plugin recompilation:
 ```cpp
 // inference-engine/src/cldnn_engine/cldnn_engine.cpp
 ExecutableNetworkInternal::Ptr clDNNEngine::LoadExeNetworkImpl(const InferenceEngine::ICNNNetwork &network,
@@ -173,18 +196,12 @@ JitConstants KernelBase::MakeBaseParamsJitConstants(const base_params& params) c
 ## Intermediate buffer dumps
 
 In some cases you might want to get actual values in each intermediate tensor to compare it with some reference blob. In order to do that we have
-`DEBUG_DUMP_PATH` option:
-```cpp
-// inference-engine/thirdparty/clDNN/src/network.cpp
-// #define DEBUG_DUMP_PATH "cldnn_dump/"   <--- Uncomment and specify existing folder for dumps
-#ifdef DEBUG_DUMP_PATH
-#include <iomanip>
-#include <fstream>
-
-#define DUMP_VERBOSE 0                     <--- Set to 1 if you want to enable primitive_info print to cout
-#define DUMP_SINGLE_LAYER 0                <--- Set to 1 if you want to dump only one specific layer ...
-#define DUMP_LAYER_NAME ""                 <--- ... and specify the name of this layer
-#endif
+`OV_GPU_DumpLayersPath` option in debug config:
+```
+# As a prerequisite, enable GPU_DEBUG_CONFIG from cmake configuration.
+export OV_GPU_DumpLayersPath=path/to/dir
+export OV_GPU_DumpLayers="layer_name_to_dump1 layer_name_to_dump2"
+export OV_GPU_DumpLayersDstOnly=1              # Set as 1 when you want to dump dest buff only
 ```
 
 Dump files have the following naming:
@@ -192,13 +209,12 @@ Dump files have the following naming:
 ${layer_name_with_underscores}_${src/dst}_${port_id}.txt
 ```
 
-Each file contains single buffer in common planar format (`bfyx`, `bfzyx` or `bfwzyx`) where each value is stored on a separate line. The first line in the file
-constains buffer description, e.g:
+Each file contains single buffer in common planar format (`bfyx`, `bfzyx` or `bfwzyx`) where each value is stored on a separate line. The first line in the file constains buffer description, e.g:
 ```
 shape: [b:1, f:1280, x:1, y:1, z:1, w:1, g:1] (count: 1280, original format: b_fs_yx_fsv16)
 ```
 
-Note: currently only OpenCL buffers support dumping, so please disable USM support by setting `supports_usm = false` in `inference-engine/thirdparty/clDNN/src/gpu/device_info.cpp`. 
+Note: Usm is turned off when `OV_GPU_DumpLayersPath` is set. It is because GPU plugin does not support usm dump currently. 
 
 ## Run int8 model on gen9 HW
 
