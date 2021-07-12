@@ -103,4 +103,4 @@ i = 114 => [b=1; f=1;  y=1; x=1] == [b=1; fs=0; y=1; x=1; fsv=2];
 i = 127 => [b=1; f=15; y=1; x=1] == [b=1; fs=0; y=1; x=1; fsv=15];
 ```
 
-All clDNN formats are specified in inference-engine/thirdparty/clDNN/api/tensor.hpp file. Most of the formats there follow the notation above.
+All clDNN formats are specified in inference-engine/thirdparty/clDNN/api/cldnn/runtime/tensor.hpp file. Most of the formats there follow the notation above.
