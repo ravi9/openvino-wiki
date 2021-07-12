@@ -47,7 +47,7 @@ As clDNN Plugin source code structure is relatively simple, let's more focus on 
    - rapidjson/ - thirdparty [RapidJSON](https://github.com/Tencent/rapidjson) lib for reading json files (cache.json)
 ```
 
-One last thing that worse mentioning is functional tests which a located in the following location:
+One last thing that is worth mentioning is functional tests which is located in the following location:
 ```
 inference-engine/tests/functional/plugin/gpu
 ```
