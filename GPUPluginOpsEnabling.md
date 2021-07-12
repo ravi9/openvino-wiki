@@ -33,7 +33,7 @@
         | [scatter_elements_update_gpu.cpp](https://github.com/openvinotoolkit/openvino/blob/master/inference-engine/thirdparty/clDNN/src/gpu/scatter_elements_update_gpu.cpp) | Primitive registration, input spec |
         | [scatter_elements_update_inst.h](https://github.com/openvinotoolkit/openvino/blob/master/inference-engine/thirdparty/clDNN/src/include/scatter_elements_update_inst.h) | Node type declaration for cldnn program |
         | [clDNN/src/scatter_elements_update.cpp](https://github.com/openvinotoolkit/openvino/blob/master/inference-engine/thirdparty/clDNN/src/scatter_elements_update.cpp) | Code for scatter_elements_update_inst.h |
-        | [clDNN/api/scatter_elements_update.hpp](https://github.com/openvinotoolkit/openvino/blob/master/inference-engine/thirdparty/clDNN/api/scatter_elements_update.hpp) | clDNN primitive definition |
+        | [clDNN/api/cldnn/primitives/scatter_elements_update.hpp](https://github.com/openvinotoolkit/openvino/blob/master/inference-engine/thirdparty/clDNN/api/cldnn/primitives/scatter_elements_update.hpp) | clDNN primitive definition |
         | [common_types.h](https://github.com/openvinotoolkit/openvino/blob/master/inference-engine/thirdparty/clDNN/kernel_selector/common/common_types.h) | Enum declaration for KernelType and arguments |
 
     1. Add unit tests for the new operation
