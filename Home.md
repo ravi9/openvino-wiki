@@ -33,6 +33,8 @@
 * [[CPU plugin |CPUPluginDevelopersDocs]]
 * [[GPU plugin |GPUPluginDevelopersDocs]]
 * [[HETERO plugin architecture|HeteroPluginArchitecture]]
+* [[MULTI plugin architecture|Auto-Arch]]
+* [[AUTO plugin architecture|Multi-Arch]]
 * [[Snippets|SS]]
     * [[SnippetS design guide|SnippetS]]
     * [[CPU target for SnippetS code generator|cpuTarget]]
