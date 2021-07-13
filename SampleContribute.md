@@ -33,6 +33,7 @@ The Inference Engine sample applications are simple console applications that sh
 10. Prefer C++/Python realizations for each sample (C is optional).
 11. Set name for your sample in the format: "`model_type` `feature` `lang` Sample"
      - `feature` is optional in case your sample represents a new model.
+12. Add your samples files to CMakeLists.txt
 
 Please take it in your mind before creating your sample.
 
