@@ -19,7 +19,7 @@ OV_GPU_DumpLayersPath="cldnn/" ./benchmark_app ...   # Run benchmark_app and sto
 * `OV_GPU_Verbose`: Verbose execution. Currently, Verbose=1 and 2 are supported.
 * `OV_GPU_PrintMultiKernelPerf`: Print kernel latency for multi-kernel primitives. This is turned on by setting 1. Execution time is printed.
 * `OV_GPU_DisableUsm`: Disable the usage of usm (unified shared memory). This is turned on by setting 1.
-* `OV_GPU_DumpGraphs`: Dump optimized graph into the path that this variable points. This is turned on by setting 1.
+* `OV_GPU_DumpGraphs`: Dump optimized graph into the path that this variable points. This is turned on by setting the destination path into this variable.
 * `OV_GPU_DumpLayersPath`: Enable intermediate buffer dump and store the tensors. This is turned on by setting the destination path into this variable. You can check the exact layer name from `OV_GPU_Verbose=1`.
 * `OV_GPU_DumpLayers`: Dump intermediate buffers only for the layers that this variable specifies. Multiple layers can be specified with space delimiter. Dump feature should be enabled through `OV_GPU_DumpLayersPath`
 * `OV_GPU_DumpLayersDstOnly`: When dumping intermediate buffer, dump destination buffer only. This is turned on by setting 1.
