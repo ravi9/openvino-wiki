@@ -7,12 +7,21 @@ are available by default, but some others might require plugin recompilation
 `Debug_config` is an infra structure that contains number of easy-to-use debugging features. It has various control parameters. You can check list of parameters from the source code `cldnn::debug_configuration`.
 
 ### How to use it
-First, this feature should be enabled from cmake configuration `GPU_DEBUG_CONFIG`. When openvino is released, it is turned off by default.
+First, this feature should be enabled from cmake configuration `ENABLE_DEBUG_CAPS`. When openvino is released, it is turned off by default.
 The parameters should be set from environment variable when calling inference engine API.
 ```
 OV_GPU_Verbose=1 ./benchmark_app ...      # Run benchmark_app with OV_GPU_Verbose option
 OV_GPU_DumpLayersPath="cldnn/" ./benchmark_app ...   # Run benchmark_app and store intermediate buffers into cldnn/ directory.
 ```
+
+### Options syntax
+Plugin is able to parse different naming styles for debug options:
+1. `OV_GPU_SOME_OPTION`
+2. `OV_GPU_SomeOption`
+
+Behavior when both versions are specified is not defined.
+
+Some options also allow multiple prefixes: `OV` and `OV_GPU`. `OV` prefix is intended to be used for options common for all OpenVINO components. In case if an option is set twice with different prefixes, then `OV_GPU` has higher priority.
 
 ### List of parameters
 
