@@ -17,6 +17,7 @@
         * [[nGraph Debug capabilities|nGraphDebugCapabilities]]
     * Inference Engine architecture
     * [[CPU plugin|CPUPluginDevelopersDocs]]
+        * [[Debug capabilities|CPUPluginDebugCapabilities]]
     * [[GPU plugin|GPUPluginDevelopersDocs]]
     * [[HETERO plugin architecture|HeteroPluginArchitecture]]
     * [[Snippets|SS]]
