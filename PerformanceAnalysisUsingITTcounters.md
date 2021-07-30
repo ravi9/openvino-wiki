@@ -15,7 +15,7 @@ OpenVINO has a powerful capabilities for performance analysis of the key stages,
 For performance analysis, follow the steps below:
 1. Run the CMake tool with the following option: `-DENABLE_PROFILING_ITT=ON` and build OpenVINO.
 2. Choose the tool for statistics collection using ITT counters.
-    1. [Intel SEAPI](https://github.com/vladislav-volkov/IntelSEAPI)
+    1. [Intel SEAPI](https://github.com/vladislav-volkov/IntelSEAPI) should be built from sources. See the [Readme](https://github.com/vladislav-volkov/IntelSEAPI/blob/master/README.txt) file for details.
     2. [Intel Vtune Profiler](https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/vtune-profiler.html)
 3. Run OpenVINO project with performance analysis tool.
 
