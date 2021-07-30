@@ -4,6 +4,7 @@
 
 - [Introduction](#introduction)
 - [Performance analysis](#performance-analysis)
+- [Adding new ITT counters](#adding-new-itt-counters)
 
 ## Introduction
 
@@ -41,3 +42,9 @@ Generated file can be opened with google chrome using "chrome://tracing" URL.
 #### Generated artifacts:
 `r000hs`
 Generated file can be opened with Vtune client.
+
+## Adding new ITT counters
+
+Use API defined in [openvino/itt](https://docs.openvinotoolkit.org/latest/itt_2include_2openvino_2itt_8hpp.html) module.
+
+
