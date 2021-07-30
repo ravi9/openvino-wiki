@@ -1,5 +1,16 @@
 # Performance analysis using ITT counters
+
+## Contents
+
+- [Introduction](#introduction)
+- [Performance analysis](#performance-analysis)
+- [Building for devices with different ISA](#building-for-different-isa)
+
+## Introduction
+
 OpenVINO has a powerful capabilities for performance analysis of the key stages, such as read time and load time. Most of the modules and features have been tagged with [Intel ITT](https://software.intel.com/content/www/us/en/develop/documentation/vtune-help/top/api-support/instrumentation-and-tracing-technology-apis.html) counters, which allows us to measure the performance of these components.
+
+## Performance analysis
 
 For performance analysis, follow the steps below:
 1. Run the CMake tool with the following option: `-DENABLE_PROFILING_ITT=ON` and build OpenVINO.
