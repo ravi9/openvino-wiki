@@ -18,6 +18,7 @@
     * Inference Engine architecture
     * [[CPU plugin|CPUPluginDevelopersDocs]]
         * [[Debug capabilities|CPUPluginDebugCapabilities]]
+        * [[Performance analysis using ITT counters|PerformanceAnalysisUsingITTcounters]]
     * [[GPU plugin|GPUPluginDevelopersDocs]]
     * [[HETERO plugin architecture|HeteroPluginArchitecture]]
     * [[Snippets|SS]]
