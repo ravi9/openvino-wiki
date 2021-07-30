@@ -4,7 +4,6 @@
 
 - [Introduction](#introduction)
 - [Performance analysis](#performance-analysis)
-- [Building for devices with different ISA](#building-for-different-isa)
 
 ## Introduction
 
@@ -24,20 +23,21 @@ For performance analysis, follow the steps below:
 #### Example of tool run:
 `python ~/tools/IntelSEAPI/runtool/sea_runtool.py -o trace -f gt ! ./benchmark_app -niter 1 -nireq 1 -nstreams 1 -api sync -m ./resnet-50-pytorch/resnest-50-pytorch.xml`
 
-Mandatory parameters:
+#### Mandatory parameters:
 * -o trace – output file name
 * -f gt - statistics type to be generated (Google traces)
 
-Generated artifacts:
+#### Generated artifacts:
 `trace.pid-21725-0.json`
 Generated file can be opened with google chrome using "chrome://tracing" URL.
 
 ### Intel Vtune Profiler
-Example of tool run:
+#### Example of tool run:
 `vtune -collect hotspots -k sampling-mode=hw -k enable-stack-collection=true -k stack-size=0 -k sampling-interval=0.5 -- ./benchmark_app -nthreads=1 -api sync -niter 1 -nireq 1 -m ./resnet-50-pytorch/resnet-50-pytorch.xml`
 
-Mandatory parameters:
+#### Mandatory parameters:
 * -collect hotspots
 
-Generated artifacts: `r000hs`
+#### Generated artifacts:
+`r000hs`
 Generated file can be opened with Vtune client.
