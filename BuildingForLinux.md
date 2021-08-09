@@ -85,6 +85,10 @@ You can use the following additional build options:
      -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.7m.so \
      -DPYTHON_INCLUDE_DIR=/usr/include/python3.7
      ```
+     Additionally, you will need to install Cython to compile. You can use the following command to install Cython.
+     ```
+     sudo apt-get install cython
+     ```
 
 - To switch the CPU and GPU plugins off/on, use the `cmake` options
   `-DENABLE_MKL_DNN=ON/OFF` and `-DENABLE_CLDNN=ON/OFF` respectively.
