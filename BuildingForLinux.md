@@ -73,21 +73,17 @@ You can use the following additional build options:
   section for details.
 
 - To build the Python API wrapper:
-  1. Install all additional packages listed in the
+  1. First, install all additional packages (e.g., cython and opencv) listed in the
      `/inference-engine/ie_bridges/python/src/requirements-dev.txt` file:
      ```sh
      pip install -r requirements-dev.txt
      ```
-  2. Use the `-DENABLE_PYTHON=ON` option. To specify an exact Python version, use the following
+  2. Second, enable the `-DENABLE_PYTHON=ON` in the CMake (Step #5) option above. To specify an exact Python version, use the following
      options:
      ```
      -DPYTHON_EXECUTABLE=`which python3.7` \
      -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.7m.so \
      -DPYTHON_INCLUDE_DIR=/usr/include/python3.7
-     ```
-     Additionally, you will need to install Cython to compile. You can use the following command to install Cython.
-     ```
-     sudo apt-get install cython
      ```
 
 - To switch the CPU and GPU plugins off/on, use the `cmake` options
