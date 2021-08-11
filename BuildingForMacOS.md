@@ -68,10 +68,13 @@ You can use the following additional build options:
    pip3 install cython
    pip3 install pyyaml
    ```
-   For example, here is the CMake command with the Python flag options enabled in Step # 3 above. 
-```
-cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_PYTHON=ON -DPYTHON_EXECUTABLE=/usr/local/Cellar/python@3.7/3.7.11/Frameworks/Python.framework/Versions/3.7/bin/python3.7m -DPYTHON_LIBRARY=/usr/local/Cellar/python@3.7/3.7.11/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib -DPYTHON_INCLUDE_DIR=/usr/local/Cellar/python@3.7/3.7.11/Frameworks/Python.framework/Versions/3.7/include/python3.7m ..
-```
+   - For example, here is the CMake command with the Python flag options enabled in Step # 3 above. 
+   ```
+   cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_PYTHON=ON - 
+   DPYTHON_EXECUTABLE=/usr/local/Cellar/python@3.7/3.7.11/Frameworks/Python.framework/Versions/3.7/bin/python3.7m - 
+   DPYTHON_LIBRARY=/usr/local/Cellar/python@3.7/3.7.11/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib - 
+   DPYTHON_INCLUDE_DIR=/usr/local/Cellar/python@3.7/3.7.11/Frameworks/Python.framework/Versions/3.7/include/python3.7m ..
+   ```
    - If you installed Python another way, you can use the following commands to find where the `dylib` and `include_dir` are located, respectively:
    ```sh
    find /usr/ -name 'libpython*m.dylib'
