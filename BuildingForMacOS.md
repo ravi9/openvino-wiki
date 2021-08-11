@@ -5,6 +5,7 @@ inference on Intel CPUs only.
 
 The software was validated on:
 - macOS\* 10.15, 64-bit
+- macOS\* 11.5, 64-bit
 
 ## Table of content
 
