@@ -61,12 +61,16 @@ You can use the following additional build options:
 
 - To build the Python API wrapper, use the `-DENABLE_PYTHON=ON` option. To
   specify an exact Python version, use the following options:
-   - If you installed Python through Homebrew*, set the following flags:
+   - If you installed Python through Homebrew* (recommended), install the following libraries and then set the following flags:
    ```sh
-   -DPYTHON_EXECUTABLE=/usr/local/Cellar/python/3.7.7/Frameworks/Python.framework/Versions/3.7/bin/python3.7m \
-   -DPYTHON_LIBRARY=/usr/local/Cellar/python/3.7.7/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib \
-   -DPYTHON_INCLUDE_DIR=/usr/local/Cellar/python/3.7.7/Frameworks/Python.framework/Versions/3.7/include/python3.7m
+   pip3 install clang==9.0
+   pip3 install cython
+   pip3 install pyyaml
    ```
+   For example, here is the CMake command with the Python flag options enabled in Step # 3 above. 
+```
+cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_PYTHON=ON -DPYTHON_EXECUTABLE=/usr/local/Cellar/python@3.7/3.7.11/Frameworks/Python.framework/Versions/3.7/bin/python3.7m -DPYTHON_LIBRARY=/usr/local/Cellar/python@3.7/3.7.11/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib -DPYTHON_INCLUDE_DIR=/usr/local/Cellar/python@3.7/3.7.11/Frameworks/Python.framework/Versions/3.7/include/python3.7m ..
+```
    - If you installed Python another way, you can use the following commands to find where the `dylib` and `include_dir` are located, respectively:
    ```sh
    find /usr/ -name 'libpython*m.dylib'
