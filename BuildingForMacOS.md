@@ -60,22 +60,22 @@ You can use the following additional build options:
   [Use Custom OpenCV Builds](#use-custom-opencv-builds-for-inference-engine)
   section for details.
 
-- To build the Python API wrapper, use the `-DENABLE_PYTHON=ON` option. To
-  specify an exact Python version, use the following options:
-   - If you installed Python through Homebrew* (recommended), install the following libraries and then set the following flags:
+- To build the Python API wrapper, you must enable the `-DENABLE_PYTHON=ON` option. To
+  specify an exact Python version, use the following suggested options:
+   - If you installed Python through Homebrew* (recommended), please first install the following libraries and dependencies.
    ```sh
    pip3 install clang==9.0
    pip3 install cython
    pip3 install pyyaml
    ```
-   - For example, here is the CMake command with the Python flag options enabled in Step # 3 above. 
+   - Then, you can enable Python API Wrapper with the option enabled (please refer to step # 3 above). 
    ```
    cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_PYTHON=ON \
    -DPYTHON_EXECUTABLE=/usr/local/Cellar/python@3.7/3.7.11/Frameworks/Python.framework/Versions/3.7/bin/python3.7m \
    -DPYTHON_LIBRARY=/usr/local/Cellar/python@3.7/3.7.11/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib \ 
    -DPYTHON_INCLUDE_DIR=/usr/local/Cellar/python@3.7/3.7.11/Frameworks/Python.framework/Versions/3.7/include/python3.7m ..
    ```
-   - If you installed Python another way, you can use the following commands to find where the `dylib` and `include_dir` are located, respectively:
+   - If you installed Python other ways, you can use the following commands to find where the `dylib` and `include_dir` are located, respectively, and update the option parameters above accordingly:
    ```sh
    find /usr/ -name 'libpython*m.dylib'
    find /usr/ -type d -name python3.7m
