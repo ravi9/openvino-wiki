@@ -207,7 +207,7 @@ JitConstants KernelBase::MakeBaseParamsJitConstants(const base_params& params) c
 In some cases you might want to get actual values in each intermediate tensor to compare it with some reference blob. In order to do that we have
 `OV_GPU_DumpLayersPath` option in debug config:
 ```
-# As a prerequisite, enable GPU_DEBUG_CONFIG from cmake configuration.
+# As a prerequisite, enable ENABLE_DEBUG_CAPS from cmake configuration.
 export OV_GPU_DumpLayersPath=path/to/dir
 export OV_GPU_DumpLayers="layer_name_to_dump1 layer_name_to_dump2"
 export OV_GPU_DumpLayersDstOnly=1              # Set as 1 when you want to dump dest buff only
