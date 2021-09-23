@@ -25,6 +25,13 @@ The software was validated on:
     cd openvino
     git submodule update --init --recursive
     ```
+    (Optional) Clone submodules via gitee mirrors in PRC network:
+    ```
+    cd openvino
+    chmod +x scripts/submodule_update_with_gitee.sh
+    ./scripts/submodule_update_with_gitee.sh
+    ```
+
 2. Install build dependencies using the `install_build_dependencies.sh` script in the
    project root folder.
    ```sh
