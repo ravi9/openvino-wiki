@@ -29,6 +29,13 @@ Run OpenVINO tests and tools with the environment variables set to:
 LSAN_OPTIONS=suppressions=<OpenVINO Repository>/tests/lsan/suppressions.txt NEOReadDebugKeys=1 DisableDeepBind=1
 ```
 
+If running through Python you need to preload a sanitizer runtime before the python interpreter and tweak its memory allocator with the following environment variables set to:
+
+```
+# note libasan and libstdc++ paths may be different on your system
+PYTHONMALLOC=malloc LD_PRELOAD=/lib/x86_64-linux-gnu/libasan.so.5:/lib/x86_64-linux-gnu/libstdc++.so.6
+```
+
 The default AddressSanitizer behavior is to halt execution on the first error found. To continue execution to see other errors add `ASAN_OPTIONS=halt_on_error=0` environment variable. 
 
 # Interpreting LeakSanitizer results
