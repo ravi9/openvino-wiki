@@ -5,6 +5,7 @@
 - [Introduction](#introduction)
 - [Building for different models](#building-for-different-models)
 - [Building for devices with different ISA](#building-for-different-isa)
+- [Limitations](#limitations)
 
 ## Introduction
 
