@@ -27,16 +27,18 @@ In the static OpenVINO runtime, all these plugins should be linked into a final 
 For example, to enable only IR v11 reading and CPU inference capabilities, use:
 ```sh
 cmake -DENABLE_VPU=OFF \
-    -DENABLE_IR_V7_READER=OFF \
-    -DENABLE_CLDNN=OFF \
-    -DENABLE_GNA=OFF \
-    -DENABLE_VPU=OFF \
-    -DENABLE_HETERO=OFF \
-    -DENABLE_MULTI=OFF \
-    -DENABLE_TEMPLATE=OFF \
-    -DNGRAPH_ONNX_FRONTEND_ENABLE=OFF \
-    -DNGRAPH_PDPD_FRONTEND_ENABLE=OFF \
-    -DNGRAPH_TF_FRONTEND_ENABLE=OFF
+      -DENABLE_CLDNN=OFF \
+      -DENABLE_GNA=OFF \
+      -DENABLE_VPU=OFF \
+      -DENABLE_HETERO=OFF \
+      -DENABLE_MULTI=OFF \
+      -DENABLE_TEMPLATE=OFF \
+      -DENABLE_IR_V7_READER=OFF \
+      -DNGRAPH_ONNX_FRONTEND_ENABLE=OFF \
+      -DNGRAPH_PDPD_FRONTEND_ENABLE=OFF \
+      -DNGRAPH_TF_FRONTEND_ENABLE=OFF \
+      -DENABLE_MKL_DNN=ON \
+      -DNGRAPH_TF_FRONTEND_ENABLE=ON
 ```
 
 **Note:** Inference backends located in external repositories can also be used in static build. Use `-DIE_EXTRA_MODULES=<path to external plugin root>` to enable them.
