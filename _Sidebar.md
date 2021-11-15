@@ -7,6 +7,7 @@
     * [[Building documentation|BuildingDocumentation]]
     * [[CMake options for custom compilation|CMakeOptionsForCustomCompilation]]
     * [[Conditional compilation for particular models|ConditionalCompilation]]
+    * [[Building static libraries|StaticLibraries]]
 * [[Developer documentation|https://github.com/openvinotoolkit/openvino/wiki#developer-documentation]]
     * [[nGraph architecture|nGraphArchitecture]]
         * [[nGraph code structure|nGraphCodeStructure]]
