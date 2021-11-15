@@ -67,7 +67,7 @@ This document provides description and default values for CMake options that can
 * `ENABLE_TBBBIND_2_5` enables prebuilt static TBBBind 2.5 usage:
     * `ON` is default, because OpenVINO Runtime should be generic out of box.
 
-> **Note:** TBBBind 2.5 is needed when OpenVINO inference targets CPUs with:
+> **Note:** TBBBind 2.5 is needed when OpenVINO **inference** targets CPUs with:
 > * NUMA support (Non-Unified Memory Architecture), e.g. to detect a number of NUMA nodes
 > * Hybrid architecture to separate Performance/Efficiency cores and schedule tasks in the optimal way.
 
