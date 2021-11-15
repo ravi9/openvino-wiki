@@ -112,6 +112,6 @@ Conditional compilation feature can be paired with static OpenVINO libraries to 
 
     **Note:** TBB team does not recommend to use oneTBB as a static library, see [[Why onetbb not like static library?|https://github.com/oneapi-src/oneTBB/issues/646]]
 
-* `TBBBind_2_5` is not available on Windows x64 during static OpenVINO build (see description for `ENABLE_TBBBIND_2_5` CMake option [[here|CMakeOptionsForCustomCompilation]]). So, capabilities enabled by `TBBBind_2_5` are not available. To enable these capabilities, build [[oneTBB from source code|https://github.com/oneapi-src/oneTBB]] and provide path to built oneTBB artifacts via `TBBROOT` environment variable before OpenVINO CMake scripts are run.
+* `TBBBind_2_5` is not available on Windows x64 during static OpenVINO build (see description for `ENABLE_TBBBIND_2_5` CMake option [[here|CMakeOptionsForCustomCompilation]] to understand what this library is responsible for). So, capabilities enabled by `TBBBind_2_5` are not available. To enable these capabilities, build [[oneTBB from source code|https://github.com/oneapi-src/oneTBB]] and provide path to built oneTBB artifacts via `TBBROOT` environment variable before OpenVINO CMake scripts are run.
 
 * `ov::Op::type_info` static member is deprecated and not available in static build. Don't use `type_info` during implementation of your own custom operations, use `ov::Op::get_type_info_static()` instead 
