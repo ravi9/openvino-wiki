@@ -21,6 +21,10 @@ This document provides description and default values for CMake options that can
     * `ON` is default.
 * `ENABLE_MYRIAD` enables MYRIAD plugin build:
     * `ON` is default.
+* `ENABLE_HETERO` enables HETERO plugin build:
+    * `ON` is default.
+* `ENABLE_MULTI` enables AUTO / MULTI plugin build:
+    * `ON` is default.
 * `NGRAPH_ONNX_FRONTEND_ENABLE` enables [ONNX] frontend plugin for OpenVINO Runtime:
     * `ON` is default.
 * `NGRAPH_PDPD_FRONTEND_ENABLE` enables [PDPD] frontend plugin for OpenVINO Runtime:
