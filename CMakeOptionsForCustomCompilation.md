@@ -26,6 +26,8 @@ This document provides description and default values for CMake options that can
         * `ON` is default.
     * `ENABLE_MULTI` enables AUTO / MULTI plugin build:
         * `ON` is default.
+    * `ENABLE_TEMPLATE` enables TEMPLATE plugin build:
+        * `ON` is default.
 * Frontends to work with models from frameworks:
     * `NGRAPH_ONNX_FRONTEND_ENABLE` enables [ONNX] frontend plugin for OpenVINO Runtime:
         * `ON` is default.
