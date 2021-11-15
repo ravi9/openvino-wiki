@@ -94,6 +94,10 @@ Conditional compilation feature can be paired with static OpenVINO libraries to 
 
 ## Limitations
 
+* Supported OSes:
+    * Windows x64
+    * Linux x64
+    * All other OSes may work, but not explicitly tested
 * Enabled and tests capabilities on OpenVINO runtime in static build:
     * OpenVINO common runtime - work with `ov::Function`, perform model loading on particular device
     * CPU, MULTI, HETERO, AUTO inference plugins
