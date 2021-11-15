@@ -21,7 +21,13 @@ This document provides description and default values for CMake options that can
     * `ON` is default.
 * `ENABLE_MYRIAD` enables MYRIAD plugin build:
     * `ON` is default.
-* `NGRAPH_ONNX_IMPORT_ENABLE` enables [ONNX] importer plugin for Inference Engine:
+* `NGRAPH_ONNX_FRONTEND_ENABLE` enables [ONNX] frontend plugin for OpenVINO Runtime:
+    * `ON` is default.
+* `NGRAPH_PDPD_FRONTEND_ENABLE` enables [PDPD] frontend plugin for OpenVINO Runtime:
+    * `ON` is default.
+* `NGRAPH_TF_FRONTEND_ENABLE` enables [TensorFlow] frontend plugin for OpenVINO Runtime:
+    * `ON` is default.
+* `NGRAPH_IR_FRONTEND_ENABLE` enables OpenVINO Intermediate Representation frontend plugin for OpenVINO Runtime:
     * `ON` is default.
 * `ENABLE_SAMPLES` enables Inference Engine samples build:
     * `ON` is default.
@@ -58,6 +64,15 @@ This document provides description and default values for CMake options that can
     * `OMP` enables building with Intel OpenMP.
     * `SEQ` disables threading optimizations. Can be used in cases when TBB binaries are absent.
     * **Note:** because TBB is a template library, it increases binary size because of multiple instantiations of `tbb::parallel_for`
+* `ENABLE_TBBBIND_2_5` enables prebuilt static TBBBind 2.5 usage:
+    * `ON` is default, because OpenVINO Runtime should be generic out of box.
+
+> **Note:** TBBBind 2.5 is needed when OpenVINO runtime is run on platforms with:
+> * NUMA support (Not Unified Memory Architecture) to detect a number of NUMA nodes
+> * Big / Little cores support to distinguish big / little cores and schedule tasks in optimal way.
+
+> **Note:** if you build OpenVINO runtime with [oneTBB] support where TBBBind 2.5 is automatically loaded by TBB in runtime, then set `ENABLE_TBBBIND_2_5` to `OFF`
+
 * `ENABLE_SSE42` enables SSE4.2 optimizations:
     * `ON` is default for x86 platforms; not available for other platforms.
     * Affects only Inference Engine common part and preprocessing plugin, **does not affect the mkldnn library**
@@ -116,3 +131,6 @@ This document provides description and default values for CMake options that can
 [protobuf]:https://github.com/protocolbuffers/protobuf
 [deployment manager]:https://docs.openvinotoolkit.org/latest/openvino_docs_install_guides_deployment_manager_tool.html
 [Inference Engine Introduction]:https://docs.openvinotoolkit.org/latest/openvino_docs_IE_DG_inference_engine_intro.html
+[PDPD]:https://github.com/PaddlePaddle/Paddle
+[TensorFlow]:https://www.tensorflow.org/
+[oneTBB]:https://github.com/oneapi-src/oneTBB
