@@ -11,46 +11,48 @@ This document provides description and default values for CMake options that can
 
 ## Disable / enable plugins build and other components
 
-* `ENABLE_MKL_DNN` enables CPU plugin compilation:
-    * `ON` is default for x86 platforms; `OFF`, otherwise.
-* `ENABLE_CLDNN` enables GPU plugin compilation:
-    * `ON` is default for x86 platforms; not available, otherwise.
-* `ENABLE_GNA` enables GNA plugin compilation:
-    * `ON` is default for x86 platforms; not available, otherwise.
-* `ENABLE_VPU` enables VPU (Myriad and HDDL only) components build:
-    * `ON` is default.
-* `ENABLE_MYRIAD` enables MYRIAD plugin build:
-    * `ON` is default.
-* `ENABLE_HETERO` enables HETERO plugin build:
-    * `ON` is default.
-* `ENABLE_MULTI` enables AUTO / MULTI plugin build:
-    * `ON` is default.
-* `NGRAPH_ONNX_FRONTEND_ENABLE` enables [ONNX] frontend plugin for OpenVINO Runtime:
-    * `ON` is default.
-* `NGRAPH_PDPD_FRONTEND_ENABLE` enables [PDPD] frontend plugin for OpenVINO Runtime:
-    * `ON` is default.
-* `NGRAPH_TF_FRONTEND_ENABLE` enables [TensorFlow] frontend plugin for OpenVINO Runtime:
-    * `ON` is default.
-* `NGRAPH_IR_FRONTEND_ENABLE` enables OpenVINO Intermediate Representation frontend plugin for OpenVINO Runtime:
-    * `ON` is default.
+* Inference backends:
+    * `ENABLE_MKL_DNN` enables CPU plugin compilation:
+        * `ON` is default for x86 platforms; `OFF`, otherwise.
+    * `ENABLE_CLDNN` enables GPU plugin compilation:
+        * `ON` is default for x86 platforms; not available, otherwise.
+    * `ENABLE_GNA` enables GNA plugin compilation:
+        * `ON` is default for x86 platforms; not available, otherwise.
+    * `ENABLE_VPU` enables VPU (Myriad and HDDL only) components build:
+        * `ON` is default.
+    * `ENABLE_MYRIAD` enables MYRIAD plugin build:
+        * `ON` is default.
+    * `ENABLE_HETERO` enables HETERO plugin build:
+        * `ON` is default.
+    * `ENABLE_MULTI` enables AUTO / MULTI plugin build:
+        * `ON` is default.
+* Frontends to work with models from frameworks:
+    * `NGRAPH_ONNX_FRONTEND_ENABLE` enables [ONNX] frontend plugin for OpenVINO Runtime:
+        * `ON` is default.
+    * `NGRAPH_PDPD_FRONTEND_ENABLE` enables [PDPD] frontend plugin for OpenVINO Runtime:
+        * `ON` is default.
+    * `NGRAPH_TF_FRONTEND_ENABLE` enables [TensorFlow] frontend plugin for OpenVINO Runtime:
+        * `ON` is default.
+    * `NGRAPH_IR_FRONTEND_ENABLE` enables OpenVINO Intermediate Representation frontend plugin for OpenVINO Runtime:
+        * `ON` is default.
+* `IE_EXTRA_MODULES` specifies path to add extra OpenVINO modules to the build.
+    * See [OpenVINO Contrib] to add extra modules from.
 * `ENABLE_SAMPLES` enables Inference Engine samples build:
     * `ON` is default.
 * `ENABLE_PYTHON` enables [Python] API build:
     * `OFF` is default.
 * `ENABLE_TESTS` enables tests compilation:
     * `OFF` is default.
+* `ENABLE_IR_V7_READER` enables IR v7 reader:
+    * `ON` is default.
+    **Note:** must be turned `OFF` when building OpenVINO runtime as static
 * `NGRAPH_UNIT_TEST_ENABLE` enables ngraph unit tests:
     * The value is the same as for the `ENABLE_TESTS` option.
 * `ENABLE_DOCS` enables building the OpenVINO documentation:
     * `OFF` is default.
-* `IE_EXTRA_MODULES` specifies path to add extra OpenVINO modules to the build.
-    * See [OpenVINO Contrib] to add extra modules from.
 * `ENABLE_SYSTEM_PUGIXML` builds with system version of [pugixml] if it is available on the system.
     * `OFF` is default.
     * [Inference Engine thirdparty pugixml] is used by default.
-* `NGRAPH_USE_PROTOBUF_LITE` compiles and links with [protobuf] lite:
-    * `OFF` is default.
-    * Affects ONNX importer component only.
 * `NGRAPH_USE_SYSTEM_PROTOBUF` use [protobuf] installed on the system:
     * `OFF` is default.
     * Affects ONNX importer component only.
