@@ -11,7 +11,7 @@
 
 ## Introduction
 
-Building static OpenVINO Runtime libraries allows to additionally reduce a binary size when it's used together with [ConditionalCompilation].
+Building static OpenVINO Runtime libraries allows to additionally reduce a binary size when it's used together with conditional compilation.
 This happens because all interface symbols of OpenVINO runtime libraries are not exported to end users during static build, which allows linker to remove them. See [Static OpenVINO libraries + Conditional compilation for particular models](#static-openvino-libraries--conditional-compilation-for-particular-models)
 
 ## Configure OpenVINO runtime in CMake stage
