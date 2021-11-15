@@ -18,6 +18,7 @@
 * [[Building documentation|BuildingDocumentation]]
 * [[CMake options for custom compilation|CMakeOptionsForCustomCompilation]]
 * [[Conditional compilation for particular models|ConditionalCompilation]]
+* [[Building static libraries|StaticLibraries]]
 
 ## Developer documentation
 
