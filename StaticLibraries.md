@@ -22,7 +22,7 @@ Default architecture of OpenVINO runtime assumes that the following components c
 * Preprocessing library (to perform preprocessing like resize, color space conversions)
 * IR v7 reader (used in legacy tests only, if you are to going to run OpenVINO tests, set `-DENABLE_TESTS=OFF` which disables IR v7 reader)
 
-In the static OpenVINO runtime, all these plugins should be linked into a final user application, so to minimize the total binary size, turn `OFF` unnecessary components. Use [[CMake Options for Custom Compilation|CMakeOptionsForCustomCompilation ]] as a reference for OpenVINO CMake configuration.
+In the static OpenVINO runtime, all these plugins should be linked into a final user application and this configuration must be known on CMake configure stage, so to minimize the total binary size, turn `OFF` unnecessary components. Use [[CMake Options for Custom Compilation|CMakeOptionsForCustomCompilation ]] as a reference for OpenVINO CMake configuration.
 
 For example, to enable only IR v11 reading and CPU inference capabilities, use:
 ```sh
