@@ -37,6 +37,8 @@ This document provides description and default values for CMake options that can
         * `ON` is default.
     * `NGRAPH_IR_FRONTEND_ENABLE` enables OpenVINO Intermediate Representation frontend plugin for OpenVINO Runtime:
         * `ON` is default.
+* `ENABLE_GAPI_PREPROCESSING` enables G-API preprocessing:
+    * `ON` is default.
 * `IE_EXTRA_MODULES` specifies path to add extra OpenVINO modules to the build.
     * See [OpenVINO Contrib] to add extra modules from.
 * `ENABLE_SAMPLES` enables Inference Engine samples build:
