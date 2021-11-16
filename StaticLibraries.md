@@ -29,7 +29,7 @@ For example, to enable only IR v11 reading and CPU inference capabilities, use:
 cmake -DENABLE_VPU=OFF \
       -DENABLE_CLDNN=OFF \
       -DENABLE_GNA=OFF \
-      -DENABLE_VPU=OFF \
+      -DENABLE_MYRIAD=OFF \
       -DENABLE_HETERO=OFF \
       -DENABLE_MULTI=OFF \
       -DENABLE_TEMPLATE=OFF \
