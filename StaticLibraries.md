@@ -24,7 +24,7 @@ Default architecture of OpenVINO runtime assumes that the following components a
 
 With the static OpenVINO runtime, all these modules should be linked into a final user application and a list of the modules/configuration must be known on CMake configure stage, so to minimize the total binary size, explicitly turn `OFF` unnecessary components. Use [[CMake Options for Custom Compilation|CMakeOptionsForCustomCompilation ]] as a reference for OpenVINO CMake configuration.
 
-For example, to enable only IR v11 reading and CPU inference capabilities, use:
+For example, to enable only IR v11 reading and CPU inference capabilities without G-API preprocessing, use:
 ```sh
 cmake -DENABLE_VPU=OFF \
       -DENABLE_CLDNN=OFF \
@@ -37,6 +37,7 @@ cmake -DENABLE_VPU=OFF \
       -DNGRAPH_ONNX_FRONTEND_ENABLE=OFF \
       -DNGRAPH_PDPD_FRONTEND_ENABLE=OFF \
       -DNGRAPH_TF_FRONTEND_ENABLE=OFF \
+      -DENABLE_GAPI_PREPROCESSING=OFF \
       -DENABLE_MKL_DNN=ON \
       -DNGRAPH_IR_FRONTEND_ENABLE=ON
 ```
@@ -101,7 +102,7 @@ Conditional compilation feature can be paired with static OpenVINO libraries to 
     * Windows x64
     * Linux x64
     * All other OSes may work, but not explicitly tested
-* Enabled and tests capabilities on OpenVINO runtime in static build:
+* Enabled and tested capabilities on OpenVINO runtime in static build:
     * OpenVINO common runtime - work with `ov::Function`, perform model loading on particular device
     * CPU, MULTI, HETERO, AUTO inference plugins
     * **Not enabled:** GNA, GPU, MYRIAD
