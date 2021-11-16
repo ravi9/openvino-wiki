@@ -38,7 +38,7 @@ cmake -DENABLE_VPU=OFF \
       -DNGRAPH_PDPD_FRONTEND_ENABLE=OFF \
       -DNGRAPH_TF_FRONTEND_ENABLE=OFF \
       -DENABLE_MKL_DNN=ON \
-      -DNGRAPH_TF_FRONTEND_ENABLE=ON
+      -DNGRAPH_IR_FRONTEND_ENABLE=ON
 ```
 
 **Note:** Inference backends located in external repositories can also be used in static build. Use `-DIE_EXTRA_MODULES=<path to external plugin root>` to enable them.
