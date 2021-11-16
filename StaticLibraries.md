@@ -12,17 +12,17 @@
 ## Introduction
 
 Building static OpenVINO Runtime libraries allows to additionally reduce a binary size when it's used together with conditional compilation.
-This happens because all interface symbols of OpenVINO runtime libraries are not exported to end users during static build, which allows linker to remove them. See [Static OpenVINO libraries + Conditional compilation for particular models](#static-openvino-libraries--conditional-compilation-for-particular-models)
+This happens because not all interface symbols of OpenVINO runtime libraries are exported to end users during static build, which allows linker to remove them. See [Static OpenVINO libraries + Conditional compilation for particular models](#static-openvino-libraries--conditional-compilation-for-particular-models)
 
 ## Configure OpenVINO runtime in CMake stage
 
-Default architecture of OpenVINO runtime assumes that the following components can be dynamically loaded in runtime:
-* Inference backends (CPU, GPU, MULTI, HETERO, etc)
-* Frontends (IR, ONNX, PDPD, etc)
+Default architecture of OpenVINO runtime assumes that the following components are subject to dynamic loading during execution time:
+* (Device) Inference backends (CPU, GPU, MULTI, HETERO, etc)
+* (Model) Frontends (IR, ONNX, PDPD, etc)
 * Preprocessing library (to perform preprocessing like resize, color space conversions)
-* IR v7 reader (used in legacy tests only, if you are to going to run OpenVINO tests, set `-DENABLE_TESTS=OFF` which disables IR v7 reader)
+* IR v7 reader (used in legacy tests only, if you are not to going to run OpenVINO tests, set `-DENABLE_TESTS=OFF` which disables IR v7 reader)
 
-In the static OpenVINO runtime, all these plugins should be linked into a final user application and this configuration must be known on CMake configure stage, so to minimize the total binary size, turn `OFF` unnecessary components. Use [[CMake Options for Custom Compilation|CMakeOptionsForCustomCompilation ]] as a reference for OpenVINO CMake configuration.
+With the static OpenVINO runtime, all these modules should be linked into a final user application and a list of the modules/configuration must be known on CMake configure stage, so to minimize the total binary size, explicitly turn `OFF` unnecessary components. Use [[CMake Options for Custom Compilation|CMakeOptionsForCustomCompilation ]] as a reference for OpenVINO CMake configuration.
 
 For example, to enable only IR v11 reading and CPU inference capabilities, use:
 ```sh
@@ -51,13 +51,13 @@ To build OpenVINO runtime in a static mode, you need to specify the additional C
 cmake -DBUILD_SHARED_LIBS=OFF <all other CMake options> <openvino_sources root>
 ```
 
-After as usual CMake build command:
+Then, use an usual CMake 'build' command:
 
 ```sh
 cmake --build . --target inference_engine --config Release -j12
 ```
 
-Then installation step:
+Then, the installation step:
 
 ```sh
 cmake -DCMAKE_INSTALL_PREFIX=<install_root> -P cmake_install.cmake
@@ -105,7 +105,7 @@ Conditional compilation feature can be paired with static OpenVINO libraries to 
     * OpenVINO common runtime - work with `ov::Function`, perform model loading on particular device
     * CPU, MULTI, HETERO, AUTO inference plugins
     * **Not enabled:** GNA, GPU, MYRIAD
-    * **Still compiled as shared libraries**: IR, ONNX, PDPD, TF frontends to read `ov::Function`
+    * **Still compiled as shared libraries**: IR, ONNX, PDPD and TF frontends to read `ov::Function`
 * Static build support building of static libraries only for OpenVINO Runtime libraries. All other thirdparty prebuilt dependencies remain in the same format:
     * `libGNA` is a shared library
     * `TBB` is a shared library; to provide your own TBB build from [[oneTBB source code|https://github.com/oneapi-src/oneTBB]] use `export TBBROOT=<tbb_root>` before OpenVINO CMake scripts are run
