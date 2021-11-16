@@ -92,7 +92,7 @@ OpenVINO Runtime can be compiled for particular models using [[Conditional compi
 Conditional compilation feature can be paired with static OpenVINO libraries to build even smaller end user applications in terms of binary size. The following procedure can be used (based on detailed [[Conditional compilation for particular models|ConditionalCompilation]] guide):
 
 * Build OpenVINO Runtime as usual with CMake option `-DSELECTIVE_BUILD=COLLECT`
-* Run targets applications on targets models to collect traces
+* Run targets applications on targets models and target platforms to collect traces
 * Build final OpenVINO static Runtime with `-DSELECTIVE_BUILD=ON -DSELECTIVE_BUILD_STAT=/path/*.csv -DBUILD_SHARED_LIBS=OFF`
 
 ## Limitations
