@@ -22,7 +22,7 @@ Default architecture of OpenVINO runtime assumes that the following components a
 * Preprocessing library (to perform preprocessing like resize, color space conversions)
 * IR v7 reader (used in legacy tests only, if you are not to going to run OpenVINO tests, set `-DENABLE_TESTS=OFF` which disables IR v7 reader)
 
-With the static OpenVINO runtime, all these modules should be linked into a final user application and a list of the modules/configuration must be known on CMake configure stage, so to minimize the total binary size, explicitly turn `OFF` unnecessary components. Use [[CMake Options for Custom Compilation|CMakeOptionsForCustomCompilation ]] as a reference for OpenVINO CMake configuration.
+With the static OpenVINO runtime, all these modules should be linked into a final user application and a **list of the modules/configuration must be known on CMake configure stage**, so to minimize the total binary size, explicitly turn `OFF` unnecessary components. Use [[CMake Options for Custom Compilation|CMakeOptionsForCustomCompilation ]] as a reference for OpenVINO CMake configuration.
 
 For example, to enable only IR v11 reading and CPU inference capabilities without G-API preprocessing, use:
 ```sh
@@ -42,7 +42,7 @@ cmake -DENABLE_VPU=OFF \
       -DNGRAPH_IR_FRONTEND_ENABLE=ON
 ```
 
-**Note:** Inference backends located in external repositories can also be used in static build. Use `-DIE_EXTRA_MODULES=<path to external plugin root>` to enable them.
+**Note:** Inference backends located in external repositories can also be used in static build. Use `-DIE_EXTRA_MODULES=<path to external plugin root>` to enable them. `InferenceEngineDeveloperPackage.cmake` must not be used to build external plugins, only `IE_EXTRA_MODULES` is working.
 
 ## Build static OpenVINO libraries
 
