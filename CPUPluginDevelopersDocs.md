@@ -2,4 +2,6 @@
 
 - [[Debug capabilities|CPUPluginDebugCapabilities]]
 - [[Performance analysis using ITT counters|PerformanceAnalysisUsingITTcounters]]
+- [[Intel Software Development Emulator (CPU emulation)|CPUPluginIntelSoftwareDevelopmentEmulator]]
+
 
