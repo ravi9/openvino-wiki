@@ -98,6 +98,7 @@ Conditional compilation feature can be paired with static OpenVINO libraries to 
 
 ## Limitations
 
+* CMake version 3.17 or higher must be used to build static OpenVINO libraries.
 * Supported OSes:
     * Windows x64
     * Linux x64
