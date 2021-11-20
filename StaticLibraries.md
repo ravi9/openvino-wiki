@@ -44,7 +44,7 @@ cmake -DENABLE_VPU=OFF \
 
 **Note:** Inference backends located in external repositories can also be used in static build. Use `-DIE_EXTRA_MODULES=<path to external plugin root>` to enable them. `InferenceEngineDeveloperPackage.cmake` must not be used to build external plugins, only `IE_EXTRA_MODULES` is working.
 
-**Note:** the `ENABLE_LTO` CMake option can also be passed to enable link time optimizations. But such option should also be enabled on target which links with static OpenVINO libraries via `
+**Note:** the `ENABLE_LTO` CMake option can also be passed to enable link time optimizations to reduce binary size. But such property should also be enabled on target which links with static OpenVINO libraries via `
 set_target_properties(<target_name> PROPERTIES INTERPROCEDURAL_OPTIMIZATION_RELEASE ON)`
 
 ## Build static OpenVINO libraries
@@ -88,7 +88,17 @@ target_link_libraries(<application> PRIVATE openvino::runtime)
 
 If you want to configure your project directly, you need to pass all libraries from `<install_root>/runtime/lib` to linker command.
 
-**Note:** this way is not recommended since a proper order of static libraries should be used, while CMake interface supports this out of box. Please, contact developers to have explanations for a proper command.
+**Note:** since the proper order of static libraries must be used (dependent library should come **before** dependency in a linker command), suggestion is to use the following compiler specific flags to link static OpenVINO libraries:
+
+Microsoft Visual Studio compiler:
+```sh
+/WHOLEARCHIVE:<ov_library 0> /WHOLEARCHIVE:<ov_library 1> ...
+```
+
+GCC like compiler:
+```sh
+gcc main.cpp -Wl,--whole-archive <all libraries from <root>/runtime/lib> > -Wl,--no-whole-archive -o a.out
+```
 
 ## Static OpenVINO libraries + Conditional compilation for particular models
 
