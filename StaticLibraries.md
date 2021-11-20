@@ -44,6 +44,9 @@ cmake -DENABLE_VPU=OFF \
 
 **Note:** Inference backends located in external repositories can also be used in static build. Use `-DIE_EXTRA_MODULES=<path to external plugin root>` to enable them. `InferenceEngineDeveloperPackage.cmake` must not be used to build external plugins, only `IE_EXTRA_MODULES` is working.
 
+**Note:** the `ENABLE_LTO` CMake option can also be passed to enable link time optimizations. But such option should also be enabled on target which links with static OpenVINO libraries via `
+set_target_properties(<target_name> PROPERTIES INTERPROCEDURAL_OPTIMIZATION_RELEASE ON)`
+
 ## Build static OpenVINO libraries
 
 To build OpenVINO runtime in a static mode, you need to specify the additional CMake option:
