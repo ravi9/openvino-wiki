@@ -37,7 +37,7 @@ To apply conditional compilation, follow the steps below:
     4. Run the target application under the ITT collector for code usage analysis for each model. Statistics are generated in the `.csv` format.  
 `python thirdparty/itt_collector/runtool/sea_runtool.py --bindir ${OPENVINO_LIBRARY_DIR} -o ${MY_MODEL_RESULT} ! ./benchmark_app -niter 1 -nireq 1 -m ${MY_MODEL}.xml`
 2. Build the resulting binaries:
-    1. Run the CMake tool with the following options: `-DSELECTIVE_BUILD=ON -DSELECTIVE_BUILD_STAT=${ABSOLUTE_PATH_TO_STATISTICS_FILES}/*.csv`
+    1. Run the CMake tool with the following options: `-DSELECTIVE_BUILD=ON -DSELECTIVE_BUILD_STAT=${ABSOLUTE_PATH_TO_STATISTICS_FILES}/*.csv -DENABLE_PROFILING_ITT=OFF`
     2. `cmake --build <cmake_build_directory>`
 
 The "-niter 1 -nireq 1" flags are highly recommended for benchmark_app. Otherwise, the trace files will be very large.
