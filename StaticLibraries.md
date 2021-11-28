@@ -119,8 +119,8 @@ Conditional compilation feature can be paired with static OpenVINO libraries to 
 * Enabled and tested capabilities on OpenVINO runtime in static build:
     * OpenVINO common runtime - work with `ov::Function`, perform model loading on particular device
     * CPU, MULTI, HETERO, AUTO inference plugins
+    * IR, ONNX, PDPD and TF frontends to read `ov::Function`
     * **Not enabled:** GNA, GPU, MYRIAD
-    * **Still compiled as shared libraries**: IR, ONNX, PDPD and TF frontends to read `ov::Function`
 * Static build support building of static libraries only for OpenVINO Runtime libraries. All other thirdparty prebuilt dependencies remain in the same format:
     * `libGNA` is a shared library
     * `TBB` is a shared library; to provide your own TBB build from [[oneTBB source code|https://github.com/oneapi-src/oneTBB]] use `export TBBROOT=<tbb_root>` before OpenVINO CMake scripts are run
