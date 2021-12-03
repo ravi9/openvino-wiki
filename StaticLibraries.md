@@ -27,7 +27,7 @@ With the static OpenVINO runtime, all these modules should be linked into a fina
 For example, to enable only IR v11 reading and CPU inference capabilities without G-API preprocessing, use:
 ```sh
 cmake -DENABLE_VPU=OFF \
-      -DENABLE_CLDNN=OFF \
+      -DENABLE_INTEL_GPU=OFF \
       -DENABLE_GNA=OFF \
       -DENABLE_MYRIAD=OFF \
       -DENABLE_HETERO=OFF \
