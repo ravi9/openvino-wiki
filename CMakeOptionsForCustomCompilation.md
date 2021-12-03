@@ -14,7 +14,7 @@ This document provides description and default values for CMake options that can
 * Inference backends:
     * `ENABLE_MKL_DNN` enables CPU plugin compilation:
         * `ON` is default for x86 platforms; `OFF`, otherwise.
-    * `ENABLE_CLDNN` enables GPU plugin compilation:
+    * `ENABLE_INTEL_GPU` enables Intel GPU plugin compilation:
         * `ON` is default for x86 platforms; not available, otherwise.
     * `ENABLE_GNA` enables GNA plugin compilation:
         * `ON` is default for x86 platforms; not available, otherwise.
