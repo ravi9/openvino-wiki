@@ -36,19 +36,19 @@ The software was validated on:
    generate a Visual Studio solution.
 
    For Microsoft\* Visual Studio 2019 x64 architecture:
-```sh
-cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=Release ..
-```
+    ```sh
+    cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=Release ..
+    ```
 
    For Microsoft\* Visual Studio 2019 ARM architecture:
-```sh
-cmake -G "Visual Studio 16 2019" -A ARM -DCMAKE_BUILD_TYPE=Release ..
-```
+    ```sh
+    cmake -G "Visual Studio 16 2019" -A ARM -DCMAKE_BUILD_TYPE=Release ..
+    ```
 
    For Microsoft\* Visual Studio 2019 ARM64 architecture:
-```sh
-cmake -G "Visual Studio 16 2019" -A ARM64 -DCMAKE_BUILD_TYPE=Release ..
-```
+    ```sh
+    cmake -G "Visual Studio 16 2019" -A ARM64 -DCMAKE_BUILD_TYPE=Release ..
+    ```
 
 5. Build generated solution in Visual Studio or run
    `cmake --build . --config Release --verbose -j8` to build from the command line.
@@ -81,13 +81,19 @@ cmake -G "Visual Studio 16 2019" -A ARM64 -DCMAKE_BUILD_TYPE=Release ..
 - To switch off/on the CPU and GPU plugins, use the `cmake` options
   `-DENABLE_MKL_DNN=ON/OFF` and `-DENABLE_CLDNN=ON/OFF` respectively.
 
-- To build the Python API wrapper, use the `-DENABLE_PYTHON=ON` option. To
+- To build the Python API wrapper:
+   1. First, install all additional packages (e.g., cython and opencv) listed in the
+     `\inference-engine\ie_bridges\python\src\requirements-dev.txt` file:
+      ```sh
+      pip install -r requirements-dev.txt
+      ```
+  2. Second, enable the `-DENABLE_PYTHON=ON` in the CMake (Step #4) option above. To
   specify an exact Python version, use the following options:
-   ```sh
-   -DPYTHON_EXECUTABLE="C:\Program Files\Python37\python.exe" ^
-   -DPYTHON_LIBRARY="C:\Program Files\Python37\libs\python37.lib" ^
-   -DPYTHON_INCLUDE_DIR="C:\Program Files\Python37\include"
-   ```
+     ```sh
+     -DPYTHON_EXECUTABLE="C:\Program Files\Python37\python.exe" ^
+     -DPYTHON_LIBRARY="C:\Program Files\Python37\libs\python37.lib" ^
+     -DPYTHON_INCLUDE_DIR="C:\Program Files\Python37\include"
+     ```
 
 - nGraph-specific compilation options:
   `-DNGRAPH_ONNX_IMPORT_ENABLE=ON` enables the building of the nGraph ONNX importer.
