@@ -177,12 +177,12 @@ target_link_libraries(${PROJECT_NAME} PRIVATE ${InferenceEngine_LIBRARIES})
 Congratulations, you have built the Inference Engine. To get started with the
 OpenVINO™, proceed to the Get Started guides:
 
-* [Get Started with Deep Learning Deployment Toolkit on Linux*](GettingStarted)
+* [Get Started with the OpenVINO™ on Linux*](GettingStarted)
 
 ## Additional Resources
 
 * [OpenVINO™ Release Notes](https://software.intel.com/en-us/articles/OpenVINO-RelNotes)
-* [Introduction to Intel® Deep Learning Deployment Toolkit](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Introduction.html)
+* [Introduction to Intel® OpenVINO™ toolkit](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Introduction.html)
 * [Inference Engine Samples Overview](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Samples_Overview.html)
 * [Inference Engine Developer Guide](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Deep_Learning_Inference_Engine_DevGuide.html)
 * [Model Optimizer Developer Guide](https://docs.openvinotoolkit.org/latest/_docs_MO_DG_Deep_Learning_Model_Optimizer_DevGuide.html)
