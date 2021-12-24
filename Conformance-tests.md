@@ -25,10 +25,10 @@ Run the following commands:
 2. Download all possible models using [Downloader tool](https://github.com/openvinotoolkit/open_model_zoo/blob/master/tools/model_tools/downloader.py) from 
    the repo.
 3. Convert downloaded models to IR files using [Converter tool](https://github.com/openvinotoolkit/open_model_zoo/blob/master/tools/model_tools/converter.py) from the repo.
-4. Run [Subgraph dumper](./../subgraphs_dumper/README.md) to collect unique operation set from the models.
+4. Run [Subgraph dumper](https://github.com/openvinotoolkit/openvino/blob/master/src/tests/functional/plugin/conformance/subgraphs_dumper/README.md) to collect unique operation set from the models.
 > **NOTE**:
 > 
-> The conformance suite run in internal CI checks is based on `2021.4` release. **Please, use `Model optimizer`, 'Subgraph dumper' and `Open Model Zoo` tools 
+> The conformance suite run in internal CI checks is based on `2021.4` release. **Please, use `Model optimizer`, `Subgraph dumper` and `Open Model Zoo` tools 
 > from `2021.4`.**
 
 ## How to run operation conformance suite
@@ -38,8 +38,8 @@ The target is able to take the following command-line arguments:
 * `--input_folders` specifies folders with IRs to run. The separator is `,`.
 * `--plugin_lib_name` is name of plugin library. The example is ov_intel_cpu_plugin. Use only with unregistered in IE Core devices.
 * `--disable_test_config` allows to ignore all skipped tests with the exception of `DISABLED_` prefix using.
-* `--skip_config_path` allows to specify paths to files contain regular expressions list to skip tests. [Examples](./op_conformance_runner/skip_configs)
-* `--config_path` allows to specify path to file contains plugin config. [Example](./op_conformance_runner/config/config_example.txt)
+* `--skip_config_path` allows to specify paths to files contain regular expressions list to skip tests. [Examples](https://github.com/openvinotoolkit/openvino/blob/master/src/tests/functional/plugin/conformance/test_runner/op_conformance_runner/skip_configs)
+* `--config_path` allows to specify path to file contains plugin config. [Example](https://github.com/openvinotoolkit/openvino/blob/master/src/tests/functional/plugin/conformance/test_runner/op_conformance_runner/config/config_example.txt)
 * `--extend_report` allows not to re-write device results to the report (add results of this run to the existing). Mutually exclusive with --report_unique_name.
 * `--report_unique_name` allows to save report with unique name (report_pid_timestamp.xml). Mutually exclusive with --extend_report.
 * `--save_report_timeout` allows to try to save report in cycle using timeout (in seconds).
@@ -67,7 +67,7 @@ devices.
 > All arguments after `--` symbol is forwarding to `conformanceTests` target.
 > 
 > After using `--report_unique_name` argument please run
-> [the merge xml script](./../../../../ie_test_utils/functional_test_utils/layer_tests_summary/merge_xmls.py) 
+> [the merge xml script](https://github.com/openvinotoolkit/openvino/blob/master/src/tests/ie_test_utils/functional_test_utils/layer_tests_summary/merge_xmls.py) 
 > to aggregate the results to one report.
 > The example of usage is:
 > ```
@@ -75,14 +75,14 @@ devices.
 > ```
 
 ## How to create operation conformance report
-Run [the script](./../../../../ie_test_utils/functional_test_utils/layer_tests_summary/summarize.py) to generate `html` report.
+Run [the script](https://github.com/openvinotoolkit/openvino/blob/master/src/tests/ie_test_utils/functional_test_utils/layer_tests_summary/summarize.py) to generate `html` report.
 The example of using the script is:
 ```
 python3 summarize.py --xml /opt/repo/infrastructure-master/thirdparty/gtest-parallel/report.xml --out /opt/repo/infrastructure-master/thirdparty/gtest-parallel/
 ```
 > **NOTE**:
 >
-> Please, do not forget to copy [styles folder](./../../../../ie_test_utils/functional_test_utils/layer_tests_summary/template) to the output directory. It 
+> Please, do not forget to copy [styles folder](https://github.com/openvinotoolkit/openvino/blob/master/src/tests/ie_test_utils/functional_test_utils/layer_tests_summary/template) to the output directory. It 
 > helps to provide report with the filters and other usable features.
 
 Report contains statistic based on conformance results and filter fields at the top of the page.
