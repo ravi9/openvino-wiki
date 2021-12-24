@@ -45,4 +45,4 @@
 * [[Inference Engine tests infrastructure|InferenceEngineTestsInfrastructure]]
 * [[How to measure test coverage?|InferenceEngineTestsCoverage]]
 * [[Adding a regression tests for VPU|InferenceEngineTestsVPU]]
-* [[Conformance-tests]]
+* [[Operation-Conformance-tests]]
