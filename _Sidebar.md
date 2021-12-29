@@ -21,6 +21,7 @@
         * [[Debug capabilities|CPUPluginDebugCapabilities]]
         * [[Performance analysis using ITT counters|PerformanceAnalysisUsingITTcounters]]
         * [[Intel SDE|CPUPluginIntelSoftwareDevelopmentEmulator]]
+        * [[Runtime parameters cache|CPURuntimeParametersCache]]
     * [[GPU plugin|GPUPluginDevelopersDocs]]
         * [[Source code structure|GPUPluginStructure]]
         * [[Simplified workflow|GPUPluginWorkFlow]]
