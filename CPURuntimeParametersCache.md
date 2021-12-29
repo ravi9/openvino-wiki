@@ -2,10 +2,10 @@
 
 ## Table of Contents
 
-- [Runtime cache application check list](#check_list)
+- [Сhecklist for the runtime cache implementation](#check_list)
 - [Fused post ops handling](#post_ops)
 
-## Runtime cache application check list<a name="check_list"></a>
+## Checklist for the runtime cache implementation <a name="check_list"></a>
 1. Determine what data will be cached. We usually use the Executor concept that represents a junction of the executable code, usually JIT generated kernel, with some precomputed algorithm parameters.
 2. Provide a key that uniquelly identifies the cached value as a funtion of dynamically changing parameters, i.e. shapes, dynamic input that determines the algorithm parameters, etc. To be used in a hash table, the key must have the following static interface:
    ```cpp
