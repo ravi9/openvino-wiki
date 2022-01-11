@@ -43,6 +43,13 @@
         {{-1, -1, 5}, {{10, 10, 5}, {5, 5, 5}, {10, 10, 5}}}  // input 1
     },
     ```
+   It worth to mention that placing two identical target shapes one after another does not trigger the cache, since another optimization based on the fact that the shapes have not been changed takes place. For example, the following test definition does not properly test the cache:
+    ```cpp
+    { // the shape infer and params preparation stages will be skipped for the second target shapes combination since the shapes are not changed
+        {{-1, -1, -1}, {{5, 5, 5}, {5, 5, 5}}}, // input 0
+        {{-1, -1, 5},  {{5, 5, 5}, {5, 5, 5}}}  // input 1
+    },
+    ```
 
 ## Fused post ops handling<a name="post_ops"></a>
 Post operations fusing mechanism in JIT kernels was designed bearing in mind static shapes and static data paradigm, which means that pointers to the working arrays of fused operations are part of the post operation description structure, which in turn is a part of the whole operation parameters list enclosed in the key. But obviously the data addresses themself are not a descripton of the operation and must be removed from the coressponding data structures in order to be passed through the rumtime parameters list of the JIT kernel. To address this problem, we need to update all the plugin JIT kernels simultaniously, that is a decent amount of work and will be done in the near future. Until then, we need to apply some workaround described below.
