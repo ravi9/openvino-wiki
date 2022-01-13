@@ -5,7 +5,7 @@ but at some point clDNN became a part of OpenVINO, so now it's a part of overall
 
 OpenVINO GPU plugin is responsible for:
  1. [IE Plugin API](https://github.com/openvinotoolkit/openvino/blob/master/docs/IE_PLUGIN_DG/Intro.md) implementation.
- 2. Translation of model from common IE semantic (ov::Function) into clDNN specific one (cldnn::topology) which is then compiled into
+ 2. Translation of model from common IE semantic (ov::Function) into plugin specific one (cldnn::topology) which is then compiled into
  gpu graph representation (cldnn::network).
  3. Implementation of OpenVINO operation set for Intel® GPU.
  4. Device specific graph transformations.
