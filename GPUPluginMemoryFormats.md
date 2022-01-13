@@ -103,4 +103,4 @@ i = 114 => [b=1; f=2;  y=1; x=1] == [b=1; fs=0; y=1; x=1; fsv=2];
 i = 127 => [b=1; f=15; y=1; x=1] == [b=1; fs=0; y=1; x=1; fsv=15];
 ```
 
-All clDNN formats are specified in inference-engine/thirdparty/clDNN/api/cldnn/runtime/tensor.hpp file. Most of the formats there follow the notation above.
+All clDNN formats are specified in `src/plugins/intel_gpu/include/intel_gpu/runtime/format.hpp` file. Most of the formats there follow the notation above.
