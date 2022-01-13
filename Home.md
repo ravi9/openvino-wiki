@@ -1,4 +1,4 @@
-# [OpenVINO™ Toolkit](https://01.org/openvinotoolkit) Wiki
+# [OpenVINO™ Toolkit](https://docs.openvino.ai/) Wiki
 
 ## General resources
 
