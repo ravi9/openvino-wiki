@@ -1,6 +1,6 @@
 # GPU memory formats
 
-The memory format descriptor in clDNN usually uses the following letters:
+The memory format descriptor in GPU plugin usually uses the following letters:
  - `b` - batch
  - `f` - features/channels
  - `w`, `z`, `y`, `x` - spatial dimensions
@@ -37,9 +37,9 @@ i = 14 => [b=1; f=1; y=1; x=0];
 i = 15 => [b=1; f=1; y=1; x=1];
 ```
 
-Usually, planar memory formats are not very efficient for DNN operations, so clDNN has plenty *blocked* format. Blocking means that we take some tensor dimension
-and put blocks of adjacent elements closer in memory (in the format with single blocking they are stored lineary in the memory). Consider the most widely used
-blocked format in cldnn: `b_fs_yx_fsv16`. First of all, let's understand what these additional letters mean. We have `b`, `f`, `y`, `x` dimensions here, so
+Usually, planar memory formats are not very efficient for DNN operations, so GPU plugin has plenty *blocked* format. Blocking means that we take some tensor dimension
+and put blocks of adjacent elements closer in memory (in the format with single blocking they are stored linearly in the memory). Consider the most widely used
+blocked format in GPU plugin: `b_fs_yx_fsv16`. First of all, let's understand what these additional letters mean. We have `b`, `f`, `y`, `x` dimensions here, so
 this is 4D tensor.
 `fs=CeilDiv(f, block_size)`; `fs` means `feature slice` - the blocked dimension.
 The block size is specified in the format name: `fsv16` - `block_size = 16`, blocked dimension is `f`; `fsv` means `feature slice vector`
@@ -103,4 +103,4 @@ i = 114 => [b=1; f=2;  y=1; x=1] == [b=1; fs=0; y=1; x=1; fsv=2];
 i = 127 => [b=1; f=15; y=1; x=1] == [b=1; fs=0; y=1; x=1; fsv=15];
 ```
 
-All clDNN formats are specified in `src/plugins/intel_gpu/include/intel_gpu/runtime/format.hpp` file. Most of the formats there follow the notation above.
+All formats used by GPU plugin are specified in `src/plugins/intel_gpu/include/intel_gpu/runtime/format.hpp` file. Most of the formats there follow the notation above.
