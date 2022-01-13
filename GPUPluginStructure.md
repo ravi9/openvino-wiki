@@ -1,60 +1,57 @@
 # GPU plugin structure
 
 Historically GPU plugin was built on top of standalone [clDNN library](https://github.com/intel/clDNN) for DNNs inference on Intel® GPUs,
-but at some point clDNN became a part of OpenVINO,
-and the clDNN source code is a part of [openvino repository](https://github.com/openvinotoolkit/openvino/tree/master/inference-engine/thirdparty/clDNN).
-Due to this reason source code of GPU plugin is located in 2 places:
- 1. inference-engine/src/cldnn_engine - this part is usually called "clDNN Plugin"
- 2. inference-engine/thirdparty/clDNN - this part is referred as "clDNN" or "cldnn"
+but at some point clDNN became a part of OpenVINO, so now it's a part of overall GPU plugin code.
 
-clDNN Plugin is a relatively small module that is responsible for:
+OpenVINO GPU plugin is responsible for:
  1. [IE Plugin API](https://github.com/openvinotoolkit/openvino/blob/master/docs/IE_PLUGIN_DG/Intro.md) implementation.
- 2. Translation of model from common IE semantic (ngraph::Function) into clDNN specific one (cldnn::topology) which is then compiled into
+ 2. Translation of model from common IE semantic (ov::Function) into clDNN specific one (cldnn::topology) which is then compiled into
  gpu graph representation (cldnn::network).
- 3. Processing of incoming InferRequests using clDNN objects.
+ 3. Implementation of OpenVINO operation set for Intel® GPU.
+ 4. Device specific graph transformations.
+ 5. Memory allocation and management logic.
+ 6. Processing of incoming InferRequests using clDNN objects.
+ 7. Actual execution on GPU device.
 
-clDNN library itself is responsible for:
- 1. Implementation of OpenVINO operation set for Intel® GPU.
- 2. Device specific graph transformations.
- 3. Memory allocation and management logic.
- 4. Actual execution on GPU device.
-
-As clDNN Plugin source code structure is relatively simple, let's more focus on the structure of clDNN:
+As Intel GPU Plugin source code structure is shown below:
 ```
-- inferene-engine/thirdparty/clDNN - root clDNN folder
- - api/cldnn/ - clDNN library API
-   - graph/ - headers for graph representations
+- src/plugins/intel_gpu - root GPU plugin folder
+ - include/intel_gpu/ - library internal headers
+   - graph/ - headers for internal graph representations
    - primitives/ - primitive definitions for all supported operations
    - runtime/ - abstraction for execution runtime entities (memory, device, engine, etc)
- - kernel_selector/ - OpenCL™ kernels (host+device parts) + utils for optimal kernels selection
-   - common/ - definition of some generic classes/structures used in kernel_selector
-   - core/ - kernels, kernel selectors, and kernel parameters definitions
-     - actual_kernels/ - host side part of OpenCL™ kernels including applicability checks, performance heuristics and Local/Global work-groups description
-     - cache/
-       - cache.json - tuning cache of the kernels which is redistributed with the plugin to improve kernels and kernel parameters selection for better performance
-     - cl_kernels/ - templates of GPU kernels (device part) written on OpenCL™
-     - common/ - utils for code generation and kernels selection
+   - plugin/ - definition of classes required for OpenVINO plugin API implementation
  - src/
-   - gpu/ - definition of nodes and other gpu specific structures
-   - graph_optimizer/ - passes for graph transformations
-   - include/ - headers with graph nodes and runtime
- - runtime/ - static library with runtime implementation
-    - ocl/ - implementation for OpenCL™ based runtime
+   - kernel_selector/ - OpenCL™ kernels (host+device parts) + utils for optimal kernels selection
+     - common/ - definition of some generic classes/structures used in kernel_selector
+     - core/ - kernels, kernel selectors, and kernel parameters definitions
+       - actual_kernels/ - host side part of OpenCL™ kernels including applicability checks, performance heuristics and Local/Global work-groups description
+       - cache/
+         - cache.json - tuning cache of the kernels which is redistributed with the plugin to improve kernels and kernel parameters selection for better performance
+       - cl_kernels/ - templates of GPU kernels (device part) written on OpenCL™
+       - common/ - utils for code generation and kernels selection
+   - plugin/ - implementation of OpenVINO plugin API
+     - ops/ - factories for conversion of OpenVINO operations to internal primitives
+   - graph/ - all sources related to internal graph representation
+     - impls/ - definition of primitive implementations
+     - graph_optimizer/ - passes for graph transformations
+     - include/ - headers with graph nodes
+   - runtime/ - static library with runtime implementation
+      - ocl/ - implementation for OpenCL™ based runtime
  - tests/ - unit tests
- - tutorial/ - examples how to work with clDNN api
- - utils/
-   - build/ - cmake scripts for building clDNN
+ - thirdparty/
    - rapidjson/ - thirdparty [RapidJSON](https://github.com/Tencent/rapidjson) lib for reading json files (cache.json)
+   - onednn_gpu/ - [oneDNN](https://github.com/oneapi-src/oneDNN) submodule which may be used to accelerate some primitives
 ```
 
 One last thing that is worth mentioning is functional tests which is located in the following location:
 ```
-inference-engine/tests/functional/plugin/gpu
+src/tests/functional/plugin/gpu
 ```
 Most of the tests are reused across plugins, and each plugin only need to add test instances with some specific parameters.
 
 Shared tests are located here:
 ```
-inference-engine/tests/functional/plugin/shared                        <--- test definitions
-inference-engine/tests/functional/plugin/gpu/shared_tests_instances    <--- instances for GPU plugin
+src/tests/functional/plugin/shared                        <--- test definitions
+src/tests/functional/plugin/gpu/shared_tests_instances    <--- instances for GPU plugin
 ```
