@@ -17,8 +17,9 @@ Before you open up anything on the OpenVINO GitHub page, be sure that you are at
 ## "Fork & Pull Request model" for code contribution
 
 ### The instruction in brief
-* Install Git.
 * Register at GitHub. Create your fork of OpenVINO repository https://github.com/openvinotoolkit/openvino (see https://help.github.com/articles/fork-a-repo for details).
+* Install Git.
+   * Set your user name and email address in a Git configuration according to GitHub account (see https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup for details).
 * Choose a task for yourself. It could be a bugfix or some new code.
 * Choose a base branch for your work. More details about branches and policies are here: [[Branches|Branches]]
 * Clone your fork to your computer.
