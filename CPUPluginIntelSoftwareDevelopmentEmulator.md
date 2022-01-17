@@ -23,4 +23,8 @@ OV_CPU_BLOB_DUMP_FORMAT=TEXT OV_CPU_BLOB_DUMP_NODE_TYPE=Convolution \
 
 - Count AVX/SSE transitions for the current host:
 
-`/path/to/sde -ast -- ./benchmark_app -t 10 -m path/to/model.xml`
+`/path/to/sde -ast -- ./benchmark_app -m path/to/model.xml`
+
+_Note:_ Best way to check for AVX/SSE transitions is to run within Alder Lake emulation:
+
+`/path/to/sde -ast -- ./benchmark_app -m path/to/model.xml`
