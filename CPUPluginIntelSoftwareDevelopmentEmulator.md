@@ -27,4 +27,4 @@ OV_CPU_BLOB_DUMP_FORMAT=TEXT OV_CPU_BLOB_DUMP_NODE_TYPE=Convolution \
 
 _Note:_ Best way to check for AVX/SSE transitions is to run within Alder Lake emulation:
 
-`/path/to/sde -ast -- ./benchmark_app -m path/to/model.xml`
+`/path/to/sde -adl -- ./benchmark_app -m path/to/model.xml`
