@@ -11,16 +11,14 @@ This document provides description and default values for CMake options that can
 
 ## Disable / enable plugins build and other components
 
-* Inference backends:
-    * `ENABLE_MKL_DNN` enables CPU plugin compilation:
+* Inference plugins:
+    * `ENABLE_INTEL_CPU` enables CPU plugin compilation:
         * `ON` is default for x86 platforms; `OFF`, otherwise.
     * `ENABLE_INTEL_GPU` enables Intel GPU plugin compilation:
         * `ON` is default for x86 platforms; not available, otherwise.
-    * `ENABLE_GNA` enables GNA plugin compilation:
+    * `ENABLE_INTEL_GNA` enables GNA plugin compilation:
         * `ON` is default for x86 platforms; not available, otherwise.
-    * `ENABLE_VPU` enables VPU (Myriad and HDDL only) components build:
-        * `ON` is default.
-    * `ENABLE_MYRIAD` enables MYRIAD plugin build:
+    * `ENABLE_INTEL_VPU` enables VPU (Myriad and HDDL only) components build:
         * `ON` is default.
     * `ENABLE_HETERO` enables HETERO plugin build:
         * `ON` is default.
@@ -29,13 +27,13 @@ This document provides description and default values for CMake options that can
     * `ENABLE_TEMPLATE` enables TEMPLATE plugin build:
         * `ON` is default.
 * Frontends to work with models from frameworks:
-    * `NGRAPH_ONNX_FRONTEND_ENABLE` enables [ONNX] frontend plugin for OpenVINO Runtime:
+    * `ENABLE_OV_ONNX_FRONTEND_ENABLE` enables [ONNX] frontend plugin for OpenVINO Runtime:
         * `ON` is default.
-    * `NGRAPH_PDPD_FRONTEND_ENABLE` enables [PDPD] frontend plugin for OpenVINO Runtime:
+    * `ENABLE_OV_PDPD_FRONTEND_ENABLE` enables [PDPD] frontend plugin for OpenVINO Runtime:
         * `ON` is default.
-    * `NGRAPH_TF_FRONTEND_ENABLE` enables [TensorFlow] frontend plugin for OpenVINO Runtime:
+    * `ENABLE_OV_TF_FRONTEND_ENABLE` enables [TensorFlow] frontend plugin for OpenVINO Runtime:
         * `ON` is default.
-    * `NGRAPH_IR_FRONTEND_ENABLE` enables OpenVINO Intermediate Representation frontend plugin for OpenVINO Runtime:
+    * `ENABLE_OV_IR_FRONTEND_ENABLE` enables OpenVINO Intermediate Representation frontend plugin for OpenVINO Runtime:
         * `ON` is default.
 * `ENABLE_GAPI_PREPROCESSING` enables G-API preprocessing:
     * `ON` is default.
@@ -50,16 +48,15 @@ This document provides description and default values for CMake options that can
 * `ENABLE_IR_V7_READER` enables IR v7 reader:
     * `ON` is default.
     **Note:** must be turned `OFF` when building OpenVINO runtime as static
-* `NGRAPH_UNIT_TEST_ENABLE` enables ngraph unit tests:
+* `ENABLE_OV_CORE_UNIT_TEST` enables ngraph unit tests:
     * The value is the same as for the `ENABLE_TESTS` option.
 * `ENABLE_DOCS` enables building the OpenVINO documentation:
     * `OFF` is default.
 * `ENABLE_SYSTEM_PUGIXML` builds with system version of [pugixml] if it is available on the system.
     * `OFF` is default.
     * [Inference Engine thirdparty pugixml] is used by default.
-* `NGRAPH_USE_SYSTEM_PROTOBUF` use [protobuf] installed on the system:
+* `ENABLE_SYSTEM_PROTOBUF` use [protobuf] installed on the system:
     * `OFF` is default.
-    * Affects ONNX importer component only.
 
 ## Options affecting binary size
 
