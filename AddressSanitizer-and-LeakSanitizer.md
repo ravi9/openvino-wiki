@@ -44,6 +44,22 @@ LeakSanitizer reports memory leaks to the stdout on the application exit.
 
 LeakSanitizer distinguishes between directly leaked blocks (not reachable from anywhere) and indirectly leaked blocks (reachable from other leaked blocks). When fixing memory leaks start from "Direct leaks" first. Direct leaks can be a cause of indirect ones. If you have only indirect leaks those are the result of cyclic references.
 
+## Identifying googletest test case
+
+To debug a leak sanitizer issue reported from the googletest suite you may want to use the `--gtest_filter` flag to execute a specific test case.
+The googletest test case name usually can be guessed from the call stack. For example, having a stack frame
+
+```
+#31 0x559299e76ca3 in ie_core_import_network_from_file_importNetworkFromFile_Test::TestBody() openvino/src/bindings/c/tests/ie_c_api_test.cpp:388
+```
+
+run googletest executable with the `--gtest_filter=ie_core_import_network_from_file.importNetworkFromFile` to reproduce the issue.
+
+Sometimes it might be impossible to identify the test case from the log to reproduce the issues. In that case, run the googletest executable under https://github.com/google/gtest-parallel once so you will get log per-test and can easily identify the test cases having issues:
+
+```
+./gtest-parallel path/to/binary
+```
 # Known limitations
 
 1. An old version of OpenVINO GPU plugin uses compute-runtime which is incompatible with AddressSanitizer and LeakSanitizer: https://github.com/intel/compute-runtime/issues/376
