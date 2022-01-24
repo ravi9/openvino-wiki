@@ -6,6 +6,7 @@ Running OpenVINO tests and tools with sanitizers requires changing build options
 
 - Linux
 - Mac OS
+- Windows (Visual Studio 2019 version >= 16.9)
 
 # Enabling AddressSanitizer and LeakSanitizer for OpenVINO
 
