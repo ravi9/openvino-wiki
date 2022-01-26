@@ -26,23 +26,22 @@ With the static OpenVINO runtime, all these modules should be linked into a fina
 
 For example, to enable only IR v11 reading and CPU inference capabilities without G-API preprocessing, use:
 ```sh
-cmake -DENABLE_VPU=OFF \
+cmake -DENABLE_INTEL_MYRIAD_COMMON=OFF \
       -DENABLE_INTEL_GPU=OFF \
-      -DENABLE_GNA=OFF \
-      -DENABLE_MYRIAD=OFF \
+      -DENABLE_INTEL_GNA=OFF \
       -DENABLE_HETERO=OFF \
       -DENABLE_MULTI=OFF \
       -DENABLE_TEMPLATE=OFF \
       -DENABLE_IR_V7_READER=OFF \
-      -DNGRAPH_ONNX_FRONTEND_ENABLE=OFF \
-      -DNGRAPH_PDPD_FRONTEND_ENABLE=OFF \
-      -DNGRAPH_TF_FRONTEND_ENABLE=OFF \
+      -DENABLE_OV_ONNX_FRONTEND=OFF \
+      -DENABLE_OV_PADDLE_FRONTEND=OFF \
+      -DENABLE_OV_TF_FRONTEND=OFF \
       -DENABLE_GAPI_PREPROCESSING=OFF \
-      -DENABLE_MKL_DNN=ON \
-      -DNGRAPH_IR_FRONTEND_ENABLE=ON
+      -DENABLE_INTEL_CPU=ON \
+      -DENABLE_OV_IR_FRONTEND=ON
 ```
 
-**Note:** Inference backends located in external repositories can also be used in static build. Use `-DIE_EXTRA_MODULES=<path to external plugin root>` to enable them. `InferenceEngineDeveloperPackage.cmake` must not be used to build external plugins, only `IE_EXTRA_MODULES` is working.
+**Note:** Inference backends located in external repositories can also be used in static build. Use `-DIE_EXTRA_MODULES=<path to external plugin root>` to enable them. `OpenVINODeveloperPackage.cmake` must not be used to build external plugins, only `IE_EXTRA_MODULES` is working.
 
 **Note:** the `ENABLE_LTO` CMake option can also be passed to enable link time optimizations to reduce binary size. But such property should also be enabled on target which links with static OpenVINO libraries via `
 set_target_properties(<target_name> PROPERTIES INTERPROCEDURAL_OPTIMIZATION_RELEASE ON)`
@@ -58,7 +57,7 @@ cmake -DBUILD_SHARED_LIBS=OFF <all other CMake options> <openvino_sources root>
 Then, use an usual CMake 'build' command:
 
 ```sh
-cmake --build . --target inference_engine --config Release -j12
+cmake --build . --target ov_runtime --config Release -j12
 ```
 
 Then, the installation step:
@@ -117,10 +116,10 @@ Conditional compilation feature can be paired with static OpenVINO libraries to 
     * Linux x64
     * All other OSes may work, but not explicitly tested
 * Enabled and tested capabilities on OpenVINO runtime in static build:
-    * OpenVINO common runtime - work with `ov::Function`, perform model loading on particular device
-    * CPU, MULTI, HETERO, AUTO inference plugins
-    * IR, ONNX, PDPD and TF frontends to read `ov::Function`
-    * **Not enabled:** GNA, GPU, MYRIAD
+    * OpenVINO common runtime - work with `ov::Model`, perform model loading on particular device
+    * CPU, GNA, MULTI, HETERO, AUTO, BATCH inference plugins
+    * IR, ONNX, PDPD and TF frontends to read `ov::Model`
+    * **Not enabled:** GPU, MYRIAD
 * Static build support building of static libraries only for OpenVINO Runtime libraries. All other thirdparty prebuilt dependencies remain in the same format:
     * `libGNA` is a shared library
     * `TBB` is a shared library; to provide your own TBB build from [[oneTBB source code|https://github.com/oneapi-src/oneTBB]] use `export TBBROOT=<tbb_root>` before OpenVINO CMake scripts are run
