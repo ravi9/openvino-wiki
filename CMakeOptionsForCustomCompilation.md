@@ -18,13 +18,18 @@ This document provides description and default values for CMake options that can
         * `ON` is default for x86 platforms; not available, otherwise.
     * `ENABLE_INTEL_GNA` enables GNA plugin compilation:
         * `ON` is default for x86 platforms; not available, otherwise.
-    * `ENABLE_INTEL_VPU` enables VPU (Myriad and HDDL only) components build:
+    * `ENABLE_INTEL_MYRIAD_COMMON` enables Myriad (Myriad and HDDL only) common components build:
         * `ON` is default.
+    * `ENABLE_INTEL_MYRIAD` enables Myriad plugin components build:
+        * `ON` is default.
+        * Depends on `ENABLE_INTEL_MYRIAD_COMMON`.
     * `ENABLE_HETERO` enables HETERO plugin build:
         * `ON` is default.
     * `ENABLE_MULTI` enables AUTO / MULTI plugin build:
         * `ON` is default.
     * `ENABLE_TEMPLATE` enables TEMPLATE plugin build:
+        * `ON` is default.
+    * `ENABLE_AUTO_BATCH` enables Auto Batch plugin build:
         * `ON` is default.
 * Frontends to work with models from frameworks:
     * `ENABLE_OV_ONNX_FRONTEND_ENABLE` enables [ONNX] frontend plugin for OpenVINO Runtime:
