@@ -81,7 +81,7 @@ You can use the following additional build options:
 
 - To build the Python API wrapper:
   1. First, install all additional packages (e.g., cython and opencv) listed in the
-     `/inference-engine/ie_bridges/python/src/requirements-dev.txt` file:
+     `/src/bindings/python/src/compatibility/openvino/requirements-dev.txt` file:
      ```sh
      pip install -r requirements-dev.txt
      ```
