@@ -1,6 +1,8 @@
 # Google Summer of Code
 
-Spend your summer doing something interesting and useful for the open-source community and join Google Summer of Code. Read more information about how the program works on [this page](https://summerofcode.withgoogle.com/). OpenVINO Toolkit is applying as a mentoring organization for 2022.
+Spend your summer doing something interesting and useful for the open-source community and join Google Summer of Code. Read more information about how the program works on [this page](https://summerofcode.withgoogle.com/).
+
+OpenVINO Toolkit is applying as a mentoring organization for 2022.
 
 ## Project ideas for 2022
 
