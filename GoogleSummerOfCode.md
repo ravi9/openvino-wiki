@@ -15,8 +15,7 @@ ARM CPUs support has been added to Inference Engine via the dedicated [ARM CPU p
 Android demo application with object detection functionality. Any model (or several models) from the [list](https://github.com/openvinotoolkit/open_model_zoo/blob/master/demos/object_detection_demo/cpp/models.lst) supported by the plugin could be used. 
 
 **Skills required/preferred:**
-* practical experience with developing Java apps for Android
-* at least a basic understanding of computer vision and deep learning technologies, enough to run a network and make it run at real-time speed
+Practical experience with developing Java apps for Android, at least a basic understanding of computer vision and deep learning technologies, enough to run a network and make it run at real-time speed
 
 **Mentors:**
 Alexander Nesterov
@@ -97,9 +96,7 @@ Inference calculators should be created using the ModelAPI framework (part of Op
 Working examples for Object detection and BERT question answering working with OpenVINO-based calculators.
 
 **Skills required/preferred:**
-* C++ knowledge
-* Basic knowledge of OpenVINO framework
-* Experience with Google MediaPipe is a plus
+C++ knowledge, basic knowledge of OpenVINO framework, experience with Google MediaPipe is a plus
 
 **Mentors:**
 Fedor Zharinov, Vladimir Zlobin
@@ -119,9 +116,7 @@ The world is 3D but in AI development we often work on flat 2D displays with fla
 Working 3D support for Jupyter Notebooks running OpenVINO (AI inference). For example, visualizing 3D body pose and characters, visualization 2D-3D mapping, and also providing a clean interface to set up these without a 3D engine or graphics programming background.
 
 **Skills required/preferred:**
-* Understanding of graphics pipelines and (GPU programming is a plus)
-* Software Engineer background and code releasing
-* Python, C++
+Understanding of graphics pipelines and (GPU programming is a plus), software Engineer background and code releasing, Python, C++
 
 **Mentors:**
 Raymond Lo
