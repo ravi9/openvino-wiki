@@ -1,1 +1,1 @@
-© Copyright 2018-2021, OpenVINO team
+© Copyright 2018-2022, OpenVINO team
