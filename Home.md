@@ -4,6 +4,7 @@
 
 * [[Getting started|GettingStarted]]
 * [[Contribute|Contribute]]
+  * [[Google Summer of Code|GoogleSummerofCode]]
 
 ## How to build
 
