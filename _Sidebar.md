@@ -2,6 +2,7 @@
 * [[General resources|https://github.com/openvinotoolkit/openvino/wiki#general-resources]]
     * [[Getting started|GettingStarted]]
     * [[Contribute|Contribute]]
+        * [[Google Summer of Code|GoogleSummerofCode]]
 * [[How to build|https://github.com/openvinotoolkit/openvino/wiki#how-to-build]]
     * [[Building for different OSes|BuildingCode]]
     * [[Building documentation|BuildingDocumentation]]
