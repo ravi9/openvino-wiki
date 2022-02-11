@@ -33,7 +33,7 @@ Your application should consist of the following parts:
     2. Describe any plans you have for the summer in addition to GSoC
     3. Why should we pick you?
 4. Tasks
-    1. Screenshot of running object detection ([401-object-detection-webcam notebook](https://github.com/openvinotoolkit/openvino_notebooks/blob/main/notebooks/401-object-detection-webcam/401-object-detection.ipynb)) – please take a screenshot for the last code cell
+    1. Screenshot of **running** object detection ([401-object-detection-webcam notebook](https://github.com/openvinotoolkit/openvino_notebooks/blob/main/notebooks/401-object-detection-webcam/401-object-detection.ipynb)) – please take a screenshot for the last code cell
     2. Link to your pull request (for the prerequisite task)
 
 Proposal examples can be found [here](https://google.github.io/gsocguides/student/proposal-example-1) and [here](https://google.github.io/gsocguides/student/proposal-example-2). Please contact early to discuss your application with the mentor.
