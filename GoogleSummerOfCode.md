@@ -13,6 +13,32 @@ We require one new notebook pull request sent to our OpenVINO notebooks reposito
 4. Your notebook should have descriptions and comments proving you know what you do (similar to descriptions and comments in e.g. [403 notebook](https://github.com/openvinotoolkit/openvino_notebooks/blob/main/notebooks/403-action-recognition-webcam/403-action-recognition-webcam.ipynb))
 5. Create a pull request
 
+## Application template
+
+Your application should consist of the following parts:
+1. About you
+    1. Your full name
+    2. Your university/current enrollment
+    3. Short bio
+    4. Your experience in programming (especially C++ and Python)
+    5. Your experience in ML and DL
+2. About the project
+    1. What is your choice?
+    2. Why did you choose this specific idea?
+    3. How much time do you plan to invest in the project? 
+    4. Provide an abstract of the solution
+    5. Provide a detailed timeline of how you want to implement the project (include main points you want to cover and dates)
+3. Answer the questions:
+    1. How do you know OpenVINO?
+    2. Describe any plans you have for the summer in addition to GSoC
+    3. Why should we pick you?
+4. Tasks
+    1. Screenshot of running object detection ([401-object-detection-webcam notebook](https://github.com/openvinotoolkit/openvino_notebooks/blob/main/notebooks/401-object-detection-webcam/401-object-detection.ipynb)) – please take a screenshot for the last code cell
+    2. Link to your pull request (for the prerequisite task)
+
+Proposal examples can be found [here](https://google.github.io/gsocguides/student/proposal-example-1) and [here](https://google.github.io/gsocguides/student/proposal-example-2). Please contact early to discuss your application with the mentor.
+
+
 ## Project ideas for 2022
 
 ### 1. Object Detection demo application to run AI on ARM-based Android devices
