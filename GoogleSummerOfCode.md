@@ -4,13 +4,13 @@ Spend your summer doing something interesting and useful for the open-source com
 
 OpenVINO Toolkit is applying as a mentoring organization for 2022.
 
-## Prerequisites
+## Prerequisite task
 
 We require one new notebook pull request sent to our OpenVINO notebooks repository from each potential GSoC contributor, before accepting participation for GSoC. We would like to see if you know how to code and what your coding style is. To fulfill this requirement please:
 1. Fork [OpenVINO Notebooks](https://github.com/openvinotoolkit/openvino_notebooks) repository
 2. Implement a new notebook as a [2xx notebook](https://github.com/openvinotoolkit/openvino_notebooks#model-demos) to demonstrate one of your favorite models from Open Model Zoo ([Intel](https://github.com/openvinotoolkit/open_model_zoo/blob/master/models/intel/index.md) or [public](https://github.com/openvinotoolkit/open_model_zoo/blob/master/models/public/index.md) one) (please don't implement notebooks for models with demos already done or in progress - you can find them [here](https://github.com/openvinotoolkit/openvino_notebooks#model-demos) and [here](https://github.com/openvinotoolkit/openvino_notebooks/pulls))
 3. The notebook should be consistent with others in the same branch and should fit [the requirements](https://github.com/openvinotoolkit/openvino_notebooks/blob/main/CONTRIBUTING.md) for the contribution
-4. Your notebook should have descriptions and comments proving you know what you do (similar to descriptions and comments in other notebooks)
+4. Your notebook should have descriptions and comments proving you know what you do (similar to descriptions and comments in e.g. [403 notebook](https://github.com/openvinotoolkit/openvino_notebooks/blob/main/notebooks/403-action-recognition-webcam/403-action-recognition-webcam.ipynb))
 5. Create a pull request
 
 ## Project ideas for 2022
