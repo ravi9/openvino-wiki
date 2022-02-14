@@ -182,27 +182,7 @@ Alexander Kozlov, Lyubov Talamanova
 **Difficulty:**
 Medium
 
-### 7. Integrate OpenVINO and its model optimization tools into MQBench
-
-**Short description:**
-The trend of recent years is DL model optimization and, of course, quantization is the most promising way to get inference speedup. Most HW vendors provide tools for automated model quantization that are, in fact, different in terms of resulting accuracy-performance trade-offs. MQBench is the new SW developed by SenseTime that is aimed at evaluating the quantization algorithms under various deployment environments. . In this task, we will integrate OpenVINO and its model optimization tools into MQBench and evaluate the results of the initial scope of DL models
-
-**Expected outcomes:**
-Pull-request with the integration of OpenVINO and POT tool into MQBench.
-
-**Skills required/preferred:**
-DL basics, understanding of ML model optimization 
-
-**Mentors:**
-Alexander Kozlov, Nikita Malinin
-
-**Size of project:**
-175 hours
-
-**Difficulty:**
-Medium
-
-### 8. Showcase performance of PyTorch Image Models (timm) with OpenVINO
+### 7. Showcase performance of PyTorch Image Models (timm) with OpenVINO
 
 **Short description:**
 DL model inference performance is a hop trend of recent years that is aimed at bringing AI into real-world applications. And OpenVINO is a famous DL inference solution that delivers best-in-class performance on Intel Architectures. In this task, we will provide a Jupyter notebook/tutorial (similar to [this one](https://github.com/rwightman/pytorch-image-models/blob/master/notebooks/EffResNetComparison.ipynb)) where we showcase inference performance on the set of popular DL models that come from the PyTorch Image Models project on GitHub (timm). The tutorial will provide details on how to install OpenVINO, convert models to OpenVINO Intermediate Representation, and do the proper benchmarking under the various settings.
