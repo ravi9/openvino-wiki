@@ -1,17 +1,17 @@
 # Google Summer of Code
 
-Spend your summer doing something interesting and useful for the open-source community and join Google Summer of Code. Read more information about how the program works on [this page](https://summerofcode.withgoogle.com/).
+Spend your summer doing something interesting and valuable for the open-source community and join Google Summer of Code. Read more information about how the program works on [this page](https://summerofcode.withgoogle.com/).
 
 OpenVINO Toolkit is applying as a mentoring organization for 2022.
 
 ## Prerequisite task
 
-We require one new notebook pull request sent to our OpenVINO notebooks repository from each potential GSoC contributor, before accepting participation for GSoC. We would like to see if you know how to code and what your coding style is. To fulfill this requirement please:
-1. Fork [OpenVINO Notebooks](https://github.com/openvinotoolkit/openvino_notebooks) repository
-2. Implement a new notebook as a [2xx notebook](https://github.com/openvinotoolkit/openvino_notebooks#model-demos) to demonstrate one of your favorite models from Open Model Zoo ([Intel](https://github.com/openvinotoolkit/open_model_zoo/blob/master/models/intel/index.md) or [public](https://github.com/openvinotoolkit/open_model_zoo/blob/master/models/public/index.md) one) (please don't implement notebooks for models with demos already done or in progress - you can find them [here](https://github.com/openvinotoolkit/openvino_notebooks#model-demos) and [here](https://github.com/openvinotoolkit/openvino_notebooks/pulls))
-3. The notebook should be consistent with others in the same branch and should fit [the requirements](https://github.com/openvinotoolkit/openvino_notebooks/blob/main/CONTRIBUTING.md) for the contribution
-4. Your notebook should have descriptions and comments proving you know what you do (similar to descriptions and comments in e.g. [403 notebook](https://github.com/openvinotoolkit/openvino_notebooks/blob/main/notebooks/403-action-recognition-webcam/403-action-recognition-webcam.ipynb))
-5. Create a pull request
+We require one new notebook pull request sent to our OpenVINO notebooks repository from each potential GSoC contributor before accepting participation for GSoC. In addition, we would like to see if you know how to code and your coding style. To fulfill this requirement please:
+1. Fork [OpenVINO Notebooks](https://github.com/openvinotoolkit/openvino_notebooks) repository.
+2. Implement a new notebook as a [2xx notebook](https://github.com/openvinotoolkit/openvino_notebooks#model-demos) to demonstrate one of your favorite models from Open Model Zoo ([Intel](https://github.com/openvinotoolkit/open_model_zoo/blob/master/models/intel/index.md) or [public](https://github.com/openvinotoolkit/open_model_zoo/blob/master/models/public/index.md) one) (please don't implement notebooks for models with demos already done or in progress - you can find them [here](https://github.com/openvinotoolkit/openvino_notebooks#model-demos) and [here](https://github.com/openvinotoolkit/openvino_notebooks/pulls)).
+3. The notebook should be consistent with others in the same branch and should fit [the requirements](https://github.com/openvinotoolkit/openvino_notebooks/blob/main/CONTRIBUTING.md) for the contribution.
+4. Your notebook should have descriptions and comments proving you know what you do (similar to descriptions and comments in e.g., [403 notebook].(https://github.com/openvinotoolkit/openvino_notebooks/blob/main/notebooks/403-action-recognition-webcam/403-action-recognition-webcam.ipynb))
+5. Create a pull request.
 
 ## Application template
 
@@ -27,17 +27,18 @@ Your application should consist of the following parts:
     2. Why did you choose this specific idea?
     3. How much time do you plan to invest in the project? 
     4. Provide an abstract of the solution
-    5. Provide a detailed timeline of how you want to implement the project (include main points you want to cover and dates)
+    5. Provide a detailed timeline of how you want to implement the project (include the main points you want to cover and dates)
 3. Answer the questions:
     1. How do you know OpenVINO?
-    2. Describe any plans you have for the summer in addition to GSoC
-    3. Why should we pick you?
+    2. What do you know about OpenVINO? 
+    3. How could you apply it to your professional development?
+    4. Describe any other career development plan you have for the summer in addition to GSoC.
+    5. Why should we pick you?
 4. Tasks
     1. Screenshot of **running** object detection ([401-object-detection-webcam notebook](https://github.com/openvinotoolkit/openvino_notebooks/blob/main/notebooks/401-object-detection-webcam/401-object-detection.ipynb)) – please take a screenshot for the last code cell
-    2. Link to your pull request (for the prerequisite task)
+    2. Link to your pull request (for the prerequisite task – the top part of this document)
 
 Proposal examples can be found [here](https://google.github.io/gsocguides/student/proposal-example-1) and [here](https://google.github.io/gsocguides/student/proposal-example-2). Please contact early to discuss your application with the mentor.
-
 
 ## Project ideas for 2022
 
