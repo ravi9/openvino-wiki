@@ -195,7 +195,7 @@ Pull-request with the tutorial into PyTorch Image Models.
 DL basics, understanding of ML model optimization 
 
 **Mentors:**
-Alexander Kozlov, 
+Alexander Kozlov
 
 **Size of project:**
 175 hours
@@ -203,6 +203,26 @@ Alexander Kozlov,
 **Difficulty:**
 Easy
 
+### 8. NEON optimized Snippets Emitters for OpenVINO Arm Plugin
+
+**Short description:**
+Snippets is a new optimization technique introduced in OpenVINO to speed up memory access bound operations. Snippets provides the capability to fuse several consequent DNN layers processing into a single operation that could be processed in-memory access efficient way using  JIT generation of processing code. Code generation consists of a few stages, however, only generation of optimized code for specific operations are platform-specific and cannot be easily ported from existing implementation for x86 architecture. Therefore the development of platform-specific Emitters that implement code generation API will make possible further improvement of OpenVINO framework performance on the Arm platform.
+
+**Expected outcomes:**
+Implementation of Emitter classes for operations from opset1
+
+**Skills required/preferred:**
+C++, understanding of DNN model structure, understanding of JIT code generation concept, performance optimization experience, knowledge of NEON instruction set 
+
+**Mentors:**
+Vitaly Tuzov, Alexander Nesterov
+
+**Size of project:**
+350 hours
+
+**Difficulty:**
+Medium to hard
+
 ## Contact us
 
-Mailing list soon
+[Mailing list](https://lists.01.org/postorius/lists/gsoc.lists.01.org/)
