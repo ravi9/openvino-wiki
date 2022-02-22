@@ -98,6 +98,27 @@ This document provides description and default values for CMake options that can
     * `OFF` is default, because it increases binary size.
 * `SELECTIVE_BUILD` enables [[Conditional compilation|ConditionalCompilation]] feature.
     * `OFF` is default.
+
+## Build with custom OpenCV
+
+When OpenVINO CMake scripts are run with enabled OpenCV (`-DENABLE_OPENCV=ON` which is default), CMake OpenVINO scripts automatically download prebuilt OpenCV 
+from shared drive, such OpenCV is ABI-compatible with the default compiler of your system. If you have a non-default compiler or want to use custom version of OpenCV, you can pass it via CMake option:
+
+```sh
+cmake -DOpenCV_DIR=<path to OpenCVConfig.cmake> ...
+```
+In this case, default OpenCV will not downloaded and provided one will be used.
+
+## Building with custom TBB
+
+When OpenVINO CMake scripts are run with TBB enabled (`-DTHREADING=TBB` which is default, or `-DTHREADING=TBB_AUTO`), CMake OpenVINO scripts automatically download prebuilt version of TBB which is ABI-compatible with the default compiler of your system. If you have a non-default compiler or want to use custom TBB, you can use:
+
+```sh
+export TBBROOT=<path to TBB root>
+cmake ...
+```
+In this case OpenVINO CMake scripts take `TBBROOT` environment variable into account and provided TBB will be used.
+
 ## Test capabilities
 
 * `ENABLE_SANITIZER` builds with clang [address sanitizer] support:
