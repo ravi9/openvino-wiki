@@ -6,6 +6,8 @@ This document provides description and default values for CMake options that can
 
 * [Disable / enable plugins build and other components](#disable--enable-plugins-build-and-other-components)
 * [Options affecting binary size](#options-affecting-binary-size)
+* [Building with custom OpenCV](#building-with-custom-opencv)
+* [Building with custom TBB](#building-with-custom-tbb)
 * [Test capabilities](#test-capabilities)
 * [Other options](#other-options)
 
@@ -99,7 +101,7 @@ This document provides description and default values for CMake options that can
 * `SELECTIVE_BUILD` enables [[Conditional compilation|ConditionalCompilation]] feature.
     * `OFF` is default.
 
-## Build with custom OpenCV
+## Building with custom OpenCV
 
 When OpenVINO CMake scripts are run with enabled OpenCV (`-DENABLE_OPENCV=ON` which is default), CMake OpenVINO scripts automatically download prebuilt OpenCV 
 from shared drive, such OpenCV is ABI-compatible with the default compiler of your system. If you have a non-default compiler or want to use custom version of OpenCV, you can pass it via CMake option:
