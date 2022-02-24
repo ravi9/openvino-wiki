@@ -3,7 +3,6 @@
 ## Table of Contents
 
 - [Сhecklist for the runtime cache implementation](#check_list)
-- [Fused post ops handling](#post_ops)
 
 ## Checklist for the runtime cache implementation <a name="check_list"></a>
 1. Determine what data will be cached. We usually use the Executor concept that represents a junction of the executable code, usually JIT generated kernel, with some precomputed algorithm parameters.
@@ -50,27 +49,3 @@
         {{-1, -1, 5},  {{5, 5, 5}, {5, 5, 5}}}  // input 1
     },
     ```
-
-## Fused post ops handling<a name="post_ops"></a>
-Post operations fusing mechanism in JIT kernels was designed bearing in mind static shapes and static data paradigm, which means that pointers to the working arrays of fused operations are part of the post operation description structure, which in turn is a part of the whole operation parameters list enclosed in the key. But obviously the data addresses themself are not a descripton of the operation and must be removed from the coressponding data structures in order to be passed through the rumtime parameters list of the JIT kernel. To address this problem, we need to update all the plugin JIT kernels simultaniously, that is a decent amount of work and will be done in the near future. Until then, we need to apply some workaround described below.
-
-If the **quantization or depthwise** post ops are used through the post ops **injectors** mechanism, we need to update JIT kernels generation code in order to pass the scales and shifts data pointers at runtime:
-   ```cpp
-    size_t ptrs_table_off = quantization_post_op_idx * quantization_injectors[quantization_post_op_idx]->memoryStep();
-
-    quantization_injectors[quantization_post_op_idx]->init_crop_ptrs(reg_post_op_ptrs + ptrs_table_off, reg_oc_off);
-
-    quantization_injectors[quantization_post_op_idx]->init_input_scale_shift_ptrs(reg_post_op_ptrs + ptrs_table_off, reg_oc_off);
-
-    quantization_injectors[quantization_post_op_idx]->init_output_scale_shift_ptrs(reg_post_op_ptrs + ptrs_table_off, reg_oc_off);
-
-    quantization_post_op_idx++;
-   ```
-Since the post ops become a part of the key, we need to store their data pointers somwhere to use them at the execution stage, and zero them out inside the post ops to remove the data pointers from the key:
-   ```cpp
-   for (int i = 0; i < postOps.len(); ++i) {
-        auto &data = postOps.get()->entry_[i].quantization.data;
-        fqDataPtrs.insert(fqDataPtrs.end(), std::begin(data), std::end(data));
-        memset(data, 0, sizeof(data));
-    }
-   ```
