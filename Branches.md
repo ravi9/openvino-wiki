@@ -4,16 +4,15 @@ The OpenVINO repository has several branches with different contribution policie
 
 Each OpenVINO release has its own release branch names as `releases/<year>/<release number>[.<patch number>]`:
 
-* [releases/2020/3](https://github.com/openvinotoolkit/openvino/tree/releases/2020/3)
+* [releases/2021/4](https://github.com/openvinotoolkit/openvino/tree/releases/2021/4)
     * **LTS** (long term support) branch
     * **only** critical fixes can be sent
-* [releases/2020/4](https://github.com/openvinotoolkit/openvino/tree/releases/2020/4)
-    * no patches are accepted
 * [releases/2021/1](https://github.com/openvinotoolkit/openvino/tree/releases/2021/1)
     * no patches are accepted
 * [releases/2021/2](https://github.com/openvinotoolkit/openvino/tree/releases/2021/2)
     * current release branch.
-    * **Only** fixes can be sent to this branch.
+* [releases/2021/3](https://github.com/openvinotoolkit/openvino/tree/releases/2021/3)
+    * no patches are accepted
 * [master](https://github.com/openvinotoolkit/openvino/tree/master)
     * development branch, can accept both fixes and new functionality:
        - bug fixes
