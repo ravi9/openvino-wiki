@@ -2,10 +2,16 @@
 
 ## Table of content:
 
+* [Contribution Guidelines](#authoring-guidelines)
 * [Authoring Guidelines](#authoring-guidelines)
 * [Structure Guidelines](#structure-guidelines)
 * [Formatting Guidelines](#formatting-guidelines)
 * [Graphics Guidelines](#graphics-guidelines)
+
+## Contribution Guidelines
+* Create a new markdown file in an appropriate folder.
+* **REQUIRED:**  The document title must contain a document label in a form:  `{#openvino_docs_<name>}`. For example:  `Deep Learning Network Intermediate Representation and Operation Sets in OpenVINO™ {#openvino_docs_MO_DG_IR_and_opsets}`.
+* Add your file to the documentation structure. Open the documentation structure file  [`docs/doxygen/ie_docs.xml`]
 
 ## Authoring Guidelines
 
