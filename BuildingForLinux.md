@@ -1,10 +1,9 @@
 # Build on Linux\* Systems
 
 The software was validated on:
-- Ubuntu\* 16.04 (64-bit) with default GCC\* 5.4.0
 - Ubuntu\* 18.04 (64-bit) with default GCC\* 7.5.0
 - Ubuntu\* 20.04 (64-bit) with default GCC\* 9.3.0
-- CentOS\* 7.6 (64-bit) with default GCC\* 4.8.5
+- Red Hat\* Enterprise Linux\* 8.2 (64-bit) with default GCC\* 8.5.0
 
 ## Table of content:
 
@@ -16,7 +15,7 @@ The software was validated on:
 
 - [CMake]\* 3.13 or higher
 - GCC\* 4.8 or higher to build the Inference Engine
-- Python 3.6 or higher for Inference Engine Python API wrapper
+- Python 3.6 or higher for OpenVINO Runtime Python API
 - (Optional) [Install Intel® Graphics Compute Runtime for OpenCL™ Driver package 19.41.14441].
 
 ### Build Steps
@@ -79,7 +78,7 @@ You can use the following additional build options:
   [Use Custom OpenCV Builds](#use-custom-opencv-builds-for-inference-engine)
   section for details.
 
-- To build the Python API wrapper:
+- To build the OpenVINO Runtime Python API:
   1. First, install all additional packages (e.g., cython and opencv) listed in the
      `/src/bindings/python/src/compatibility/openvino/requirements-dev.txt` file:
      ```sh
@@ -97,8 +96,7 @@ You can use the following additional build options:
   `-DENABLE_MKL_DNN=ON/OFF` and `-DENABLE_CLDNN=ON/OFF` respectively.
 
 - nGraph-specific compilation options:
-  `-DNGRAPH_ONNX_IMPORT_ENABLE=ON` enables the building of the nGraph ONNX importer.
-  `-DNGRAPH_DEBUG_ENABLE=ON` enables additional debug prints.
+  `-DENABLE_OV_ONNX_FRONTEND=ON` enables the building of the ONNX importer.
 
 
 [CMake]:https://cmake.org/download/
