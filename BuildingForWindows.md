@@ -14,7 +14,8 @@ The software was validated on:
 - [CMake]\*3.13 or higher
 - Microsoft\* Visual Studio 2019, version 16.8 or later
 - (Optional) Intel® Graphics Driver for Windows* (26.20) [driver package].
-- Python 3.6 or higher for Inference Engine Python API wrapper
+- Python 3.6 or higher for OpenVINO Runtime Python API
+- [Git for Windows*]
 
 ### Build Steps
 
@@ -81,9 +82,9 @@ The software was validated on:
 - To switch off/on the CPU and GPU plugins, use the `cmake` options
   `-DENABLE_MKL_DNN=ON/OFF` and `-DENABLE_CLDNN=ON/OFF` respectively.
 
-- To build the Python API wrapper:
+- To build the OpenVINO Runtime Python API:
    1. First, install all additional packages (e.g., cython and opencv) listed in the
-     `\src\bindings\python\src\compatibility\openvino\requirements-dev.txt` file:
+     `src\bindings\python\src\compatibility\openvino\requirements-dev.txt` file:
       ```sh
       pip install -r requirements-dev.txt
       ```
@@ -95,9 +96,8 @@ The software was validated on:
      -DPYTHON_INCLUDE_DIR="C:\Program Files\Python37\include"
      ```
 
-- nGraph-specific compilation options:
-  `-DNGRAPH_ONNX_IMPORT_ENABLE=ON` enables the building of the nGraph ONNX importer.
-  `-DNGRAPH_DEBUG_ENABLE=ON` enables additional debug prints.
+- OpenVINO runtime compilation options:
+  `-DENABLE_OV_ONNX_FRONTEND=ON` enables the building of the ONNX importer.
 
 ### Building Inference Engine with Ninja* Build System
 
@@ -113,3 +113,4 @@ cmake --build . --config Release
 [OpenBLAS]:https://sourceforge.net/projects/openblas/files/v0.2.14/OpenBLAS-v0.2.14-Win64-int64.zip/download
 [mingw64\* runtime dependencies]:https://sourceforge.net/projects/openblas/files/v0.2.14/mingw64_dll.zip/download
 [driver package]:https://downloadcenter.intel.com/download/29335/Intel-Graphics-Windows-10-DCH-Drivers
+[Git for Windows*]:https://gitforwindows.org/
