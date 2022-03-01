@@ -17,7 +17,7 @@ The software was validated on:
 
 - [CMake]\* 3.13 or higher
 - Clang\* compiler from Xcode\* 10.1 or higher
-- Python\* 3.6 or higher for the Inference Engine Python API wrapper
+- Python\* 3.6 or higher for the OpenVINO Runtime Python API
 - libusb library (e.g., **brew install libusb**)
 
 ### Build Steps
@@ -60,7 +60,7 @@ You can use the following additional build options:
   [Use Custom OpenCV Builds](#use-custom-opencv-builds-for-inference-engine)
   section for details.
 
-- To build the Python API wrapper, you must enable the `-DENABLE_PYTHON=ON` option. To
+- To build the OpenVINO Runtime Python API, you must enable the `-DENABLE_PYTHON=ON` option. To
   specify an exact Python version, use the following suggested options:
    - If you installed Python through Homebrew* (recommended), please first install the following libraries and dependencies.
    ```sh
@@ -68,7 +68,7 @@ You can use the following additional build options:
    pip3 install cython
    pip3 install pyyaml
    ```
-   - Then, you can enable Python API Wrapper with the option enabled (please refer to step # 3 above). 
+   - Then, you can enable OpenVINO Runtime Python API with the option enabled (please refer to step # 3 above). 
    ```
    cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_PYTHON=ON \
    -DPYTHON_EXECUTABLE=/usr/local/Cellar/python@3.7/3.7.11/Frameworks/Python.framework/Versions/3.7/bin/python3.7m \
@@ -80,9 +80,8 @@ You can use the following additional build options:
    find /usr/ -name 'libpython*m.dylib'
    find /usr/ -type d -name python3.7m
    ```
-- nGraph-specific compilation options:
-  `-DNGRAPH_ONNX_IMPORT_ENABLE=ON` enables the building of the nGraph ONNX importer.
-  `-DNGRAPH_DEBUG_ENABLE=ON` enables additional debug prints.
+- OpenVINO runtime compilation options:
+  `-DENABLE_OV_ONNX_FRONTEND=ON` enables the building of the ONNX importer.
 
 
 [CMake]:https://cmake.org/download/
