@@ -14,7 +14,7 @@ The software was validated on:
 ### Software Requirements
 
 - [CMake]\* 3.13 or higher
-- GCC\* 4.8 or higher to build the Inference Engine
+- GCC\* 7.5 or higher to build OpenVINO Runtime
 - Python 3.6 or higher for OpenVINO Runtime Python API
 - (Optional) [Install Intel® Graphics Compute Runtime for OpenCL™ Driver package 19.41.14441].
 
@@ -39,7 +39,7 @@ The software was validated on:
    ```sh
    ./install_build_dependencies.sh
    ```
-3. By default, the build enables the Inference Engine GPU plugin to infer models
+3. By default, the build enables the OpenVINO Runtime GPU plugin to infer models
    on your Intel® Processor Graphics. This requires you to
    [Install Intel® Graphics Compute Runtime for OpenCL™ Driver package 19.41.14441]
    before running the build. If you don't want to use the GPU plugin, use the
@@ -49,7 +49,7 @@ The software was validated on:
 ```sh
   mkdir build && cd build
 ```
-5. Inference Engine uses a CMake-based build system. In the created `build`
+5. OpenVINO Runtime uses a CMake-based build system. In the created `build`
    directory, run `cmake` to fetch project dependencies and create Unix
    makefiles, then run `make` to build the project:
 ```sh
@@ -61,8 +61,8 @@ The software was validated on:
 
 You can use the following additional build options:
 
-- Threading Building Blocks (TBB) is used by default. To build the Inference
-  Engine with OpenMP\* threading, set the `-DTHREADING=OMP` option.
+- Threading Building Blocks (TBB) is used by default. To build the OpenVINO 
+  Runtime with OpenMP\* threading, set the `-DTHREADING=OMP` option.
 
 - Required versions of TBB and OpenCV packages are downloaded automatically by
   the CMake-based script. If you want to use the automatically downloaded
@@ -95,7 +95,7 @@ You can use the following additional build options:
 - To switch the CPU and GPU plugins off/on, use the `cmake` options
   `-DENABLE_MKL_DNN=ON/OFF` and `-DENABLE_CLDNN=ON/OFF` respectively.
 
-- nGraph-specific compilation options:
+- OpenVINO runtime compilation options:
   `-DENABLE_OV_ONNX_FRONTEND=ON` enables the building of the ONNX importer.
 
 
