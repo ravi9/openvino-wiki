@@ -2,7 +2,7 @@
 
 Spend your summer doing something interesting and valuable for the open-source community and join Google Summer of Code. Read more information about how the program works on [this page](https://summerofcode.withgoogle.com/).
 
-OpenVINO Toolkit is applying as a mentoring organization for 2022.
+OpenVINO Toolkit is a mentoring organization for 2022!
 
 ## Prerequisite task
 
@@ -223,6 +223,13 @@ Vitaly Tuzov, Alexander Nesterov
 **Difficulty:**
 Medium to hard
 
+## Contribution guidelines
+
+Contribution guidelines can be found [here](https://github.com/openvinotoolkit/openvino/blob/master/CONTRIBUTING.md).
+
 ## Contact us
 
-[Mailing list](https://lists.01.org/postorius/lists/gsoc.lists.01.org/)
+1. Subscribe to our GSoC [mailing list](https://lists.01.org/postorius/lists/gsoc.lists.01.org/)
+2. Start a new thread by sending an e-mail to [gsoc@lists.01.org](mailto:gsoc@lists.01.org)
+
+Please contact early to discuss your application with the mentor.
