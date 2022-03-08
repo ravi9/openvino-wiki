@@ -65,7 +65,7 @@ Medium
 ### 2. OpenVINO inference engine WASM build
 
 **Short description:**
-OpenVINO Inference Engine is a set of C++ libraries with C and Python bindings providing a common API to deliver high performance deep learning inference solutions on multi-platform including Windows, Linux, and Mac OS, we would like to extend these platforms by providing WASM build for the inference engine to enable the web/JS developers to use OpenVINO inference engine in the web browser.
+OpenVINO Inference Engine is a set of C++ libraries with C and Python bindings providing a common API to deliver high performance deep learning inference solutions on multi-platform including Windows, Linux, and Mac OS. We would like to extend these platforms by providing WASM build for the inference engine to enable the web/JS developers to use OpenVINO inference engine in the web browser.
 
 **Expected outcomes:**
 * WASM build of OpenVINO inference engine
