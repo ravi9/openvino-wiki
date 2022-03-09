@@ -64,6 +64,12 @@ You can use the following additional build options:
 - Threading Building Blocks (TBB) is used by default. To build the OpenVINO 
   Runtime with OpenMP\* threading, set the `-DTHREADING=OMP` option.
 
+- For IA32 operation systems, use [ia32.linux.toolchain.cmake](https://github.com/openvinotoolkit/openvino/blob/master/cmake/toolchains/ia32.linux.toolchain.cmake) CMake toolchain file:
+
+   ```sh
+   cmake -DCMAKE_TOOLCHAIN_FILE=<openvino_repo>/cmake/toolchains/ia32.linux.toolchain.cmake ..
+   ```
+
 - Required versions of TBB and OpenCV packages are downloaded automatically by
   the CMake-based script. If you want to use the automatically downloaded
   packages but you already have installed TBB or OpenCV packages configured in
