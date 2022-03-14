@@ -25,6 +25,7 @@ Some options also allow multiple prefixes: `OV` and `OV_GPU`. `OV` prefix is int
 
 ### List of parameters
 
+* `OV_GPU_Help`: Show help message of debug config.
 * `OV_GPU_Verbose`: Verbose execution. Currently, Verbose=1 and 2 are supported.
 * `OV_GPU_PrintMultiKernelPerf`: Print kernel latency for multi-kernel primitives. This is turned on by setting 1. Execution time is printed.
 * `OV_GPU_DisableUsm`: Disable the usage of usm (unified shared memory). This is turned on by setting 1.
@@ -35,7 +36,7 @@ Some options also allow multiple prefixes: `OV` and `OV_GPU`. `OV` prefix is int
 
 ## Dump execution graph
 The execution graph (also known as runtime graph) is a device specific graph after all transformations applied by the plugin. It's a very useful
-feature for performance analysis and it allows to quickly find a source of performance regressions. Execution graph is can be retrieved from the plugin
+feature for performance analysis and it allows to find a source of performance regressions quickly. Execution graph can be retrieved from the plugin
 using `GetExecGraphInfo()` method of `InferenceEngine::ExecutableNetwork` and then serialized as usual IR:
 ```cpp
     ExecutableNetwork exeNetwork;
@@ -44,12 +45,12 @@ using `GetExecGraphInfo()` method of `InferenceEngine::ExecutableNetwork` and th
     execGraphInfo.serialize("/path/to/serialized/exec/graph.xml");
 ```
 
-The capability to retrieve execution graph and store it on the disk is integratred into `benchmark_app`, this the execution graph can be simply dumped
-by setting additional parameter `-exec_graph_path exec_graph.xml` for `benchmark_app`. Output `xml` file has format similar to usual IR, but contains
+The capability to retrieve execution graph and store it on the disk is integrated into `benchmark_app`. The execution graph can be simply dumped
+by setting additional parameter `-exec_graph_path exec_graph.xml` for `benchmark_app`. Output `xml` file has a format similar to usual IR, but contains
 execution nodes with some runtime info such as:
 - Execution time of each node
 - Mapping between nodes in final device specific graph and original input graph operations
-- Ouput layout
+- Output layout
 - Output precision
 - Primitive type
 - Inference precision
@@ -117,9 +118,9 @@ converted into .csv format and then used to collect any kind of statistics (e.g.
 
 ## Graph dumps
 
-clDNN plugin allows to dump some info about intermediate stages in graph optimizer.
+intel_gpu plugin allows to dump some info about intermediate stages in graph optimizer.
 
-* You can dump source code from `OV_GPU_DumpGraphs` of debug config. For the usage of debug config, please see above section.
+* You can dump graphs with `OV_GPU_DumpGraphs` of debug config. For the usage of debug config, please see above section.
 
 * Alternative, you can also enable the dumps from the application source code:
 clDNN plugin has the special internal config option `graph_dumps_dir` which can be set from the user app via plugin config:
@@ -156,9 +157,11 @@ Main graph usually has `program_id = 0`, graphs with other `program_id` values a
 
 ## Sources dumps
 
-Since clDNN source tree contains only *templates* of the OpenCL™ kernels, then it's quite important to be able to get full kernels source code.
+Since intel_gpu source tree contains only *templates* of the OpenCL™ kernels, it's quite important to get full kernels source code.
 
-How to enable the dumps:
+* With debug_config, you can use `OV_GPU_DumpSources` option.
+
+* How to enable the dumps from source code:
 clDNN plugin has the special internal config option `sources_dumps_dir` which can be set from the user app via plugin config:
 ```cpp
 Core ie;
@@ -188,7 +191,7 @@ clDNN_program_${program_id}_part_${bucket_id}.cl
 
 Note: `program_id` here might differ from `program_id` for the graph dumps as it's just a static counter for enumerating incoming programs.
 
-Each file constains a bucket of kernels that are compiled together. In case of any compilation errors, clDNN will append compiler output
+Each file contains a bucket of kernels that are compiled together. In case of any compilation errors, intel_gpu plugin will append compiler output
 in the end of corresponding source file.
 
 If you want to find some specific layer, then you'll need to use Debug/RelWithDebInfo build or modify base jitter method to append `LayerID` in release build:
@@ -202,9 +205,9 @@ JitConstants KernelBase::MakeBaseParamsJitConstants(const base_params& params) c
 }
 ```
 
-## Intermediate buffer dumps
+## Layer in/out buffer dumps
 
-In some cases you might want to get actual values in each intermediate tensor to compare it with some reference blob. In order to do that we have
+In some cases you might want to get actual values in each layer execution to compare it with some reference blob. In order to do that we have
 `OV_GPU_DumpLayersPath` option in debug config:
 ```
 # As a prerequisite, enable ENABLE_DEBUG_CAPS from cmake configuration.
@@ -222,8 +225,6 @@ Each file contains single buffer in common planar format (`bfyx`, `bfzyx` or `bf
 ```
 shape: [b:1, f:1280, x:1, y:1, z:1, w:1, g:1] (count: 1280, original format: b_fs_yx_fsv16)
 ```
-
-Note: Usm is turned off when `OV_GPU_DumpLayersPath` is set. It is because GPU plugin does not support usm dump currently. 
 
 ## Run int8 model on gen9 HW
 
