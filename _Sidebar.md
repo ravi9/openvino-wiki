@@ -27,6 +27,7 @@
         * [[Source code structure|GPUPluginStructure]]
             * [[Basic data structures of gpu graph and overall flow]] 
         * [[Simplified workflow|GPUPluginWorkFlow]]
+            * [[Execution of Inference]]
         * [[Memory formats|GPUPluginMemoryFormats]]
         * [[Kernels and kernel selectors|GPUPluginKernels]]
         * [[GPU plugin operations enabling flow|GPUPluginOpsEnabling]]
