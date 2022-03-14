@@ -6,7 +6,7 @@ The main body of network execution is `cldnn::network::execute_impl`. [(link)](h
 In case of synchronous API call(i.e. `inferRequest->infer()`), waiting for completion of kernels is also required. It is called from `cldnn::network_output::get_memory()` function. [(link)](https://github.com/openvinotoolkit/openvino/blob/f48b23362965fba7e86b0077319ea0d7193ec429/src/plugins/intel_gpu/include/intel_gpu/graph/network.hpp#L31)
 
 ## Intermediate buffer dump during execution
-This function also contains some logic to dump intermediate buffer for debugging purpose. As it is related to memory usage, it deserves some description, too.
+`cldnn::network::execute_impl` also contains some logic to dump intermediate buffer for debugging purpose. As it is related to memory usage, it deserves some description, too.
 
 In order to dump intermediate buffer, we need to wait for the moment that the kernel is about to be called(for source buffer) or just called(for destination buffer). In other moments, we don't have the intermediate buffer as the buffers are reused from memory pool. [TBD]()
 
