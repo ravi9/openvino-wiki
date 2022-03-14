@@ -1,5 +1,5 @@
 ## Overall graph data structure
-![image](https://user-images.githubusercontent.com/25142117/156685475-9b31ddfd-3b00-47e8-a801-57f94c820215.png)
+[ ![](https://user-images.githubusercontent.com/25142117/156685475-9b31ddfd-3b00-47e8-a801-57f94c820215.png) ](https://user-images.githubusercontent.com/25142117/156685475-9b31ddfd-3b00-47e8-a801-57f94c820215.png)
 
 There are three levels of abstraction in the graph structures being used in the gpu plugin : *topology*, *program*, *network*. <br>
 The above [figure](https://user-images.githubusercontent.com/25142117/156685475-9b31ddfd-3b00-47e8-a801-57f94c820215.png) presents the overall data structures. 
