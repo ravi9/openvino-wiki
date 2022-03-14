@@ -1,4 +1,4 @@
-# Build OpenVINO™ Inference Engine for Windows* systems
+# Build OpenVINO™ OpenVINO™ Runtime for Windows* systems
 
 The software was validated on:
 - Microsoft\* Windows\* 10 (64-bit) with Visual Studio 2019
