@@ -15,33 +15,37 @@ OpenVINO GPU plugin is responsible for:
 
 As Intel GPU Plugin source code structure is shown below:
 ```
-- src/plugins/intel_gpu - root GPU plugin folder
- - include/intel_gpu/ - library internal headers
-   - graph/ - headers for internal graph representations
-   - primitives/ - primitive definitions for all supported operations
-   - runtime/ - abstraction for execution runtime entities (memory, device, engine, etc)
-   - plugin/ - definition of classes required for OpenVINO plugin API implementation
- - src/
-   - kernel_selector/ - OpenCL™ kernels (host+device parts) + utils for optimal kernels selection
-     - common/ - definition of some generic classes/structures used in kernel_selector
-     - core/ - kernels, kernel selectors, and kernel parameters definitions
-       - actual_kernels/ - host side part of OpenCL™ kernels including applicability checks, performance heuristics and Local/Global work-groups description
-       - cache/
-         - cache.json - tuning cache of the kernels which is redistributed with the plugin to improve kernels and kernel parameters selection for better performance
-       - cl_kernels/ - templates of GPU kernels (device part) written on OpenCL™
-       - common/ - utils for code generation and kernels selection
-   - plugin/ - implementation of OpenVINO plugin API
-     - ops/ - factories for conversion of OpenVINO operations to internal primitives
-   - graph/ - all sources related to internal graph representation
-     - impls/ - definition of primitive implementations
-     - graph_optimizer/ - passes for graph transformations
-     - include/ - headers with graph nodes
-   - runtime/ - static library with runtime implementation
-      - ocl/ - implementation for OpenCL™ based runtime
- - tests/ - unit tests
- - thirdparty/
-   - rapidjson/ - thirdparty [RapidJSON](https://github.com/Tencent/rapidjson) lib for reading json files (cache.json)
-   - onednn_gpu/ - [oneDNN](https://github.com/oneapi-src/oneDNN) submodule which may be used to accelerate some primitives
+src/plugins/intel_gpu                  - root GPU plugin folder
+             ├── include               
+             │   ├── intel_gpu         - library internal headers
+             │   │   ├── graph         - headers for internal graph representations
+             │   │   ├── plugin        - definition of classes required for OpenVINO plugin API implementation
+             │   │   ├── primitives    - primitive definitions for all supported operations
+             │   │   └── runtime       - abstraction for execution runtime entities (memory, device, engine, etc)
+             │   └── va
+             ├── src
+             │   ├── graph - all sources related to internal graph representation
+             │   │    ├── graph_optimizer - passes for graph transformations
+             │   │    ├── impls - definition of primitive implementations
+             │   │    └── include - headers with graph nodes
+             │   │ 
+             │   ├── kernel_selector - OpenCL™ kernels (host+device parts) + utils for optimal kernels selection
+             │   │   ├── common      - definition of some generic classes/structures used in kernel_selector
+             │   │   └── core        - kernels, kernel selectors, and kernel parameters definitions
+             │   │       ├── actual_kernels  - host side part of OpenCL™ kernels including applicability checks, performance heuristics and Local/Global work-groups description
+             │   │       ├── cache  - cache.json - tuning cache of the kernels which is redistributed with the plugin to improve kernels and kernel parameters selection for better performance
+             │   │       ├── cl_kernels - templates of GPU kernels (device part) written on OpenCL™
+             │   │       └── common - utils for code generation and kernels selection 
+             │   ├── plugin - implementation of OpenVINO plugin API
+             │   │    └── ops - factories for conversion of OpenVINO operations to internal primitives
+             │   └── runtime
+             │        └── ocl/ - implementation for OpenCL™ based runtime
+             ├── tests
+             │   ├── test_cases
+             │   └── test_utils
+             └── thirdparty
+                 ├── onednn_gpu - [oneDNN](https://github.com/oneapi-src/oneDNN) submodule which may be used to accelerate some primitives
+                 └── rapidjson  - thirdparty [RapidJSON](https://github.com/Tencent/rapidjson) lib for reading json files (cache.json)
 ```
 
 One last thing that is worth mentioning is functional tests which is located in the following location:
