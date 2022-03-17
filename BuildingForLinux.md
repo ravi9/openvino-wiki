@@ -88,7 +88,7 @@ You can use the following additional build options:
   1. First, install all additional packages (e.g., cython and opencv) listed in the
      `/src/bindings/python/src/compatibility/openvino/requirements-dev.txt` file:
      ```sh
-     pip install -r requirements-dev.txt
+     pip install -r requirements_dev.txt
      ```
   2. Second, enable the `-DENABLE_PYTHON=ON` in the CMake (Step #5) option above. To specify an exact Python version, use the following
      options:
