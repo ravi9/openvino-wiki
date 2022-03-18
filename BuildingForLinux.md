@@ -99,7 +99,7 @@ You can use the following additional build options:
      ```
 
 - To switch the CPU and GPU plugins off/on, use the `cmake` options
-  `-DENABLE_MKL_DNN=ON/OFF` and `-DENABLE_CLDNN=ON/OFF` respectively.
+  `-DENABLE_INTEL_CPU=ON/OFF` and `-DENABLE_INTEL_GPU=ON/OFF` respectively.
 
 - OpenVINO runtime compilation options:
   `-DENABLE_OV_ONNX_FRONTEND=ON` enables the building of the ONNX importer.
