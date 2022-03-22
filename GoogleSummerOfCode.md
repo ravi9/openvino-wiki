@@ -223,6 +223,46 @@ Vitaly Tuzov, Alexander Nesterov
 **Difficulty:**
 Medium to hard
 
+### 9. New Edge inference use-cases for OpenVINO integration with TensorFlow 
+
+**Short description:**
+[OpenVINO integration with TensorFlow](https://github.com/openvinotoolkit/openvino_tensorflow/) is an open-source product for TensorFlow developers who want to accelerate their inference on a variety of Intel compute devices such as CPU, iGPU, VPU ([NCS2](https://ark.intel.com/content/www/us/en/ark/products/140109/intel-neural-compute-stick-2.html)), etc.  In this project, the developer will create and deploy OpenVINO integration with TensorFlow-based Jupyter notebooks for Vision/NLP (Huggingface etc)  model on Intel devices. The goal is to demonstrate the acceleration of these models as well as ease of adaptation on different Intel devices. It is encouraged to create/extend docker images to deploy this solution on Intel devices in different environments. 
+
+**Expected outcomes:**
+Jupyter notebook containing inference scripts for selected Vision/NLP models. Docker files/images which are used to demonstrate model inference using OpenVINO integration with TensorFlow. 
+
+**Skills required/preferred:**
+Basic DL concepts, TensorFlow DL model inference, C++ and Python Programming knowledge
+
+**Mentors:**
+Chandrakant Khandelwal, Ritesh Rajore
+
+**Size of project:**
+175 hours
+
+**Difficulty:**
+Medium
+
+### 10. Multi-channel streaming pipeline with inference application using OpenVINO integration with TensorFlow on Intel device.
+
+**Short description:**
+[OpenVINO integration with TensorFlow](https://github.com/openvinotoolkit/openvino_tensorflow/) is an open-source product for TensorFlow developers who want to accelerate their inference on a variety of Intel compute devices such as CPU, iGPU, VPU ([NCS2](https://ark.intel.com/content/www/us/en/ark/products/140109/intel-neural-compute-stick-2.html)) etc. In this project, developers are expected to create an end-to-end application that can demonstrate streaming from multiple image/video sources and run OpenVINO integration with TensorFlow-based inference on the same multi-stream input. It is expected to design and implement an application that can effectively use available multi-core Intel CPUs for latency/throughput mode. Task partitioning and scheduling inference applications will be important aspects of this project. It is encouraged to create or use existing docker files/images to demonstrate the scalability of the solution.
+
+**Expected outcomes:**
+Python application  for streaming from camera/video-files, a python script that can launch multiple inference instances, performance data collection, docket file/images
+
+**Skills required/preferred:**
+DL basics, TensorFlow DL model inference, C++ and Python Programming knowledge
+
+**Mentors:**
+Suryaprakash Shanmugam, Ritesh Rajore
+
+**Size of project:**
+175 hours
+
+**Difficulty:**
+Medium
+
 ## Contribution guidelines
 
 Contribution guidelines can be found [here](https://github.com/openvinotoolkit/openvino/blob/master/CONTRIBUTING.md).
