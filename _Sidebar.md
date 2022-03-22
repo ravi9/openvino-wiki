@@ -23,6 +23,7 @@
         * [[Performance analysis using ITT counters|PerformanceAnalysisUsingITTcounters]]
         * [[Intel SDE|CPUPluginIntelSoftwareDevelopmentEmulator]]
         * [[Runtime parameters cache|CPURuntimeParametersCache]]
+        * [[Internal CPU Plugin Optimizations|Internal CPU Plugin Optimizations]]
     * [[GPU plugin|GPUPluginDevelopersDocs]]
         * [[Source code structure|GPUPluginStructure]]
             * [[Basic data structures of gpu graph and overall flow]] 
