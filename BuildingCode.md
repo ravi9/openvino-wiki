@@ -302,6 +302,7 @@ add_executable(ov_c_app main.c)
 target_link_libraries(ov_c_app PRIVATE openvino::runtime::c)
 ```
 </p>
+</details>
 
 
 
