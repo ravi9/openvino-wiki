@@ -9,10 +9,10 @@
   - [[macOS* Systems|BuildingForMacOS]]
   - [[Android* Systems|BuildingForAndroid]]
   - [[Raspbian Stretch* OS|BuildingForRaspbianStretchOS]]
-- [Building in a Docker image](#building-in-a-docker-image)
 - [Installing](#installing)
-- [Use Custom OpenCV Builds for Inference Engine](#use-custom-opencv-builds-for-inference-engine)
-- [Add Inference Engine to Your Project](#add-inference-engine-to-your-project)
+- [Adding OpenVINO Runtime (Inference Engine) to Your Project](#adding-openvino-runtime-inference-engine-to-your-project)
+- [Building in a Docker image](#building-in-a-docker-image)
+- [Use Custom OpenCV Builds](#use-custom-opencv-builds-for-inference-engine)
 - [Next Steps](#next-steps)
 - [Additional Resources](#additional-resources)
 
@@ -43,18 +43,19 @@ The open source version of Inference Engine includes the following plugins:
 
 > **NOTE**: Please, refer to a [[dedicated guide|https://github.com/openvinotoolkit/openvino/wiki/CMakeOptionsForCustomCompilation]] with CMake options which control OpenVINO build if you need a custom build.
 
-## Building in a Docker image
-You can also build Intel® Distribution of OpenVINO™ toolkit in a Docker image by following this [guide](https://github.com/openvinotoolkit/docker_ci/tree/master/dockerfiles/ubuntu18/build_custom). 
-
 ## Installing
 
 Once project is built you can install OpenVINO™ Inference Engine into custom location:
  
 ```
-cmake --install . --prefix <INSTALLDIR>
+cmake --install <BUILDDIR> --prefix <INSTALLDIR>
 ```
 
 **Checking your installation:**
+
+<details>
+<summary>For versions prior to 2022.1</summary>
+<p>
 
 1. Obtaining Open Moldel Zoo tools and models
 
@@ -87,7 +88,7 @@ set OpenCV_DIR=/path/to/opencv_install/cmake
 
 To check your installation go to the demo directory and run Classification Demo:
 
-Linux:
+Linux and macOS:
 ```sh
 cd <INSTALLDIR>/deployment_tools/demo
 ./demo_squeezenet_download_convert_run.sh
@@ -99,10 +100,7 @@ cd <INSTALLDIR>\deployment_tools\demo
 demo_squeezenet_download_convert_run.bat
 ```
 
-<details>
-<summary>Result:</summary>
-<p>
-
+Result:
 ```
 Top 10 results:
 
@@ -123,10 +121,191 @@ classid probability label
 
 [ INFO ] Execution successful
 ```
+
 </p>
 </details>
 
-## Use Custom OpenCV Builds for Inference Engine
+
+<details open>
+<summary> For 2022.1 and after</summary>
+<p>
+
+1. Build samples
+
+To build the C++ sample applications, run the following commands:
+
+Linux and macOS:
+```sh
+cd <INSTALLDIR>/samples/cpp
+./build_samples.sh
+```
+
+Windows:
+```sh
+cd <INSTALLDIR>\samples\cpp
+build_samples_msvc.bat
+```
+
+2. Install OpenVINO Development Tools
+
+> **NOTE**: To build OpenVINO Development Tools (Model Optimizer, Post-Training Optimization Tool, Model Downloader and other Open Model Zoo tools) wheel package locally you are required to use CMake option: `-DENABLE_WHEEL=ON`.
+
+To install OpenVINO Development Tools to work with Caffe models, execute the following commands:
+
+Linux and macOS:
+
+```sh
+#setup virtual envrinment
+python3 -m venv openvino_env
+source openvino_env/bin/activate
+pip install pip --upgrade
+
+#install local package from install directory
+pip install openvino_dev-<version>-py3-none-any.whl[caffe]  --find-links=<INSTALLDIR>/tools
+```
+
+Windows:
+```bat
+rem setup virtual envrinment
+python -m venv openvino_env
+openvino_env\Scripts\activate.bat
+pip install pip --upgrade
+
+rem install local package from install directory
+cd <INSTALLDIR>\tools
+pip install openvino_dev-<version>-py3-none-any.whl[caffe] --find-links=<INSTALLDIR>\tools
+```
+
+3.  Download the Models
+
+Download the following model to run the Image Classification Sample:
+
+Linux and macOS:
+```sh
+omz_downloader --name googlenet-v1 --output_dir ~/models
+```
+
+Windows:
+```bat
+omz_downloader --name googlenet-v1 --output_dir %USERPROFILE%\Documents\models
+```
+
+4. Convert the Model with Model Optimizer
+
+Linux and macOS:
+```sh
+mkdir ~/ir
+mo --input_model ~/models/public/googlenet-v1/googlenet-v1.caffemodel --data_type FP16 --output_dir ~/ir
+```
+Windows:
+```bat
+mkdir %USERPROFILE%\Documents\ir
+mo --input_model %USERPROFILE%\Documents\models\public\googlenet-v1\googlenet-v1.caffemodel --data_type FP16 --output_dir %USERPROFILE%\Documents\ir
+```
+
+5. Run Inference on the Sample
+
+Set up the OpenVINO environment variables:
+
+Linux and macOS:
+```sh
+source <INSTALLDIR>/setupvars.sh
+```
+
+Windows:
+```bat
+<INSTALLDIR>\setupvars.bat
+```
+
+The following commands run the Image Classification Code Sample using the [`dog.bmp`](https://storage.openvinotoolkit.org/data/test_data/images/224x224/dog.bmp) file as an input image, the model in IR format from the `ir` directory, and on different hardware devices:
+
+Linux and macOS:
+
+```sh
+cd ~/inference_engine_cpp_samples_build/intel64/Release
+./classification_sample_async -i ~/Downloads/dog.bmp -m ~/ir/googlenet-v1.xml -d CPU
+```
+
+Windows:
+
+```bat
+cd  %USERPROFILE%\Documents\Intel\OpenVINO\inference_engine_samples_build\intel64\Release
+.\classification_sample_async.exe -i %USERPROFILE%\Downloads\dog.bmp -m %USERPROFILE%\Documents\ir\googlenet-v1.xml -d CPU
+```
+
+When the sample application is complete, you see the label and confidence for the top 10 categories on the display:
+
+```
+Top 10 results:
+
+Image dog.bmp
+
+classid probability
+------- -----------
+156     0.6875963
+215     0.0868125
+218     0.0784114
+212     0.0597296
+217     0.0212105
+219     0.0194193
+247     0.0086272
+157     0.0058511
+216     0.0057589
+154     0.0052615
+
+```
+
+</p>
+</details>
+
+## Adding OpenVINO Runtime (Inference Engine) to Your Project
+
+<details>
+<summary>For versions prior to 2022.1</summary>
+<p>
+
+For CMake projects, set the `InferenceEngine_DIR` and when you run CMake tool:
+
+```sh
+cmake -DInferenceEngine_DIR=/path/to/openvino/build/ .
+```
+
+Then you can find Inference Engine by [`find_package`]:
+
+```cmake
+find_package(InferenceEngine REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE ${InferenceEngine_LIBRARIES})
+```
+</p>
+</details>
+
+
+<details open>
+<summary>For 2022.1 and after</summary>
+<p>
+
+
+For CMake projects, set the `OpenVINO_DIR` and when you run CMake tool:
+
+```sh
+cmake -DOpenVINO_DIR=<INSTALLDIR>/runtime/cmake .
+```
+
+Then you can find OpenVINO Runtime (Inference Engine) by [`find_package`]:
+
+```cmake
+find_package(OpenVINO REQUIRED)
+add_executable(ov_app main.cpp)
+target_link_libraries(ov_app PRIVATE openvino::runtime)
+
+add_executable(ov_c_app main.c)
+target_link_libraries(ov_c_app PRIVATE openvino::runtime::c)
+```
+</p>
+
+
+
+## Use Custom OpenCV Builds
 
 > **NOTE**: The recommended and tested version of OpenCV is 4.4.0.
 
@@ -157,24 +336,12 @@ before running the Inference Engine build:
 2. Disable the package automatic downloading with using the `-DENABLE_OPENCV=OFF`
    option for CMake-based build script for Inference Engine.
 
-## Add Inference Engine to Your Project
-
-For CMake projects, set the `InferenceEngine_DIR` when you run CMake tool:
-
-```sh
-cmake -DInferenceEngine_DIR=/path/to/openvino/build/ .
-```
-
-Then you can find Inference Engine by [`find_package`]:
-
-```cmake
-find_package(InferenceEngine REQUIRED)
-target_link_libraries(${PROJECT_NAME} PRIVATE ${InferenceEngine_LIBRARIES})
-```
+## Building in a Docker image
+You can also build Intel® Distribution of OpenVINO™ toolkit in a Docker image by following this [guide](https://github.com/openvinotoolkit/docker_ci/tree/master/dockerfiles/ubuntu18/build_custom). 
 
 ## Next Steps
 
-Congratulations, you have built the Inference Engine. To get started with the
+Congratulations, you have built the OpenVINO Runtime (Inference Engine). To get started with the
 OpenVINO™, proceed to the Get Started guides:
 
 * [Get Started with the OpenVINO™ on Linux*](GettingStarted)
