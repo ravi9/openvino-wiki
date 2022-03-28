@@ -206,6 +206,10 @@ JitConstants KernelBase::MakeBaseParamsJitConstants(const base_params& params) c
 }
 ```
 
+When source is dumped, it actually contains huge amount of macros(`#define`). For readability, you can run c preprocessor to apply the macros.
+`$ cpp dumped_source.cl > clean_source.cl`
+
+
 ## Layer in/out buffer dumps
 
 In some cases you might want to get actual values in each layer execution to compare it with some reference blob. In order to do that we have
