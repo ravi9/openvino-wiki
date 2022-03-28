@@ -9,7 +9,9 @@ are available by default, but some others might require plugin recompilation
 ### How to use it
 First, this feature should be enabled from cmake configuration `ENABLE_DEBUG_CAPS`. When openvino is released, it is turned off by default.
 The parameters should be set from environment variable when calling inference engine API.
+
 $ `OV_GPU_Verbose=1 ./benchmark_app ...      # Run benchmark_app with OV_GPU_Verbose option`
+
 $ `OV_GPU_DumpLayersPath="cldnn/" ./benchmark_app ...   # Run benchmark_app and store intermediate buffers into cldnn/ directory.`
 
 ### Options syntax
