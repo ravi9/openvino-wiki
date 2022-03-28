@@ -207,6 +207,7 @@ JitConstants KernelBase::MakeBaseParamsJitConstants(const base_params& params) c
 ```
 
 When source is dumped, it actually contains huge amount of macros(`#define`). For readability, you can run c preprocessor to apply the macros.
+
 `$ cpp dumped_source.cl > clean_source.cl`
 
 
