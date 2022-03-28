@@ -18,20 +18,20 @@
 
 ## Introduction
 
-The Inference Engine can infer models in different formats with various input
-and output formats.
+The OpenVINO Runtime can infer models in different formats with various input and output formats.
 
 The open source version of Inference Engine includes the following plugins:
 
 | PLUGIN               | DEVICE TYPES |
 | ---------------------| -------------|
-| CPU plugin           | Intel® Xeon® with Intel® AVX2 and AVX512, Intel® Core™ Processors with Intel® AVX2, Intel® Atom® Processors with Intel® SSE |
-| GPU plugin           | Intel® Processor Graphics, including Intel® HD Graphics and Intel® Iris® Graphics |
-| GNA plugin           | Intel® Speech Enabling Developer Kit, Amazon Alexa\* Premium Far-Field Developer Kit, Intel® Pentium® Silver processor J5005, Intel® Celeron® processor J4005, Intel® Core™ i3-8121U processor |
-| MYRIAD plugin        | Intel® Neural Compute Stick 2 powered by the Intel® Movidius™ Myriad™ X |
-| Heterogeneous plugin | Heterogeneous plugin enables computing for inference on one network on several Intel® devices. |
-| [MULTI plugin](https://docs.openvinotoolkit.org/latest/openvino_docs_IE_DG_supported_plugins_MULTI.html) | Automatic inference on multiple devices simultaneously|
-| [AUTO plugin](https://docs.openvinotoolkit.org/latest/openvino_docs_IE_DG_supported_plugins_AUTO.html) | Automatic device selection |
+| [CPU plugin](https://docs.openvino.ai/latest/openvino_docs_OV_UG_supported_plugins_CPU.html)           | Intel® Xeon® with Intel® AVX2 and AVX512, Intel® Core™ Processors with Intel® AVX2, Intel® Atom® Processors with Intel® SSE |
+| [GPU plugin](https://docs.openvino.ai/latest/openvino_docs_OV_UG_supported_plugins_GPU.html)           | Intel® Processor Graphics, including Intel® HD Graphics and Intel® Iris® Graphics |
+| [GNA plugin](https://docs.openvino.ai/latest/openvino_docs_OV_UG_supported_plugins_GNA.html)           | Intel® Speech Enabling Developer Kit, Amazon Alexa\* Premium Far-Field Developer Kit, Intel® Pentium® Silver processor J5005, Intel® Celeron® processor J4005, Intel® Core™ i3-8121U processor |
+| [MYRIAD plugin](https://docs.openvino.ai/latest/openvino_docs_OV_UG_supported_plugins_MYRIAD.html)        | Intel® Neural Compute Stick 2 powered by the Intel® Movidius™ Myriad™ X |
+| [Heterogeneous plugin](https://docs.openvino.ai/latest/openvino_docs_OV_UG_Hetero_execution.html) | Heterogeneous execution enables computing for inference on one network on several Intel® devices. |
+| [MULTI plugin](https://docs.openvino.ai/latest/openvino_docs_OV_UG_Running_on_multiple_devices.html) | Automatic inference on multiple devices simultaneously|
+| [AUTO plugin](https://docs.openvino.ai/latest/openvino_docs_IE_DG_supported_plugins_AUTO.html) | Automatic device selection |
+| [BATCH plugin](https://docs.openvino.ai/latest/openvino_docs_OV_UG_Automatic_Batching.html) | Automatic batching |
 
 ## Building for different OSes
 
@@ -45,7 +45,7 @@ The open source version of Inference Engine includes the following plugins:
 
 ## Installing
 
-Once project is built you can install OpenVINO™ Inference Engine into custom location:
+Once project is built you can install OpenVINO™ Runtime into custom location:
  
 ```
 cmake --install <BUILDDIR> --prefix <INSTALLDIR>
@@ -57,7 +57,7 @@ cmake --install <BUILDDIR> --prefix <INSTALLDIR>
 <summary>For versions prior to 2022.1</summary>
 <p>
 
-1. Obtaining Open Moldel Zoo tools and models
+1. Obtaining Open Model Zoo tools and models
 
 To have ability run samples and demo you need to clone Open Model Zoo repository and copy folder under `./deployment_tools` in your install directory:
 
