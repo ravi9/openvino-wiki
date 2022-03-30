@@ -66,6 +66,9 @@ This document provides description and default values for CMake options that can
     * [Inference Engine thirdparty pugixml] is used by default.
 * `ENABLE_SYSTEM_PROTOBUF` use [protobuf] installed on the system:
     * `OFF` is default.
+* `ENABLE_SYSTEM_TBB` use TBB installed on the system:
+    * `ON` is on Ubuntu OSes, if `libtbb-dev` Debian package is installed.
+    * `OFF` is in other cases.
 
 ## Options affecting binary size
 
