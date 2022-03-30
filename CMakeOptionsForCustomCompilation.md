@@ -27,7 +27,9 @@ This document provides description and default values for CMake options that can
         * Depends on `ENABLE_INTEL_MYRIAD_COMMON`.
     * `ENABLE_HETERO` enables HETERO plugin build:
         * `ON` is default.
-    * `ENABLE_MULTI` enables AUTO / MULTI plugin build:
+    * `ENABLE_MULTI` enables MULTI plugin build:
+        * `ON` is default.
+    * `ENABLE_AUTO` enables AUTO plugin build:
         * `ON` is default.
     * `ENABLE_TEMPLATE` enables TEMPLATE plugin build:
         * `ON` is default.
