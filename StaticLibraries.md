@@ -57,7 +57,7 @@ cmake -DBUILD_SHARED_LIBS=OFF <all other CMake options> <openvino_sources root>
 Then, use the usual CMake 'build' command:
 
 ```sh
-cmake --build . --target ov_runtime --config Release -j12
+cmake --build . --target openvino --config Release -j12
 ```
 
 Then, the installation step:
