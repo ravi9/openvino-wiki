@@ -36,7 +36,7 @@ Your application should consist of the following parts:
     5. Why should we pick you?
 4. Tasks
     1. Screenshot of **running** object detection ([401-object-detection-webcam notebook](https://github.com/openvinotoolkit/openvino_notebooks/blob/main/notebooks/401-object-detection-webcam/401-object-detection.ipynb)) – please take a screenshot for the last code cell
-    2. Link to your pull request (for the prerequisite task – the top part of this document)
+    2. Link to your pull request (for the prerequisite task – the top part of this document), even if it is already merged or closed
 
 Proposal examples can be found [here](https://google.github.io/gsocguides/student/proposal-example-1) and [here](https://google.github.io/gsocguides/student/proposal-example-2). Please contact early to discuss your application with the mentor.
 
@@ -243,7 +243,7 @@ Chandrakant Khandelwal, Ritesh Rajore
 **Difficulty:**
 Medium
 
-### 10. Multi-channel streaming pipeline with inference application using OpenVINO integration with TensorFlow on Intel device.
+### 10. Multi-channel streaming pipeline with inference application using OpenVINO integration with TensorFlow on Intel device
 
 **Short description:**
 [OpenVINO integration with TensorFlow](https://github.com/openvinotoolkit/openvino_tensorflow/) is an open-source product for TensorFlow developers who want to accelerate their inference on a variety of Intel compute devices such as CPU, iGPU, VPU ([NCS2](https://ark.intel.com/content/www/us/en/ark/products/140109/intel-neural-compute-stick-2.html)) etc. In this project, developers are expected to create an end-to-end application that can demonstrate streaming from multiple image/video sources and run OpenVINO integration with TensorFlow-based inference on the same multi-stream input. It is expected to design and implement an application that can effectively use available multi-core Intel CPUs for latency/throughput mode. Task partitioning and scheduling inference applications will be important aspects of this project. It is encouraged to create or use existing docker files/images to demonstrate the scalability of the solution.
