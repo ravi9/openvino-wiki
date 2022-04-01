@@ -27,7 +27,7 @@ The software was validated on:
    on your Intel® Processor Graphics. This requires you to download and install
    the Intel® Graphics Driver for Windows (26.20) [driver package] before
    running the build. If you don't want to use the GPU plugin, use the
-   `-DENABLE_CLDNN=OFF` CMake build option and skip the installation of the
+   `-DENABLE_INTEL_GPU=OFF` CMake build option and skip the installation of the
    Intel® Graphics Driver.
 3. Create build directory:
     ```sh
@@ -80,7 +80,7 @@ The software was validated on:
   section for details.
 
 - To switch off/on the CPU and GPU plugins, use the `cmake` options
-  `-DENABLE_MKL_DNN=ON/OFF` and `-DENABLE_CLDNN=ON/OFF` respectively.
+  `-DENABLE_INTEL_CPU=ON/OFF` and `-DENABLE_INTEL_GPU=ON/OFF` respectively.
 
 - To build the OpenVINO Runtime Python API:
    1. First, install all additional packages (e.g., cython and opencv) listed in the
