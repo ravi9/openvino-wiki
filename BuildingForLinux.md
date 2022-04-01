@@ -43,7 +43,7 @@ The software was validated on:
    on your Intel® Processor Graphics. This requires you to
    [Install Intel® Graphics Compute Runtime for OpenCL™ Driver package 19.41.14441]
    before running the build. If you don't want to use the GPU plugin, use the
-   `-DENABLE_CLDNN=OFF` CMake build option and skip the installation of the
+   `-DENABLE_INTEL_GPU=OFF` CMake build option and skip the installation of the
    Intel® Graphics Compute Runtime for OpenCL™ Driver.
 4. Create a build folder:
 ```sh
