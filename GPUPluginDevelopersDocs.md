@@ -11,3 +11,4 @@ GPU plugin in [OpenVINO toolkit](https://github.com/openvinotoolkit/openvino) su
 - [[GPU plugin operations enabling flow|GPUPluginOpsEnabling]]
 - [[Debug utils|GPUPluginDebugUtils]]
 - [[OpenCL Runtime issues troubleshooting|GPUPluginDriverTroubleshooting]]
+- [[GPU plugin unit test|GPU plugin unit test]]
