@@ -1,8 +1,7 @@
-GPU plugin has two type tests: first is functional test s and second is unit tests.
+GPU plugin has two type tests: first one is functional tests and second one is unit tests.
 
 - The functional test is testing single layer, behavior, sub graph and low precision transformation on inference engine level for various layout and data types such as fp16 and fp32.
-- The unit test is testing cldnn primitive and core type modules on GPU plugin level. Unlike functional test, it is possible to test by explicitly specifying the format of the input such as `bfyx` or `b_fs_yx_fsv16`
-
+- The unit test is testing cldnn primitive and core type modules on GPU plugin level. Unlike functional test, it is possible to test by explicitly specifying the format of the input such as `bfyx` or `b_fs_yx_fsv16`. This documentation is about this type of test.
 
 # Structure of unit test
 
@@ -39,8 +38,6 @@ openvino/src/plugins/intel_gpu/tests	- root of Intel GPU unit test
 - ### test_cases
   - It is mainly checking that cldnn primitives and topology creation are working as designed
   - It also checks configurations for OpenCL functionalities such as cl_cache, cl_mem allocation and cl_command_queue modes
-    <!-- `[Done][Mingyu] What do you mean by cache? is it clcache? => yes` -->
-    <!-- `[Done][Mingyu] Why do you mean by border? is it a primitive? Then you don't need to mention it here.` Yes, border is prim -->
 
 - ### module_tests 
   - Unit tests for fundamental core modules such as ocl_user_events, format, layout, and usm memory
