@@ -17,11 +17,8 @@ openvino/src/plugins/intel_gpu/tests	- root of Intel GPU unit test
 ```
 
 - ### fusions
-  - Fusion is an algorithms that fuse several operations into one optimized operation. for example, fusing convolution and simple Layers merge of a convolution layer and any of the simple layers listed below:
-    - Activation: ReLU, ELU, Sigmoid, Clamp, and others
-    - Eltwise: Sum, Prod(Multiply)
-    - Quantize, Scale
-  - Fusion unit tests checks whether the fusion is done as expected . <!--[Taylor] Tests to check whether the fusion is done as expected.  -->
+  - Fusion is an algorithm that fuse several operations into one optimized operation. For example, two nodes of `conv -> relu` may be fused into single node of `conv`.
+  - Fusion unit tests checks whether the fusion is done as expected.
   - fusion_test_common.cpp
      - The base class for fusing test, i.e., [BaseFusingTest](https://github.com/openvinotoolkit/openvino/blob/aded1a2c703fab75a93aaffbf5d7b0585a9d3ac4/src/plugins/intel_gpu/tests/fusions/fusion_test_common.hpp#L19), is implemented here. It tests whether the fusing is successful or not by comparing the execution results of the two networks, one is the fused network, the other is non fused network for same topology.
        - [BaseFusingTest](https://github.com/openvinotoolkit/openvino/blob/aded1a2c703fab75a93aaffbf5d7b0585a9d3ac4/src/plugins/intel_gpu/tests/fusions/fusion_test_common.hpp#L19) has an important method called *`compare()`*. 
