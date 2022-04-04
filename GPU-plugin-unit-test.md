@@ -20,8 +20,8 @@ openvino/src/plugins/intel_gpu/tests	- root of Intel GPU unit test
   - Fusion is an algorithm that fuse several operations into one optimized operation. For example, two nodes of `conv -> relu` may be fused into single node of `conv`.
   - Fusion unit tests checks whether the fusion is done as expected.
   - fusion_test_common.cpp
-     - The base class for fusing test, i.e., [BaseFusingTest](https://github.com/openvinotoolkit/openvino/blob/aded1a2c703fab75a93aaffbf5d7b0585a9d3ac4/src/plugins/intel_gpu/tests/fusions/fusion_test_common.hpp#L19), is implemented here. It tests whether the fusing is successful or not by comparing the execution results of the two networks, one is the fused network, the other is non fused network for same topology.
-       - [BaseFusingTest](https://github.com/openvinotoolkit/openvino/blob/aded1a2c703fab75a93aaffbf5d7b0585a9d3ac4/src/plugins/intel_gpu/tests/fusions/fusion_test_common.hpp#L19) has an important method called *`compare()`*. 
+     - The base class for fusing test, i.e., [BaseFusingTest](https://github.com/openvinotoolkit/openvino/blob/master/src/plugins/intel_gpu/tests/fusions/fusion_test_common.hpp#L19), is implemented here. It tests whether the fusing is successful or not by comparing the execution results of the two networks, one is the fused network, the other is non fused network for same topology.
+       - [BaseFusingTest](https://github.com/openvinotoolkit/openvino/blob/master/src/plugins/intel_gpu/tests/fusions/fusion_test_common.hpp#L19) has an important method called *`compare()`*. 
        - *`compare()`* method has the following three tasks
             - Execute two networks (fused network and not fused network)
             - Compare the actual  number of executed primitives with the expected number of executed primitives in test params
@@ -153,7 +153,7 @@ GPU unit tests are using 2 types of test macros(**TEST** and **TEST_P**)  in  [G
 ## fusions
 
 - It is implemented based on **TEST_P** because there are many cases where multiple layouts are tested in the same topology
-- If the fusing test class is already existed, you can use it. otherwise, you should make new fusing test class which is inherited [BaseFusingTest](https://github.com/openvinotoolkit/openvino/blob/aded1a2c703fab75a93aaffbf5d7b0585a9d3ac4/src/plugins/intel_gpu/tests/fusions/fusion_test_common.hpp#L19)
+- If the fusing test class is already existed, you can use it. otherwise, you should make new fusing test class which is inherited [BaseFusingTest](https://github.com/openvinotoolkit/openvino/blob/master/src/plugins/intel_gpu/tests/fusions/fusion_test_common.hpp#L19)
   - The new fusing test class should create `execute()` method which creates fused / non fused networks and calls *`compare`* method after setting input
 - Create test case using **TEST_P**
   - You can make the desired networks using create_topologies. 
