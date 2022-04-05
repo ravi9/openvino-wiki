@@ -5,7 +5,7 @@ GPU plugin in [OpenVINO toolkit](https://github.com/openvinotoolkit/openvino) su
 - [[Source code structure|GPUPluginStructure]]
     - [[Basic data structures of gpu graph and overall flow]]
 - [[Simplified workflow|GPUPluginWorkFlow]]
-    - [[Optimization Passes]
+    - [[Optimization Passes]]
     - [[Execution of Inference]]
 - [[Memory formats|GPUPluginMemoryFormats]]
 - [[Kernels and kernel selectors|GPUPluginKernels]]
