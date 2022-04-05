@@ -11,9 +11,9 @@ The software was validated on:
   - [Building Inference Engine with Ninja* Build System](#building-inference-engine-with-ninja-build-system)
 
 ### Software Requirements
-- [CMake]\*3.13 or higher
+- [CMake]\* 3.14 or higher
 - Microsoft\* Visual Studio 2019, version 16.8 or later
-- (Optional) Intel® Graphics Driver for Windows* (26.20) [driver package].
+- (Optional) Intel® Graphics Driver for Windows* (30.0) [driver package].
 - Python 3.6 or higher for OpenVINO Runtime Python API
 - [Git for Windows*]
 
@@ -112,5 +112,5 @@ cmake --build . --config Release
 [MKL-DNN repository for Windows]:(https://github.com/intel/mkl-dnn/releases/download/v0.19/mklml_win_2019.0.5.20190502.zip)
 [OpenBLAS]:https://sourceforge.net/projects/openblas/files/v0.2.14/OpenBLAS-v0.2.14-Win64-int64.zip/download
 [mingw64\* runtime dependencies]:https://sourceforge.net/projects/openblas/files/v0.2.14/mingw64_dll.zip/download
-[driver package]:https://downloadcenter.intel.com/download/29335/Intel-Graphics-Windows-10-DCH-Drivers
+[driver package]:https://www.intel.com/content/www/us/en/download/19344/intel-graphics-windows-dch-drivers.html
 [Git for Windows*]:https://gitforwindows.org/
