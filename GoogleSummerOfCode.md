@@ -54,7 +54,7 @@ Android demo application with object detection functionality. Any model (or seve
 Practical experience with developing Java apps for Android, at least a basic understanding of computer vision and deep learning technologies, enough to run a network and make it run at real-time speed
 
 **Mentors:**
-Alexander Nesterov
+Junwen Wu
 
 **Size of project:**
 350 hours
@@ -96,7 +96,7 @@ Minimal working OpenVINO plugin which is able to perform inference via BNNS back
 C++, objective-c/swift, the interaction of C++ and objective-c/swift, system programming, deep learning frameworks, graph optimizations, multi-threading programming, gtest, cross-platform make
 
 **Mentors:**
-Ilya Lavrenov
+Nico Galoppo
 
 **Size of project:**
 350 hours
@@ -135,7 +135,7 @@ Working examples for Object detection and BERT question answering working with O
 C++ knowledge, basic knowledge of OpenVINO framework, experience with Google MediaPipe is a plus
 
 **Mentors:**
-Fedor Zharinov, Vladimir Zlobin
+Patrick Foley
 
 **Size of project:**
 350 hours
@@ -175,7 +175,7 @@ DL model that generates synthetic data based on the text input.
 DL model training, understanding of GAN, VAE architectures
 
 **Mentors:**
-Alexander Kozlov, Lyubov Talamanova
+Nooshin Nabizadeh
 
 **Size of project:**
 350 hours
@@ -195,33 +195,13 @@ Pull-request with the tutorial into PyTorch Image Models.
 DL basics, understanding of ML model optimization 
 
 **Mentors:**
-Alexander Kozlov
+Pradeep Sakhamoori
 
 **Size of project:**
 175 hours
 
 **Difficulty:**
 Easy
-
-### 8. NEON optimized Snippets Emitters for OpenVINO ARM Plugin
-
-**Short description:**
-Snippets is a new optimization technique introduced in OpenVINO to speed up memory access bound operations. Snippets provides the capability to fuse several consequent DNN layers processing into a single operation that could be processed in a memory access efficient way using JIT generation of processing code. Code generation consists of a few stages, however, only generation of optimized code for specific operations are platform-specific and cannot be easily ported from existing implementation for x86 architecture. Therefore the development of platform-specific Emitters that implement code generation API will make possible further improvement of OpenVINO framework performance on the ARM platform.
-
-**Expected outcomes:**
-Implementation of Emitter classes for operations from opset1
-
-**Skills required/preferred:**
-C++, understanding of DNN model structure, understanding of JIT code generation concept, performance optimization experience, knowledge of NEON instruction set 
-
-**Mentors:**
-Vitaly Tuzov, Alexander Nesterov
-
-**Size of project:**
-350 hours
-
-**Difficulty:**
-Medium to hard
 
 ### 9. New Edge inference use-cases for OpenVINO integration with TensorFlow 
 
