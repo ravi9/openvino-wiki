@@ -27,6 +27,7 @@
     * [[GPU plugin|GPUPluginDevelopersDocs]]
         * [[Source code structure|GPUPluginStructure]]
             * [[Basic data structures of gpu graph and overall flow]] 
+            * [[Memory allocation in GPU plugin]]
         * [[Simplified workflow|GPUPluginWorkFlow]]
             * [[Graph Optimization Passes]]
             * [[Execution of Inference]]
