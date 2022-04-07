@@ -175,7 +175,7 @@ DL model that generates synthetic data based on the text input.
 DL model training, understanding of GAN, VAE architectures
 
 **Mentors:**
-Nooshin Nabizadeh
+Mansi Sharma
 
 **Size of project:**
 350 hours
