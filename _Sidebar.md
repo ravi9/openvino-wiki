@@ -44,6 +44,7 @@
     * [[Sample for IE C++/C/Python API|SampleContribute]]
 * [[Tests|https://github.com/openvinotoolkit/openvino/wiki#tests]]
     * [[Inference Engine tests infrastructure|InferenceEngineTestsInfrastructure]]
+        * [[OpenVINO Plugin functional test]]
     * [[How to measure test coverage?|InferenceEngineTestsCoverage]]
     * [[AddressSanitizer and LeakSanitizer|AddressSanitizer-and-LeakSanitizer]]
     * [[Operation-Conformance-tests]]
