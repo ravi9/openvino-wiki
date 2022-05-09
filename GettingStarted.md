@@ -1,7 +1,7 @@
-# Get Started with OpenVINO™ Toolkit on Linux*
+# Get Started with OpenVINO™ Toolkit on Linux
 
 This guide provides you with the information that will help you to start using 
-the OpenVINO™ Toolkit on Linux\*. With this guide, you will learn how to:
+the OpenVINO™ Toolkit on Linux. With this guide, you will learn how to:
 
 1. [Configure the Model Optimizer](#configure-the-model-optimizer)
 2. [Prepare a model for sample inference](#prepare-a-model-for-sample-inference)
@@ -114,7 +114,7 @@ Inference Inference Engine uses.
 ### Download a Trained Model
 
 To run the Image Classification Sample, you need a pre-trained model to run 
-the inference on. This guide uses the public SqueezeNet 1.1 Caffe\* model. 
+the inference on. This guide uses the public SqueezeNet 1.1 Caffe model. 
 You can find and download this model manually or use the OpenVINO™ 
 [Model Downloader]. 
 
@@ -156,7 +156,7 @@ as `<models_dir>` below) with the Model Downloader:
 
 > **NOTE**: This section assumes that you have configured the Model Optimizer using the instructions from the [Configure the Model Optimizer](#configure-the-model-optimizer) section.
 
-1. Create a `<ir_dir>` directory that will contains the Intermediate Representation (IR) of the model. 
+1. Create a `<ir_dir>` directory that contains the Intermediate Representation (IR) of the model. 
 
 2. Inference Engine can perform inference on a [list of supported devices] 
    using specific device plugins. Different plugins support models of 
@@ -253,9 +253,9 @@ classid probability label
 * [Model Optimizer Developer Guide]
 * [Inference Engine Samples Overview](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Samples_Overview.html). 
 
-[Model Optimizer Developer Guide]:https://docs.openvinotoolkit.org/latest/_docs_MO_DG_Deep_Learning_Model_Optimizer_DevGuide.html
+[Model Optimizer Developer Guide]:https://docs.openvino.ai/latest/_docs_MO_DG_Deep_Learning_Model_Optimizer_DevGuide.html
 [Model Downloader]:https://github.com/opencv/open_model_zoo/tree/master/tools/downloader
 [OpenVINO™ pre-trained models]:https://github.com/opencv/open_model_zoo/tree/master/models/intel
 [prerequisites]:https://github.com/opencv/open_model_zoo/tree/master/tools/downloader#prerequisites 
-[list of supported devices]:https://docs.openvinotoolkit.org/latest/_docs_IE_DG_supported_plugins_Supported_Devices.html
-[different precision formats]:https://docs.openvinotoolkit.org/latest/_docs_IE_DG_supported_plugins_Supported_Devices.html#supported_model_formats
+[list of supported devices]:https://docs.openvino.ai/latest/openvino_docs_OV_UG_supported_plugins_Supported_Devices.html
+[different precision formats]:https://docs.openvino.ai/latest/openvino_docs_OV_UG_supported_plugins_Supported_Devices.html#supported_model_formats
