@@ -161,15 +161,15 @@ You can use the following additional build options:
 
 - Required versions of OpenCV packages are downloaded automatically by the
   CMake-based script. If you want to use the automatically downloaded packages
-  but you already have installed OpenCV packages configured in your environment,
+  but you have already installed OpenCV packages configured in your environment,
   you may need to clean the `OpenCV_DIR` environment variable before running
   the `cmake` command; otherwise they won't be downloaded and the build may
   fail if incompatible versions were installed.
 
 - If the CMake-based build script cannot find and download the OpenCV package
   that is supported on your platform, or if you want to use a custom build of
-  the OpenCV library, see: [Use Custom OpenCV Builds](#use-custom-opencv-builds-for-inference-engine)
-  for details.
+  the OpenCV library, see how to 
+  [Use Custom OpenCV Builds](https://github.com/openvinotoolkit/openvino/wiki/CMakeOptionsForCustomCompilation#Building-with-custom-OpenCV).
 
 - To build Python API wrapper, install `libpython3-dev:armhf` and `python3-pip`
   packages using `apt-get`; then install `numpy` and `cython` python modules
