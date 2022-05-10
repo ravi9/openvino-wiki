@@ -41,11 +41,11 @@ The open source version of Inference Engine includes the following plugins:
   - [[Android* Systems|BuildingForAndroid]]
   - [[Raspbian Stretch* OS|BuildingForRaspbianStretchOS]]
 
-> **NOTE**: Please, refer to a [[dedicated guide|https://github.com/openvinotoolkit/openvino/wiki/CMakeOptionsForCustomCompilation]] with CMake options which control OpenVINO build if you need a custom build.
+> **NOTE**: If you need a custom build, refer to a [[dedicated guide|https://github.com/openvinotoolkit/openvino/wiki/CMakeOptionsForCustomCompilation]] with CMake options which control OpenVINO build if you need a custom build.
 
 ## Installing
 
-Once project is built you can install OpenVINO™ Runtime into custom location:
+Once the project is built you can install OpenVINO™ Runtime into custom location:
  
 ```
 cmake --install <BUILDDIR> --prefix <INSTALLDIR>
@@ -59,7 +59,7 @@ cmake --install <BUILDDIR> --prefix <INSTALLDIR>
 
 1. Obtaining Open Model Zoo tools and models
 
-To have ability run samples and demo you need to clone Open Model Zoo repository and copy folder under `./deployment_tools` in your install directory:
+To have the ability to run samples and demos, you need to clone the Open Model Zoo repository and copy the folder under `./deployment_tools` to your install directory:
 
 ```
 git clone https://github.com/openvinotoolkit/open_model_zoo.git
@@ -70,7 +70,7 @@ cmake -E copy_directory ./open_model_zoo/ <INSTALLDIR>/deployment_tools/open_mod
 
 >You can find more info on OpenCV custom builds [here](#use-custom-opencv-builds-for-inference-engine).
 
-Open Model Zoo samples use OpenCV functionality to load images, so to use it for demo builds you need to provide path to your OpenCV custom build by setting `OpenCV_DIR` environment variable and add path OpenCV libraries to `LD_LIBRARY_PATH (Linux*)` or `PATH (Windows*)` variable before running demos.
+Open Model Zoo samples use OpenCV functionality to load images. To use it for demo builds you need to provide the path to your OpenCV custom build by setting `OpenCV_DIR` environment variable and add path OpenCV libraries to the `LD_LIBRARY_PATH (Linux)` or `PATH (Windows)` variable before running demos.
 
 Linux:
 ```sh
@@ -80,8 +80,8 @@ export OpenCV_DIR=/path/to/opencv_install/cmake
 
 Windows:
 ```sh
-set PATH=/path/to/opencv_install/bin/;%PATH%
-set OpenCV_DIR=/path/to/opencv_install/cmake
+set PATH=\path\to\opencv_install\bin\;%PATH%
+set OpenCV_DIR=\path\to\opencv_install\cmake
 ```
 
 3. Running demo
@@ -132,7 +132,7 @@ classid probability label
 
 1. Build samples
 
-To build the C++ sample applications, run the following commands:
+To build C++ sample applications, run the following commands:
 
 Linux and macOS:
 ```sh
@@ -148,7 +148,7 @@ build_samples_msvc.bat
 
 2. Install OpenVINO Development Tools
 
-> **NOTE**: To build OpenVINO Development Tools (Model Optimizer, Post-Training Optimization Tool, Model Downloader and other Open Model Zoo tools) wheel package locally you are required to use CMake option: `-DENABLE_WHEEL=ON`.
+> **NOTE**: To build OpenVINO Development Tools (Model Optimizer, Post-Training Optimization Tool, Model Downloader, and Open Model Zoo tools) wheel package locally you are required to use CMake option: `-DENABLE_WHEEL=ON`.
 
 To install OpenVINO Development Tools to work with Caffe models, execute the following commands:
 
@@ -233,7 +233,7 @@ cd  %USERPROFILE%\Documents\Intel\OpenVINO\inference_engine_samples_build\intel6
 .\classification_sample_async.exe -i %USERPROFILE%\Downloads\dog.bmp -m %USERPROFILE%\Documents\ir\googlenet-v1.xml -d CPU
 ```
 
-When the sample application is complete, you see the label and confidence for the top 10 categories on the display:
+When the sample application is complete, you see the label and confidence data for the top 10 categories on the display:
 
 ```
 Top 10 results:
@@ -310,8 +310,8 @@ target_link_libraries(ov_c_app PRIVATE openvino::runtime::c)
 
 > **NOTE**: The recommended and tested version of OpenCV is 4.4.0.
 
-Required versions of OpenCV packages are downloaded automatically during the
-building Inference Engine library. If the build script can not find and download
+The required versions of OpenCV packages are downloaded automatically when
+building the Inference Engine library. If the build script can not find and download
 the OpenCV package that is supported on your platform, you can use one of the
 following options:
 
@@ -329,12 +329,12 @@ following options:
 
 * Build OpenCV from source using the [build instructions](https://docs.opencv.org/master/df/d65/tutorial_table_of_content_introduction.html) on the OpenCV site.
 
-After you got the built OpenCV library, perform the following preparation steps
+After you get the built OpenCV library, perform the following preparation steps
 before running the Inference Engine build:
 
 1. Set the `OpenCV_DIR` environment variable to the directory where the
    `OpenCVConfig.cmake` file of you custom OpenCV build is located.
-2. Disable the package automatic downloading with using the `-DENABLE_OPENCV=OFF`
+2. Disable automatic downloading of the package, using the `-DENABLE_OPENCV=OFF`
    option for CMake-based build script for Inference Engine.
 
 ## Building in a Docker image
@@ -342,10 +342,10 @@ You can also build Intel® Distribution of OpenVINO™ toolkit in a Docker image
 
 ## Next Steps
 
-Congratulations, you have built the OpenVINO Runtime (Inference Engine). To get started with the
+Congratulations, you have built the OpenVINO Runtime (Inference Engine). To get started with 
 OpenVINO™, proceed to the Get Started guides:
 
-* [Get Started with the OpenVINO™ on Linux*](GettingStarted)
+* [Get Started with OpenVINO™ on Linux*](GettingStarted)
 
 ## Additional Resources
 
