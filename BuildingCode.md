@@ -12,7 +12,7 @@
 - [Installing](#installing)
 - [Adding OpenVINO Runtime (Inference Engine) to Your Project](#adding-openvino-runtime-inference-engine-to-your-project)
 - [Building in a Docker image](#building-in-a-docker-image)
-- [Use Custom OpenCV Builds](#use-custom-opencv-builds-for-inference-engine)
+- [Use Custom OpenCV Builds](#use-custom-opencv-builds)
 - [Next Steps](#next-steps)
 - [Additional Resources](#additional-resources)
 
