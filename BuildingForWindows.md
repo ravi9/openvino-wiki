@@ -72,6 +72,12 @@ The software was validated on:
   environment variables before running the `cmake` command; otherwise they won't
   be downloaded and the build may fail if incompatible versions were installed.
 
+- If the CMake-based build script can not find and download the OpenCV package
+  that is supported on your platform, or if you want to use a custom build of
+  the OpenCV library, refer to the 
+  [Use Custom OpenCV Builds](https://github.com/openvinotoolkit/openvino/wiki/CMakeOptionsForCustomCompilation#Building-with-custom-OpenCV)
+  section for details.
+
 - To switch off/on the CPU and GPU plugins, use the `cmake` options
   `-DENABLE_INTEL_CPU=ON/OFF` and `-DENABLE_INTEL_GPU=ON/OFF` respectively.
 
