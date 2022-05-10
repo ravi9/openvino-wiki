@@ -24,8 +24,9 @@ The software was validated on:
 
 1. Clone submodules:
     ```sh
-    cd openvino
-    git submodule update --init --recursive
+   git clone https://github.com/openvinotoolkit/openvino.git
+   cd openvino
+   git submodule update --init --recursive
     ```
 2. Create a build folder:
 ```sh
@@ -49,17 +50,16 @@ You can use the following additional build options:
 
 - Required versions of TBB and OpenCV packages are downloaded automatically by
   the CMake-based script. If you want to use the automatically downloaded
-  packages but you already have installed TBB or OpenCV packages configured in
+  packages but you have already installed TBB or OpenCV packages configured in
   your environment, you may need to clean the `TBBROOT` and `OpenCV_DIR`
   environment variables before running the `cmake` command, otherwise they won't
   be downloaded and the build may fail if incompatible versions were installed.
 
 - If the CMake-based build script can not find and download the OpenCV package
   that is supported on your platform, or if you want to use a custom build of
-  the OpenCV library, refer to the
-  [Use Custom OpenCV Builds](#use-custom-opencv-builds-for-inference-engine)
-  section for details.
-
+  the OpenCV library, see how to
+  [Use Custom OpenCV Builds](https://github.com/openvinotoolkit/openvino/wiki/CMakeOptionsForCustomCompilation#Building-with-custom-OpenCV).
+ 
 - To build the OpenVINO Runtime Python API, you must enable the `-DENABLE_PYTHON=ON` option. To
   specify an exact Python version, use the following suggested options:
    - If you installed Python through Homebrew* (recommended), please first install the following libraries and dependencies.
