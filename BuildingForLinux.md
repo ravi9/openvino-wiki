@@ -76,6 +76,10 @@ You can use the following additional build options:
   will not be downloaded and the build may fail if incompatible versions were
   installed.
 
+- If the CMake-based build script can not find and download the OpenCV package
+  that is supported on your platform, or if you want to use a custom build of
+  the OpenCV library, see how to [Use Custom OpenCV Builds](https://github.com/openvinotoolkit/openvino/wiki/CMakeOptionsForCustomCompilation#Building-with-custom-OpenCV).
+
 - To build the OpenVINO Runtime Python API:
   1. First, install all additional packages (e.g., cython and opencv) listed in the
      `/src/bindings/python/src/compatibility/openvino/requirements-dev.txt` file:
