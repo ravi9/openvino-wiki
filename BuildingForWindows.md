@@ -1,7 +1,7 @@
-# Build OpenVINO™ OpenVINO™ Runtime for Windows* systems
+# Build OpenVINO™ Runtime for Windows systems
 
 The software was validated on:
-- Microsoft\* Windows\* 10 (64-bit) with Visual Studio 2019
+- Microsoft Windows 10 (64-bit) with Visual Studio 2019
 
 ## Table of content:
 
@@ -21,19 +21,17 @@ The software was validated on:
 
 1. Clone submodules:
     ```sh
+    git clone https://github.com/openvinotoolkit/openvino.git
+    cd openvino
     git submodule update --init --recursive
     ```
-2. By default, the build enables the Inference Engine GPU plugin to infer models
-   on your Intel® Processor Graphics. This requires you to download and install
-   the Intel® Graphics Driver for Windows (26.20) [driver package] before
-   running the build. If you don't want to use the GPU plugin, use the
-   `-DENABLE_INTEL_GPU=OFF` CMake build option and skip the installation of the
-   Intel® Graphics Driver.
-3. Create build directory:
+2. Create build directory:
     ```sh
-    mkdir build
+    mkdir build && cd build
     ```
-4. In the `build` directory, run `cmake` to fetch project dependencies and
+> **NOTE**: By default, the build enables the Inference Engine GPU plugin to infer models on your Intel® Processor Graphics. This requires you to download and install the Intel® Graphics Driver for Windows (26.20) [driver package] before running the build. If you don't want to use the GPU plugin, use the `-DENABLE_INTEL_GPU=OFF` CMake build option and skip the installation of the Intel® Graphics Driver.
+
+3. In the `build` directory, run `cmake` to fetch project dependencies and
    generate a Visual Studio solution.
 
    For Microsoft\* Visual Studio 2019 x64 architecture:
@@ -51,10 +49,10 @@ The software was validated on:
     cmake -G "Visual Studio 16 2019" -A ARM64 -DCMAKE_BUILD_TYPE=Release ..
     ```
 
-5. Build generated solution in Visual Studio or run
-   `cmake --build . --config Release --verbose -j8` to build from the command line.
+4. Build generated solution in Visual Studio or run
+   `cmake --build . --config Release --verbose -j8` to build from the command line. Note that this process may take some time.
 
-6. Before running the samples, add paths to the TBB and OpenCV binaries used for
+5. Before running the samples, add paths to the Threading Building Blocks (TBB) and OpenCV binaries used for
    the build to the `%PATH%` environment variable. By default, TBB binaries are
    downloaded by the CMake-based script to the `<openvino_repo>/inference-engine/temp/tbb/bin`
    folder, OpenCV binaries to the `<openvino_repo>/inference-engine/temp/opencv_4.5.0/opencv/bin`
@@ -64,20 +62,15 @@ The software was validated on:
 
 - Internal JIT GEMM implementation is used by default.
 
-- Threading Building Blocks (TBB) is used by default. To build the Inference
-  Engine with OpenMP* threading, set the `-DTHREADING=OMP` option.
+- Threading Building Blocks (TBB) is used by default. To build Inference
+  Engine with OpenMP threading, set the `-DTHREADING=OMP` option.
 
 - Required versions of TBB and OpenCV packages are downloaded automatically by
   the CMake-based script. If you want to use the automatically-downloaded
-  packages but you already have installed TBB or OpenCV packages configured in
+  packages but you have already installed TBB or OpenCV packages configured in
   your environment, you may need to clean the `TBBROOT` and `OpenCV_DIR`
   environment variables before running the `cmake` command; otherwise they won't
   be downloaded and the build may fail if incompatible versions were installed.
-
-- If the CMake-based build script can not find and download the OpenCV package
-  that is supported on your platform, or if you want to use a custom build of
-  the OpenCV library, refer to the [Use Custom OpenCV Builds](#use-custom-opencv-builds-for-inference-engine)
-  section for details.
 
 - To switch off/on the CPU and GPU plugins, use the `cmake` options
   `-DENABLE_INTEL_CPU=ON/OFF` and `-DENABLE_INTEL_GPU=ON/OFF` respectively.
