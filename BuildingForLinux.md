@@ -21,8 +21,9 @@ The software was validated on:
 ### Build Steps
 1. Clone submodules:
     ```sh
+    git clone https://github.com/openvinotoolkit/openvino.git
     cd openvino
-    git submodule update --init --recursive
+git submodule update --init --recursive
     ```
     (Optional) Clone submodules via gitee mirrors in PRC network:
     ```
@@ -39,23 +40,20 @@ The software was validated on:
    ```sh
    ./install_build_dependencies.sh
    ```
-3. By default, the build enables the OpenVINO Runtime GPU plugin to infer models
-   on your Intel® Processor Graphics. This requires you to
-   [Install Intel® Graphics Compute Runtime for OpenCL™ Driver package 19.41.14441]
-   before running the build. If you don't want to use the GPU plugin, use the
-   `-DENABLE_INTEL_GPU=OFF` CMake build option and skip the installation of the
-   Intel® Graphics Compute Runtime for OpenCL™ Driver.
-4. Create a build folder:
+   > **NOTE**: By default, the build enables the OpenVINO Runtime GPU plugin to infer models on your Intel® Processor Graphics. This requires you to [Install Intel® Graphics Compute Runtime for OpenCL™ Driver package 19.41.14441] before running the build. If you don't want to use the GPU plugin, use the `-DENABLE_INTEL_GPU=OFF` CMake build option and skip the installation of the Intel® Graphics Compute Runtime for OpenCL™ Driver.
+
+3. Create a build folder:
 ```sh
   mkdir build && cd build
 ```
-5. OpenVINO Runtime uses a CMake-based build system. In the created `build`
+4. OpenVINO Runtime uses a CMake-based build system. In the created `build`
    directory, run `cmake` to fetch project dependencies and create Unix
    makefiles, then run `make` to build the project:
 ```sh
   cmake -DCMAKE_BUILD_TYPE=Release ..
   make --jobs=$(nproc --all)
 ```
+The process may take some time to finish.
 
 ### Additional Build Options
 
@@ -72,7 +70,7 @@ You can use the following additional build options:
 
 - Required versions of TBB and OpenCV packages are downloaded automatically by
   the CMake-based script. If you want to use the automatically downloaded
-  packages but you already have installed TBB or OpenCV packages configured in
+  packages but you have already installed TBB or OpenCV packages configured in
   your environment, you may need to clean the `TBBROOT` and `OpenCV_DIR`
   environment variables before running the `cmake` command, otherwise they
   will not be downloaded and the build may fail if incompatible versions were
