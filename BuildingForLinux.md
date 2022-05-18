@@ -23,7 +23,7 @@ The software was validated on:
     ```sh
     git clone https://github.com/openvinotoolkit/openvino.git
     cd openvino
-git submodule update --init --recursive
+    git submodule update --init --recursive
     ```
     (Optional) Clone submodules via gitee mirrors in PRC network:
     ```
