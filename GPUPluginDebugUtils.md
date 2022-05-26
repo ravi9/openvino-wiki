@@ -15,6 +15,18 @@ $ OV_GPU_Verbose=1 ./benchmark_app ...      # Run benchmark_app with OV_GPU_Verb
 $ OV_GPU_DumpLayersPath="cldnn/" ./benchmark_app ...   # Run benchmark_app and store intermediate buffers into cldnn/ directory.
 ```
 
+For Windows OS, please use below syntax.
+
+```
+Windows Power Shell:
+> $env:OV_GPU_Verbose=1
+> .\benchmark_app.exe ...      # Run benchmark_app with OV_GPU_Verbose option
+
+Windows cmd.exe:
+> set "OV_GPU_Verbose=1"
+> benchmark_app.exe ...      # Run benchmark_app with OV_GPU_Verbose option
+```
+
 ### Options syntax
 Plugin is able to parse different naming styles for debug options:
 1. `OV_GPU_SOME_OPTION`
