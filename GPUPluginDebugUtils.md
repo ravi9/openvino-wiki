@@ -3,6 +3,8 @@
 This document is a list of useful debug features / tricks that might be used to find root cause of performance / functional issues. Some of them
 are available by default, but some others might require plugin recompilation
 
+For CPU dump, see [CPU dump](https://github.com/openvinotoolkit/openvino/blob/master/src/plugins/intel_cpu/src/docs/blob_dumping.md)
+
 ## Debug Config
 `Debug_config` is an infra structure that contains number of easy-to-use debugging features. It has various control parameters. You can check list of parameters from the source code `cldnn::debug_configuration`.
 
