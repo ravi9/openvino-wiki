@@ -158,7 +158,7 @@ Main graph usually has `program_id = 0`, graphs with other `program_id` values a
 
 Since intel_gpu source tree contains only *templates* of the OpenCL™ kernels, it's quite important to get full kernels source code.
 
-* With debug_config, you can use `OV_GPU_DumpSources` option.
+* You can use `OV_GPU_DumpSources` of debug config. For the usage of debug config, please see [link](#debug-config).
 
 * How to enable the dumps from source code:
 clDNN plugin has the special internal config option `sources_dumps_dir` which can be set from the user app via plugin config:
@@ -168,20 +168,6 @@ std::map<std::string, std::string> device_config;
 device_config[CLDNN_CONFIG_KEY(SOURCES_DUMPS_DIR)] = "/some/existing/path/";
 ie.SetConfig(device_config, "GPU");
 ```
-
-or it can be specified inside the plugin with the following plugin recompilation:
-
-```cpp
-// inference-engine/src/cldnn_engine/cldnn_engine.cpp
-ExecutableNetworkInternal::Ptr clDNNEngine::LoadExeNetworkImpl(const InferenceEngine::ICNNNetwork &network,
-                                                               const std::map<std::string, std::string> &config) {
-    CLDNNPlugin::Config conf = _impl->m_config;
-    conf.UpdateFromMap(config);
-    conf.sources_dumps_dir = "/some/existing/path/";
-}
-```
-
-Note: if the app uses RemoteContext, then the second approach must be implemented in another `LoadExeNetworkImpl` version.
 
 When this key is enabled, the plugin dumps multiple files with the following names:
 ```
@@ -212,7 +198,7 @@ When source is dumped, it actually contains huge amount of macros(`#define`). Fo
 ## Layer in/out buffer dumps
 
 In some cases you might want to get actual values in each layer execution to compare it with some reference blob. In order to do that we have
-`OV_GPU_DumpLayersPath` option in debug config:
+`OV_GPU_DumpLayersPath` option in debug config. For the usage of debug config, please see [link](#debug-config).
 ```
 # As a prerequisite, enable ENABLE_DEBUG_CAPS from cmake configuration.
 export OV_GPU_DumpLayersPath=path/to/dir
