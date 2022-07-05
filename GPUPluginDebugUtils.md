@@ -160,7 +160,7 @@ Since intel_gpu source tree contains only *templates* of the OpenCL™ kernels, 
 
 * You can use `OV_GPU_DumpSources` of debug config. For the usage of debug config, please see [link](#debug-config).
 
-* How to enable the dumps from source code:
+* You can also dump OpenCL source code by changing OpenVINO source code:
 clDNN plugin has the special internal config option `sources_dumps_dir` which can be set from the user app via plugin config:
 ```cpp
 Core ie;
