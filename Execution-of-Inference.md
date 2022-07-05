@@ -10,7 +10,7 @@ During graph compilation[(link)](https://github.com/openvinotoolkit/openvino/wik
 
 For example, concat operation may be executed _implicitly_, or in other words, concat may be _optimized out_. Implicit concat is possible when the input of concat can put the output tensor directly into the result tensor of concat.
 
-In such case, we are not removing the node in the graph for integrity of node connection. Concat layer is just marked as **optimized-out** and not executed during runtime. [(src)](https://github.com/openvinotoolkit/openvino/blob/dc6e5c51ee4bfb8a26a02ebd7a899aa6a8eeb239/src/plugins/intel_gpu/src/graph/impls/ocl/primitive_base.hpp#L155)
+In such case, we don't remove the node in the graph for integrity of node connection. Concat layer is just marked as **optimized-out** and not executed during runtime. [(src)](https://github.com/openvinotoolkit/openvino/blob/dc6e5c51ee4bfb8a26a02ebd7a899aa6a8eeb239/src/plugins/intel_gpu/src/graph/impls/ocl/primitive_base.hpp#L155)
 
 ## Dumping layer in/out buffer during execution
 `cldnn::network::execute_impl` also contains some logic to dump layer in/out buffers for debugging purpose. As it is related to memory usage, it deserves some description, too.
