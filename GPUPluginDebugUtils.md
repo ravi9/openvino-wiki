@@ -1,9 +1,7 @@
 # GPU plugin debug utils
 
 This document is a list of useful debug features / tricks that might be used to find root cause of performance / functional issues. Some of them
-are available by default, but some others might require plugin recompilation
-
-For CPU dump, see [Blob dumping](https://github.com/openvinotoolkit/openvino/blob/master/src/plugins/intel_cpu/src/docs/blob_dumping.md)
+are available by default, but some others might require plugin recompilation.
 
 ## Debug Config
 `Debug_config` is an infra structure that contains number of easy-to-use debugging features. It has various control parameters. You can check list of parameters from the source code `cldnn::debug_configuration`.
@@ -245,6 +243,9 @@ Each file contains single buffer in common planar format (`bfyx`, `bfzyx` or `bf
 ```
 shape: [b:1, f:1280, x:1, y:1, z:1, w:1, g:1] (count: 1280, original format: b_fs_yx_fsv16)
 ```
+
+For accuracy troubleshoot, you may want to compare the GPU plugin result against CPU plugin result. For CPU dump, see [Blob dumping](https://github.com/openvinotoolkit/openvino/blob/master/src/plugins/intel_cpu/src/docs/blob_dumping.md)
+
 
 ## Run int8 model on gen9 HW
 
