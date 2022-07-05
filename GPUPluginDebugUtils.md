@@ -100,8 +100,7 @@ Most of the data here is very handy for the performance analysis. For example, f
 
 This graph can be visualized using Netron tool and all these properties can be analyzed there.
 
-Note: execution time collection for each primitive requires `CONFIG_KEY(PERF_COUNT)` to be enabled (`benchmark_app` does it automatically), thus the overall
-model execution time is usually much worse in such use cases.
+Note: execution time collection for each primitive requires `CONFIG_KEY(PERF_COUNT)` to be enabled (`benchmark_app` does it automatically), thus the overall model execution time is usually much worse in such use cases.
 
 ## Performance counters
 
@@ -133,7 +132,7 @@ converted into .csv format and then used to collect any kind of statistics (e.g.
 
 intel_gpu plugin allows to dump some info about intermediate stages in graph optimizer.
 
-* You can dump graphs with `OV_GPU_DumpGraphs` of debug config. For the usage of debug config, please see above section.
+* You can dump graphs with `OV_GPU_DumpGraphs` of debug config. For the usage of debug config, please see [link](#debug-config).
 
 * Alternative, you can also enable the dumps from the application source code:
 clDNN plugin has the special internal config option `graph_dumps_dir` which can be set from the user app via plugin config:
@@ -143,19 +142,6 @@ std::map<std::string, std::string> device_config;
 device_config[CLDNN_CONFIG_KEY(GRAPH_DUMPS_DIR)] = "/some/existing/path/";
 ie.SetConfig(device_config, "GPU");
 ```
-
-* or it can be specified inside the plugin with the following plugin recompilation:
-```cpp
-// inference-engine/src/cldnn_engine/cldnn_engine.cpp
-ExecutableNetworkInternal::Ptr clDNNEngine::LoadExeNetworkImpl(const InferenceEngine::ICNNNetwork &network,
-                                                               const std::map<std::string, std::string> &config) {
-    CLDNNPlugin::Config conf = _impl->m_config;
-    conf.UpdateFromMap(config);
-    conf.graph_dumps_dir = "/some/existing/path/";
-}
-```
-
-Note: if the app uses RemoteContext, then the second approach must be implemented in another `LoadExeNetworkImpl` version.
 
 For each stage it dumps:
 ```
