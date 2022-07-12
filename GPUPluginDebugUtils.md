@@ -199,6 +199,11 @@ When source is dumped, it actually contains huge amount of macros(`#define`). Fo
 
 In some cases you might want to get actual values in each layer execution to compare it with some reference blob. In order to do that we have
 `OV_GPU_DumpLayersPath` option in debug config. For the usage of debug config, please see [link](#debug-config).
+
+As a prerequisite, enable ENABLE_DEBUG_CAPS from cmake configuration.
+
+Then, check runtime layer name by executing benchmark_app with OV_GPU_Verbose=1. It is better to be checked with this than through IR because this may be slightly different. OV_GPU_Verbose=1 will show log of execution of each layer.
+
 ```
 # As a prerequisite, enable ENABLE_DEBUG_CAPS from cmake configuration.
 export OV_GPU_DumpLayersPath=path/to/dir
