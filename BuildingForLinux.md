@@ -16,7 +16,7 @@ The software was validated on:
 - [CMake]\* 3.13 or higher
 - GCC\* 7.5 or higher to build OpenVINO Runtime
 - Python 3.6 or higher for OpenVINO Runtime Python API
-- (Optional) [Install Intel® Graphics Compute Runtime for OpenCL™ Driver package 19.41.14441].
+- (Optional) [Install Intel® Graphics Compute Runtime for OpenCL™ Driver package 19.41.14441] to allow the OpenVINO installation to work with GPUs.
 
 ### Build Steps
 1. Clone submodules:
@@ -25,7 +25,7 @@ The software was validated on:
     cd openvino
     git submodule update --init --recursive
     ```
-    (Optional) Clone submodules via gitee mirrors in PRC network:
+    (Optional) For users in China, clone submodules via gitee mirrors:
     ```
     cd openvino
     chmod +x scripts/submodule_update_with_gitee.sh
@@ -92,6 +92,11 @@ You can use the following additional build options:
      -DPYTHON_EXECUTABLE=`which python3.7` \
      -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.7m.so \
      -DPYTHON_INCLUDE_DIR=/usr/include/python3.7
+     ```
+  3. After the build process finishes, export the newly built Python libraries to the user environment variables: 
+     ```
+     export PYTHONPATH=PYTHONPATH:~/openvino/bin/intel64/Release/lib/python_api/python3.7/
+     export LD_LIBRARY_PATH=LD_LIBRARY_PATH:~/openvino/bin/intel64/Release/lib/
      ```
 
 - To switch the CPU and GPU plugins off/on, use the `cmake` options
