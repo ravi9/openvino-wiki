@@ -7,6 +7,7 @@
 - [Build static OpenVINO libraries](#build-static-openvino-libraries)
 - [Link static OpenVINO runtime](#link-static-openvino-runtime)
 - [Static OpenVINO libraries + Conditional compilation for particular models](#static-openvino-libraries--conditional-compilation-for-particular-models)
+- [Building with static MSVC Runtime](#building-with-static-msvc-runtime)
 - [Limitations](#limitations)
 
 ## Introduction
@@ -109,6 +110,14 @@ The conditional compilation feature can be paired with static OpenVINO libraries
 * Build OpenVINO Runtime as usual with the CMake option of `-DSELECTIVE_BUILD=COLLECT`.
 * Run target applications on target models and target platforms to collect traces.
 * Build the final OpenVINO static Runtime with `-DSELECTIVE_BUILD=ON -DSELECTIVE_BUILD_STAT=/path/*.csv -DBUILD_SHARED_LIBS=OFF`
+
+## Building with static MSVC Runtime
+
+In order to build with static MSVC runtime, use the special [OpenVINO toolchain](https://github.com/openvinotoolkit/openvino/blob/master/cmake/toolchains/mt.runtime.win32.toolchain.cmake) file:
+
+```sh
+cmake -DCMAKE_TOOLCHAIN_FILE=<openvino source dir>/cmake/toolchains/mt.runtime.win32.toolchain.cmake <other options>
+```
 
 ## Limitations
 
