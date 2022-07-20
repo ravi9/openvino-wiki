@@ -121,10 +121,12 @@ In this case, default OpenCV will not downloaded and provided one will be used.
 When OpenVINO CMake scripts are run with TBB enabled (`-DTHREADING=TBB` which is default, or `-DTHREADING=TBB_AUTO`), CMake OpenVINO scripts automatically download prebuilt version of TBB which is ABI-compatible with the default compiler of your system. If you have a non-default compiler or want to use custom TBB, you can use:
 
 ```sh
-export TBBROOT=<path to TBB root>
+export TBBROOT=<path to TBB install root>
 cmake ...
 ```
 In this case OpenVINO CMake scripts take `TBBROOT` environment variable into account and provided TBB will be used.
+
+**Note:** if you are building TBB from source files, please install TBB after and use `TBBROOT` to point to installation root. 
 
 ## Test capabilities
 
