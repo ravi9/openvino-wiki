@@ -16,7 +16,7 @@ The software was validated on:
 - [CMake]\* 3.13 or higher
 - GCC\* 7.5 or higher to build OpenVINO Runtime
 - Python 3.6 or higher for OpenVINO Runtime Python API
-- (Optional) [Install Intel® Graphics Compute Runtime for OpenCL™ Driver package 19.41.14441] to allow the OpenVINO installation to work with GPUs.
+- (Optional) [Install Intel® Graphics Compute Runtime for OpenCL™ Driver package 19.41.14441] to enable inference on Intel integrated GPUs.
 
 ### Build Steps
 1. Clone submodules:
@@ -81,12 +81,12 @@ You can use the following additional build options:
   the OpenCV library, see how to [Use Custom OpenCV Builds](https://github.com/openvinotoolkit/openvino/wiki/CMakeOptionsForCustomCompilation#Building-with-custom-OpenCV).
 
 - To build the OpenVINO Runtime Python API:
-  1. First, install all additional packages (e.g., cython and opencv) listed in the
+  1. Install all additional packages (e.g., cython and opencv) listed in the
      `/src/bindings/python/src/compatibility/openvino/requirements-dev.txt` file:
      ```sh
      pip install -r requirements_dev.txt
      ```
-  2. Second, enable the `-DENABLE_PYTHON=ON` in the CMake (Step #5) option above. To specify an exact Python version, use the following
+  2. Enable the `-DENABLE_PYTHON=ON` option in the CMake step above (Step 4). To specify an exact Python version, use the following
      options:
      ```
      -DPYTHON_EXECUTABLE=`which python3.7` \
@@ -95,8 +95,8 @@ You can use the following additional build options:
      ```
   3. After the build process finishes, export the newly built Python libraries to the user environment variables: 
      ```
-     export PYTHONPATH=PYTHONPATH:~/openvino/bin/intel64/Release/lib/python_api/python3.7/
-     export LD_LIBRARY_PATH=LD_LIBRARY_PATH:~/openvino/bin/intel64/Release/lib/
+     export PYTHONPATH=PYTHONPATH:<openvino_repo>/bin/intel64/Release/lib/python_api/python3.7/
+     export LD_LIBRARY_PATH=LD_LIBRARY_PATH:<openvino_repo>/bin/intel64/Release/lib/
      ```
 
 - To switch the CPU and GPU plugins off/on, use the `cmake` options
