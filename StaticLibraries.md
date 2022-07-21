@@ -119,6 +119,8 @@ In order to build with static MSVC runtime, use the special [OpenVINO toolchain]
 cmake -DCMAKE_TOOLCHAIN_FILE=<openvino source dir>/cmake/toolchains/mt.runtime.win32.toolchain.cmake <other options>
 ```
 
+**Note:** all other dependent application and libraries must be built with the same `mt.runtime.win32.toolchain.cmake ` toolchain to have conformed values of the `MSVC_RUNTIME_LIBRARY` target property.
+
 ## Limitations
 
 * CMake version 3.17 or higher must be used to build static OpenVINO libraries.
