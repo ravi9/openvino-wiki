@@ -99,6 +99,10 @@ You can use the following additional build options:
      export PYTHONPATH=PYTHONPATH:<openvino_repo>/bin/intel64/Release/lib/python_api/python3.7/
      export LD_LIBRARY_PATH=LD_LIBRARY_PATH:<openvino_repo>/bin/intel64/Release/lib/
      ```
+     or install the wheel with pip:
+     ```
+     pip install <openvino_repo>/build/wheel/openvino-2022.2.0-000-cp37-cp37-manylinux_2_35_x86_64.whl
+     ```
 
 - To switch the CPU and GPU plugins off/on, use the `cmake` options
   `-DENABLE_INTEL_CPU=ON/OFF` and `-DENABLE_INTEL_GPU=ON/OFF` respectively.
