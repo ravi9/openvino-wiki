@@ -60,7 +60,7 @@ The process may take some time to finish.
 You can use the following additional build options:
 
 - Threading Building Blocks (TBB) is used by default. To build the OpenVINO 
-  Runtime with OpenMP\* threading, set the `-DTHREADING=OMP` option.
+  Runtime with OpenMP\* threading set the `-DTHREADING=OMP` option.
 
 - For IA32 operation systems, use [ia32.linux.toolchain.cmake](https://github.com/openvinotoolkit/openvino/blob/master/cmake/toolchains/ia32.linux.toolchain.cmake) CMake toolchain file:
 
@@ -93,7 +93,8 @@ You can use the following additional build options:
      -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.7m.so \
      -DPYTHON_INCLUDE_DIR=/usr/include/python3.7
      ```
-  3. After the build process finishes, export the newly built Python libraries to the user environment variables: 
+  3. To build a wheel package (.whl), enable the `-DENABLE_WHEEL=ON` option in the CMake step above (Step 4):
+  4. After the build process finishes, export the newly built Python libraries to the user environment variables: 
      ```
      export PYTHONPATH=PYTHONPATH:<openvino_repo>/bin/intel64/Release/lib/python_api/python3.7/
      export LD_LIBRARY_PATH=LD_LIBRARY_PATH:<openvino_repo>/bin/intel64/Release/lib/
