@@ -1,9 +1,9 @@
-# Build on Linux\* Systems
+# Build on Linux Systems
 
 The software was validated on:
-- Ubuntu\* 18.04 (64-bit) with default GCC\* 7.5.0
-- Ubuntu\* 20.04 (64-bit) with default GCC\* 9.3.0
-- Red Hat\* Enterprise Linux\* 8.2 (64-bit) with default GCC\* 8.5.0
+- Ubuntu 18.04 (64-bit) with default GCC\* 7.5.0
+- Ubuntu 20.04 (64-bit) with default GCC\* 9.3.0
+- Red Hat Enterprise Linux 8.2 (64-bit) with default GCC\* 8.5.0
 
 ## Table of content:
 
@@ -13,8 +13,8 @@ The software was validated on:
 
 ### Software Requirements
 
-- [CMake]\* 3.13 or higher
-- GCC\* 7.5 or higher to build OpenVINO Runtime
+- [CMake] 3.13 or higher
+- GCC 7.5 or higher to build OpenVINO Runtime
 - Python 3.6 or higher for OpenVINO Runtime Python API
 - (Optional) [Install Intel® Graphics Compute Runtime for OpenCL™ Driver package 19.41.14441] to enable inference on Intel integrated GPUs.
 
