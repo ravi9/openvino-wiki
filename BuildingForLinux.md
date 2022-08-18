@@ -5,6 +5,8 @@ The software was validated on:
 - Ubuntu 20.04 (64-bit) with default GCC\* 9.3.0
 - Red Hat Enterprise Linux 8.2 (64-bit) with default GCC\* 8.5.0
 
+> NOTE: To build on CentOS\* 7 (64-bit), please refer to [Building OpenVINO on CentOS 7 Guide](https://github.com/openvinotoolkit/openvino/wiki/Building-OpenVINO-on-CentOS-7-Guide)
+
 ## Table of content:
 
   - [Software Requirements](#software-requirements)
