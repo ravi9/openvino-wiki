@@ -36,7 +36,7 @@ Behavior when both versions are specified is not defined.
 
 Some options also allow multiple prefixes: `OV` and `OV_GPU`. `OV` prefix is intended to be used for options common for all OpenVINO components. In case if an option is set twice with different prefixes, then `OV_GPU` has higher priority.
 
-### List of parameters
+### List of parameters (There are actually more than this, please see OV_GPU_Help result)
 
 * `OV_GPU_Help`: Show help message of debug config.
 * `OV_GPU_Verbose`: Verbose execution. Currently, Verbose=1 and 2 are supported.
