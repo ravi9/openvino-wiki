@@ -1,6 +1,6 @@
 # CMake Options for Custom Compilation
 
-This document provides description and default values for CMake options that can be used to build a custom OpenVINO runtime using the open source version. For instructions on how to create a custom runtime from the prebuilt OpenVINO release package, refer to the [deployment manager] documentation. To understand all the dependencies when creating a custom runtime from the open source repository, refer to the [Inference Engine Introduction].
+This document provides description and default values for CMake options that can be used to build a custom OpenVINO runtime using the open source version. For instructions on how to create a custom runtime from the prebuilt OpenVINO release package, refer to the [deployment manager] documentation. To understand all the dependencies when creating a custom runtime from the open source repository, refer to the [OpenVINO Runtime Introduction].
 
 ## Table of contents:
 
@@ -36,22 +36,24 @@ This document provides description and default values for CMake options that can
     * `ENABLE_AUTO_BATCH` enables Auto Batch plugin build:
         * `ON` is default.
 * Frontends to work with models from frameworks:
-    * `ENABLE_OV_ONNX_FRONTEND_ENABLE` enables [ONNX] frontend plugin for OpenVINO Runtime:
+    * `ENABLE_OV_ONNX_FRONTEND` enables [ONNX] frontend plugin for OpenVINO Runtime:
         * `ON` is default.
-    * `ENABLE_OV_PDPD_FRONTEND_ENABLE` enables [PDPD] frontend plugin for OpenVINO Runtime:
+    * `ENABLE_OV_PDPD_FRONTEND` enables [PDPD] frontend plugin for OpenVINO Runtime:
         * `ON` is default.
-    * `ENABLE_OV_TF_FRONTEND_ENABLE` enables [TensorFlow] frontend plugin for OpenVINO Runtime:
+    * `ENABLE_OV_TF_FRONTEND` enables [TensorFlow] frontend plugin for OpenVINO Runtime:
         * `ON` is default.
-    * `ENABLE_OV_IR_FRONTEND_ENABLE` enables OpenVINO Intermediate Representation frontend plugin for OpenVINO Runtime:
+    * `ENABLE_OV_IR_FRONTEND` enables OpenVINO Intermediate Representation frontend plugin for OpenVINO Runtime:
         * `ON` is default.
 * `ENABLE_GAPI_PREPROCESSING` enables G-API preprocessing:
     * `ON` is default.
 * `IE_EXTRA_MODULES` specifies path to add extra OpenVINO modules to the build.
     * See [OpenVINO Contrib] to add extra modules from.
-* `ENABLE_SAMPLES` enables Inference Engine samples build:
+* `ENABLE_SAMPLES` enables OpenVINO Runtime samples build:
     * `ON` is default.
 * `ENABLE_PYTHON` enables [Python] API build:
-    * `OFF` is default.
+    * `ON` if python requirements are satisfied (auto-discovered by CMake).
+* `ENABLE_WHEEL` enables [Python] OpenVINO Runtime and Development wheels build:
+    * `ON` if requirements are satisfied (auto-discovered by CMake).
 * `ENABLE_TESTS` enables tests compilation:
     * `OFF` is default.
 * `ENABLE_IR_V7_READER` enables IR v7 reader:
@@ -60,14 +62,15 @@ This document provides description and default values for CMake options that can
 * `ENABLE_OV_CORE_UNIT_TEST` enables ngraph unit tests:
     * The value is the same as for the `ENABLE_TESTS` option.
 * `ENABLE_DOCS` enables building the OpenVINO documentation:
-    * `OFF` is default.
+    * `OFF` is on Debian (Ubuntu) OSes
+    * `OFF` is in other cases.
 * `ENABLE_SYSTEM_PUGIXML` builds with system version of [pugixml] if it is available on the system.
-    * `OFF` is default.
-    * [Inference Engine thirdparty pugixml] is used by default.
+    * `ON` is default.
+    * [OpenVINO thirdparty pugixml] is used by default.
 * `ENABLE_SYSTEM_PROTOBUF` use [protobuf] installed on the system:
     * `OFF` is default.
 * `ENABLE_SYSTEM_TBB` use TBB installed on the system:
-    * `ON` is on Ubuntu OSes, if `libtbb-dev` Debian package is installed.
+    * `ON` is on Debian (Ubuntu) OSes.
     * `OFF` is in other cases.
 
 ## Options affecting binary size
@@ -88,19 +91,19 @@ This document provides description and default values for CMake options that can
 
 > **Note:** TBBBind 2.5 is needed when OpenVINO **inference** targets CPUs with:
 > * NUMA support (Non-Unified Memory Architecture), e.g. to detect a number of NUMA nodes
-> * Hybrid architecture to separate Performance/Efficiency cores and schedule tasks in the optimal way.
+> * Hybrid architecture to separate Performance / Efficiency cores and schedule tasks in the optimal way.
 
 > **Note:** if you build OpenVINO runtime with [oneTBB] support where TBBBind 2.5 is automatically loaded by TBB in runtime, then set `ENABLE_TBBBIND_2_5` to `OFF`
 
 * `ENABLE_SSE42` enables SSE4.2 optimizations:
     * `ON` is default for x86 platforms; not available for other platforms.
-    * Affects only Inference Engine common part and preprocessing plugin, **does not affect the mkldnn library**
+    * Affects only OpenVINO Runtime common part and preprocessing plugin, **does not affect the oneDNN library**
 * `ENABLE_AVX2` enables AVX2 optimizations:
     * `ON` is default for x86 platforms, not available for other platforms.
-    * Affects only Inference Engine common part and preprocessing plugin, **does not affect the mkldnn library**
+    * Affects only OpenVINO Runtime common part and preprocessing plugin, **does not affect the oneDNN library**
 * `ENABLE_AVX512F` enables AVX512 optimizations:
     * `ON` is default for x86 platforms, not available for other platforms.
-    * Affects only Inference Engine common part and preprocessing plugin, **does not affect the mkldnn library**
+    * Affects only OpenVINO Runtime common part and preprocessing plugin, **does not affect the oneDNN library**
 * `ENABLE_PROFILING_ITT` enables profiling with [Intel ITT and VTune]. 
     * `OFF` is default, because it increases binary size.
 * `SELECTIVE_BUILD` enables [[Conditional compilation|ConditionalCompilation]] feature.
@@ -167,12 +170,12 @@ In this case OpenVINO CMake scripts take `TBBROOT` environment variable into acc
 [cpplint]:https://github.com/cpplint/cpplint
 [Clang format]:http://clang.llvm.org/docs/ClangFormat.html
 [OpenVINO Contrib]:https://github.com/openvinotoolkit/openvino_contrib
-[Inference Engine thirdparty pugixml]:https://github.com/openvinotoolkit/openvino/tree/master/inference-engine/thirdparty/pugixml
+[OpenVINO thirdparty pugixml]:https://github.com/openvinotoolkit/openvino/tree/master/inference-engine/thirdparty/pugixml
 [pugixml]:https://pugixml.org/
 [ONNX]:https://onnx.ai/
 [protobuf]:https://github.com/protocolbuffers/protobuf
-[deployment manager]:https://docs.openvinotoolkit.org/latest/openvino_docs_install_guides_deployment_manager_tool.html
-[Inference Engine Introduction]:https://docs.openvinotoolkit.org/latest/openvino_docs_IE_DG_inference_engine_intro.html
+[deployment manager]:https://docs.openvino.ai/latest/openvino_docs_install_guides_deployment_manager_tool.html
+[OpenVINO Runtime Introduction]:https://docs.openvino.ai/latest/openvino_docs_OV_UG_Integrate_OV_with_your_application.html
 [PDPD]:https://github.com/PaddlePaddle/Paddle
 [TensorFlow]:https://www.tensorflow.org/
 [oneTBB]:https://github.com/oneapi-src/oneTBB
