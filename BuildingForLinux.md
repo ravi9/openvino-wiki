@@ -98,8 +98,8 @@ You can use the following additional build options:
   3. To build a wheel package (.whl), enable the `-DENABLE_WHEEL=ON` option in the CMake step above (Step 4):
   4. After the build process finishes, export the newly built Python libraries to the user environment variables: 
      ```
-     export PYTHONPATH=PYTHONPATH:<openvino_repo>/bin/intel64/Release/lib/python_api/python3.7/
-     export LD_LIBRARY_PATH=LD_LIBRARY_PATH:<openvino_repo>/bin/intel64/Release/lib/
+     export PYTHONPATH=PYTHONPATH:<openvino_repo>/bin/intel64/Release/python_api/python3.7
+     export LD_LIBRARY_PATH=LD_LIBRARY_PATH:<openvino_repo>/bin/intel64/Release
      ```
      or install the wheel with pip:
      ```
