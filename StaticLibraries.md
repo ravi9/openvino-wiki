@@ -90,7 +90,7 @@ target_link_libraries(<application> PRIVATE openvino::runtime)
 
 If you want to configure your project directly, you need to pass all libraries from `<install_root>/runtime/lib` to linker command.
 
-**Note:** Since the proper order of static libraries must be used (dependent library should come **before** dependency in a linker command), consider useing the following compiler specific flags to link static OpenVINO libraries:
+**Note:** Since the proper order of static libraries must be used (dependent library should come **before** dependency in a linker command), consider using the following compiler specific flags to link static OpenVINO libraries:
 
 Microsoft Visual Studio compiler:
 ```sh
