@@ -40,6 +40,7 @@
 * [[Snippets|SS]]
     * [[SnippetS design guide|SnippetS]]
     * [[CPU target for SnippetS code generator|cpuTarget]]
+* [[Proxy plugin (Concept)|Proxy-plugin-(concept)]]
 
 ### Tests
 
