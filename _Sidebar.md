@@ -42,6 +42,7 @@
         * [[SnippetS design guide|SnippetS]]
         * [[CPU target for SnippetS code generator|cpuTarget]]
     * [[Sample for IE C++/C/Python API|SampleContribute]]
+    * [[Proxy plugin (Concept)|Proxy-plugin-(concept)]]
 * [[Tests|https://github.com/openvinotoolkit/openvino/wiki#tests]]
     * [[Inference Engine tests infrastructure|InferenceEngineTestsInfrastructure]]
         * [[OpenVINO Plugin functional test]]
