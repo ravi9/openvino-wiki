@@ -52,9 +52,11 @@ Note: path to the runtime lib may vary in different driver versions
 ## 6. Use LD_DEBUG=libs to trace loaded libraries
 More details: https://github.com/bashbaug/OpenCLPapers/blob/markdown/OpenCLOnLinux.md
 
-
-
-
-
-
-
+## 7. If you are using dGPU with XMX, ensure that HW_MATMUL feature is recognized
+Openvino contains hello_query_device sample application: [link](https://docs.openvino.ai/latest/openvino_inference_engine_ie_bridges_python_sample_hello_query_device_README.html)
+With this option, you can check whether Intel XMX(Xe Matrix Extension) feature is properly recognized or not.
+```
+$ ./hello_query_device.py
+...
+[ INFO ]                OPTIMIZATION_CAPABILITIES: FP32, BIN, FP16, INT8, GPU_HW_MATMUL
+```
