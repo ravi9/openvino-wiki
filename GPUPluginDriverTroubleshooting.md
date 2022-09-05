@@ -55,7 +55,7 @@ More details: https://github.com/bashbaug/OpenCLPapers/blob/markdown/OpenCLOnLin
 ## 7. If you are using dGPU with XMX, ensure that HW_MATMUL feature is recognized
 Openvino contains hello_query_device sample application: [link](https://docs.openvino.ai/latest/openvino_inference_engine_ie_bridges_python_sample_hello_query_device_README.html)
 
-With this option, you can check whether Intel XMX(Xe Matrix Extension) feature is properly recognized or not.
+With this option, you can check whether Intel XMX(Xe Matrix Extension) feature is properly recognized or not. This is a hardware feature to accelerate matrix operations and available on some discrete GPUs.
 ```
 $ ./hello_query_device.py
 ...
