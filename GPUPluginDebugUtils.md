@@ -233,3 +233,14 @@ If you don't have gen12 HW, but want to debug network's accuracy or performance 
 3. Enforce `conf.enableInt8 = true` [here](https://github.com/openvinotoolkit/openvino/blob/master/inference-engine/src/cldnn_engine/cldnn_engine.cpp#L366)
 
 After that the plugin will run exactly the same scope of transformations as on gen12HW and generate similar kernels (small difference is possible due to different EUs count)
+
+
+## Select a device to run
+When machine has multiple GPUs, we can select a GPU by `OV_GPU_DeviceID=<device_id>` flag. Some executions might have `-d` or `-device_id` command line argument, but not all execution have it. Command line argument about device selection will be ignored if OV_GPU_DeviceID used.
+```
+./clDNN_unit_tests64                     # GPU.0 is chosen
+OV_GPU_DeviceID=1 ./clDNN_unit_tests64   # GPU.1 is chosen
+./clDNN_unit_tests64 --device_id 1       # GPU.1 is chosen
+./benchmark_app -d GPU                   # GPU.0 is chosen
+OV_GPU_DeviceID=1 ./benchmark_app -d GPU # GPU.1 is chosen
+```
