@@ -239,8 +239,9 @@ After that the plugin will run exactly the same scope of transformations as on g
 When machine has multiple GPUs, we can select a GPU by `OV_GPU_DeviceID=<device_id>` flag. Some executions might have `-d` or `-device_id` command line argument, but not all execution have it. Command line argument about device selection will be ignored if OV_GPU_DeviceID used.
 ```
 ./clDNN_unit_tests64                     # GPU.0 is chosen
-OV_GPU_DeviceID=1 ./clDNN_unit_tests64   # GPU.1 is chosen
 ./clDNN_unit_tests64 --device_id 1       # GPU.1 is chosen
+OV_GPU_DeviceID=1 ./clDNN_unit_tests64   # GPU.1 is chosen
 ./benchmark_app -d GPU                   # GPU.0 is chosen
+./benchmark_app -d GPU.1                 # GPU.1 is chosen
 OV_GPU_DeviceID=1 ./benchmark_app -d GPU # GPU.1 is chosen
 ```
