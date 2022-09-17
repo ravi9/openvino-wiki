@@ -1,6 +1,6 @@
 # Build on macOS* Systems for Intel CPU
 
-This guide shows how to build OpenVINO Runtime for later inference on Intel CPU & MYRIAD devices.
+This guide shows how to build OpenVINO Runtime for later inference on Intel CPU & MYRIAD devices on OSX with Intel CPU underneath.
 
 The software was validated on:
 - macOS\* 10.x, 11.x, 12.x x86 64-bit
