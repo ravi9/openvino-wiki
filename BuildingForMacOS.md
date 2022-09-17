@@ -18,7 +18,7 @@ The software was validated on:
 - [CMake]\* 3.13 or higher
 - Clang\* compiler from Xcode\* 10.1 or higher
 - Python\* 3.6 or higher for the OpenVINO Runtime Python API
-- libusb library (e.g., **brew install libusb**)
+- libusb library (e.g., **brew install pkg-config libusb**)
 
 ### Build Steps
 
