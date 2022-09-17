@@ -6,7 +6,8 @@
 - [Building for different OSes](#building-for-different-oses)
   - [[Windows* systems|BuildingForWindows]]
   - [[Linux* Systems|BuildingForLinux]]
-  - [[macOS* Systems|BuildingForMacOS]]
+  - [[macOS* Systems with Intel CPU|BuildingForMacOS_x86_64]]
+  - [[macOS* Systems with Apple Silicon|BuildingForMacOS_arm64]]
   - [[Android* Systems|BuildingForAndroid]]
   - [[Raspbian Stretch* OS|BuildingForRaspbianStretchOS]]
 - [Installing](#installing)
