@@ -1,78 +1,95 @@
 # Build on macOS* Systems for Intel CPU
 
+This guide shows how to build OpenVINO Runtime for later inference on Intel CPU & MYRIAD devices.
+
 The software was validated on:
-- macOS\* 10.x, x86 64-bit
-- macOS\* 11.x, 12.x, x86 64-bit
-- macOS\* 11.x, 12.x, arm64
+- macOS\* 10.x, 11.x, 12.x x86 64-bit
+- macOS\* 11.x, 12.x, arm64 (cross-compilation)
 
 ## Table of content
 
   - [Software Requirements](#software-requirements)
   - [Build Steps](#build-steps)
-  - [Additional Build Options](#additional-build-options)
+  - [Cross-compilation](#cross-compilation)
 
 ### Software Requirements
 
-- [brew] package manager to install additional dependencies
-- [CMake]\* 3.13 or higher (e.g., **brew install cmake**)
-- Clang\* compiler from Xcode\* 10.1 or higher (e.g., **xcode-select --install**)
-- Python\* 3.6 or higher for the OpenVINO Runtime Python API (e.g., **brew install python@3.10**, or select desired version among ones found by **brew search python**)
-- libusb library for MYRIAD (e.g., **brew install pkg-config libusb**)
-- TBB library for Apple Silicon (e.g., **brew install tbb**)
+- [brew] package manager to install additional dependencies. Use [install brew](https://brew.sh) guide to achieve this.
+- [CMake]\* 3.13 or higher:
+  ```sh
+  % brew install cmake
+  ```
+- Clang\* compiler, git and other command line tools from Xcode\* 10.1 or higher:
+  ```sh
+  % xcode-select --install
+  ``` 
+- Python\* 3.6 or higher for the OpenVINO Runtime Python API, Development tools (Model Optimizer, POT and others):
+  ```sh
+  % # let's have a look what python versions are available in brew
+  % brew search python
+  % # select preferred version of python based on available ones, e.g. 3.10
+  % brew install python@3.10
+  % # update pip and setuptools to newer versions
+  % python3 -m pip install -U pip setuptools 
+  ```
+  In order to build OpenVINO Python API and Development tools as wheel packages, additionally install requirements:
+  ```sh
+  % python3 -m pip install -r src/bindings/python/wheel/requirements-dev.txt
+  % python3 -m pip install cython
+  ```
+- libusb library for MYRIAD device and `pkg-config` which is used to find `libusb` files:
+  ```sh
+  % brew install pkg-config libusb
+  ```
+- (Optional) Latest version of TBB library. By default, OpenVINO downloads prebuilt version of TBB 2020.4 library, but if you want to use latest (add `-DENABLE_SYSTEM_TBB=ON` additionally to cmake configuration step):
+  ```sh
+  % brew install tbb
+  ```
 
 ### Build Steps
 
-1. Clone submodules:
-    ```sh
-   git clone https://github.com/openvinotoolkit/openvino.git
-   cd openvino
-   git submodule update --init --recursive
-    ```
+1. (Get sources) Clone submodules:
+```sh
+% git clone https://github.com/openvinotoolkit/openvino.git
+% cd openvino
+% git submodule update --init
+```
 2. Create a build folder:
 ```sh
-  mkdir build && cd build
+%  mkdir build && cd build
 ```
-3. Inference Engine uses a CMake-based build system. In the created `build`
-   directory, run `cmake` to fetch project dependencies and create Unix makefiles,
-   then run `make` to build the project:
+3. (CMake configure) OpenVINO project uses a CMake-based build system. In the created `build` directory, run `cmake` to fetch project dependencies and create build rules:
 ```sh
-  cmake -DCMAKE_BUILD_TYPE=Release ..
-  make --jobs=$(nproc --all)
+% cmake -DCMAKE_BUILD_TYPE=Release ..
 ```
-### Additional Build Options
+> **Note:** By default OpenVINO CMake scripts try to introspect the system and enable all possible functionality based on that. You can look at the CMake output and see warnings, which show that some functionality is turned off and the corresponding reason, guiding what to do to install additionally to enable unavailable functionality. Additionally, you can change CMake options to enable / disable some functionality, add / remove compilation flags, provide custom version of dependencies like TBB, PugiXML, OpenCV, Protobuf. Please, read [CMake options for custom compilation](CMakeOptionsForCustomCompilation) for this information.
+4. (CMake build) Build OpenVINO project:
+```sh
+% cmake --build . --config Release --jobs=$(nproc --all)
+```
+All built binaries are located in `<openvino_source_dir>/bin/intel64/Release/` and wheel packages are located in `<openvino_build_dir>/wheels`.
 
-You can use the following additional build options:
+5. (Optional install) Once you have built OpenVINO, you can install artifacts to a preferred location:
+```sh
+% cmake -DCMAKE_INSTALL_PREFIX=<installation location> -P cmake_install.cmake
+```
 
-- Required versions of TBB and OpenCV packages are downloaded automatically by
-  the CMake-based script. If you want to use the automatically downloaded
-  packages but you have already installed TBB or OpenCV packages configured in
-  your environment, you may need to clean the `TBBROOT` and `OpenCV_DIR`
-  environment variables before running the `cmake` command, otherwise they won't
-  be downloaded and the build may fail if incompatible versions were installed.
+### Cross-compilation 
 
-- If the CMake-based build script can not find and download the OpenCV package
-  that is supported on your platform, or if you want to use a custom build of
-  the OpenCV library, see how to
-  [Use Custom OpenCV Builds](https://github.com/openvinotoolkit/openvino/wiki/CMakeOptionsForCustomCompilation#Building-with-custom-OpenCV).
- 
-- To build the OpenVINO Runtime Python API, you must enable the `-DENABLE_PYTHON=ON` option. To
-  specify an exact Python version, use the following suggested options:
-   - If you installed Python through Homebrew* (recommended), please first install the following libraries and dependencies.
-   ```sh
-   python3 -m pip install -U pip cython wheel setuptools
-   ```
-   - Then, you can enable OpenVINO Runtime Python API with the option enabled (please refer to step # 3 above). 
-   ```
-   cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_PYTHON=ON \
-   -DPYTHON_EXECUTABLE=/usr/local/Cellar/python@3.7/3.7.11/Frameworks/Python.framework/Versions/3.7/bin/python3.7m \
-   -DPYTHON_LIBRARY=/usr/local/Cellar/python@3.7/3.7.11/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib \
-   -DPYTHON_INCLUDE_DIR=/usr/local/Cellar/python@3.7/3.7.11/Frameworks/Python.framework/Versions/3.7/include/python3.7m ..
-   ```
-   - If you installed Python other ways, you can use the following commands to find where the `dylib` and `include_dir` are located, respectively, and update the option parameters above accordingly:
-   ```sh
-   find /usr/ -name 'libpython*m.dylib'
-   find /usr/ -type d -name python3.7m
-   ```
+Since OSX version 11.x and Xcode version 12.2, the Apple development tools allows to compile arm64 code on x86 hosts and vice-versa. Based on this, OpenVINO can be compiled even on Apple Silicon machines, then such artifacts can be run on both Intel CPU hosts and Apple Silicon hosts (using [Rosetta]). For this, first of all Rosetta must be installed:
+
+```sh
+% softwareupdate --install-rosetta
+```
+
+Then try to compile OpenVINO using the steps above, but adding `-DCMAKE_OSX_ARCHITECTURES=x86_64 -DENABLE_INTEL_MYRIAD=OFF` on cmake configure stage. But, **don't enable any system library usage explicitly** via CMake options, because they have `arm64` architecture, e.g.:
+```sh
+% file /opt/homebrew/Cellar/tbb/2021.5.0_2/lib/libtbb.12.5.dylib
+/opt/homebrew/Cellar/tbb/2021.5.0_2/lib/libtbb.12.5.dylib: Mach-O 64-bit dynamically linked shared library arm64
+```
+
+> **Note:** using such way OpenVINO Intel CPU plugin can be cross-compiled, because MYRIAD plugin cannot be linked against `arm64` version of `libusb`
 
 [CMake]:https://cmake.org/download/
 [brew]:https://brew.sh
+[Rosetta]:https://support.apple.com/en-us/HT211861
