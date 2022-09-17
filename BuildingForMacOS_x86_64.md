@@ -1,12 +1,9 @@
-# Build on macOS* Systems
-
-> **NOTE**: The current version of the OpenVINO™ toolkit for macOS* supports
-inference on Intel CPUs only.
+# Build on macOS* Systems for Intel CPU
 
 The software was validated on:
-- macOS\* 10.15, x86 64-bit
-- macOS\* 11.5, x86 64-bit
-- macOS\* 11, 12, arm64
+- macOS\* 10.x, x86 64-bit
+- macOS\* 11.x, 12.x, x86 64-bit
+- macOS\* 11.x, 12.x, arm64
 
 ## Table of content
 
