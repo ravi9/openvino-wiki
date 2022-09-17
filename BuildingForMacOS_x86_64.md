@@ -90,6 +90,8 @@ Then try to compile OpenVINO using the steps above, but adding `-DCMAKE_OSX_ARCH
 
 > **Note:** using such way OpenVINO Intel CPU plugin can be cross-compiled, because MYRIAD plugin cannot be linked against `arm64` version of `libusb`
 
+Or you have to explicitly find / compile universal (or at least `x86_64`) dependencies by yourself and pass it to OpenVINO cmake scripts. E.g. compile oneTBB using additional option `-DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"`, install and then set `export TBBROOT=<universal oneTBB install root>` which will be used by OpenVINO.
+
 [CMake]:https://cmake.org/download/
 [brew]:https://brew.sh
 [Rosetta]:https://support.apple.com/en-us/HT211861
