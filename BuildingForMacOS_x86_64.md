@@ -1,6 +1,8 @@
 # Build on macOS* Systems for Intel CPU
 
-This guide shows how to build OpenVINO Runtime for later inference on Intel CPU & MYRIAD devices on OSX with Intel CPU underneath.
+This guide shows how to build OpenVINO Runtime for later inference on Intel CPU & MYRIAD devices on OSX with Intel CPU underneath. This can be done using two ways:
+- Compile on Intel CPU host using native compilation. Note, that [Build steps] show this scenario.
+- Cross-compile on OSX Apple Silicon.
 
 The software was validated on:
 - macOS\* 10.x, 11.x, 12.x x86 64-bit
@@ -23,25 +25,31 @@ The software was validated on:
   ```sh
   % xcode-select --install
   ``` 
-- Python\* 3.6 or higher for the OpenVINO Runtime Python API, Development tools (Model Optimizer, POT and others):
+- The step to install python and python libraries is different depending on host architecture:
+  - **x86_64** Python\* 3.6 or higher for the OpenVINO Runtime Python API, Development tools (Model Optimizer, POT and others):
   ```sh
   % # let's have a look what python versions are available in brew
   % brew search python
   % # select preferred version of python based on available ones, e.g. 3.10
   % brew install python@3.10
+  ```
+  - **arm64** Select universal2 installer from [Python releases] download page and install `python-3.X.Y-macos11.pkg` image. This allows to have universal python libraries and build x86_64 OpenVINO Python API and Development tools.
+
+- Additional `pip` dependencies to build OpenVINO Runtime Python API, Development tools (Model Optimizer, POT and others):
+  ```sh
   % # update pip and setuptools to newer versions
   % python3 -m pip install -U pip setuptools
   % python3 -m pip install cython
   ```
-  In order to build OpenVINO Python API and Development tools as wheel packages, additionally install requirements:
+  In order to build OpenVINO Python API and Development tools as wheel packages, additionally install requirements (after OpenVINO repo clone):
   ```sh
-  % python3 -m pip install -r src/bindings/python/wheel/requirements-dev.txt
+  % python3 -m pip install -r <openvino source tree>/src/bindings/python/wheel/requirements-dev.txt
   ```
-- libusb library for MYRIAD device and `pkg-config` which is used to find `libusb` files:
+- (native compilation only) libusb library for MYRIAD device and `pkg-config` which is used to find `libusb` files:
   ```sh
   % brew install pkg-config libusb
   ```
-- (Optional) Latest version of TBB library. By default, OpenVINO downloads prebuilt version of TBB 2020.4 library, but if you want to use latest (add `-DENABLE_SYSTEM_TBB=ON` additionally to cmake configuration step):
+- (Optional; native compilation only) Latest version of TBB library. By default, OpenVINO downloads prebuilt version of TBB 2020.4 library, but if you want to use latest (add `-DENABLE_SYSTEM_TBB=ON` additionally to cmake configuration step):
   ```sh
   % brew install tbb
   ```
@@ -90,7 +98,7 @@ Then try to compile OpenVINO using the steps above, but adding `-DCMAKE_OSX_ARCH
 
 > **Note:** using such way OpenVINO Intel CPU plugin can be cross-compiled, because MYRIAD plugin cannot be linked against `arm64` version of `libusb`
 
-Or you have to explicitly find / compile universal (or at least `x86_64`) dependencies by yourself and pass it to OpenVINO cmake scripts. E.g. compile oneTBB using additional option `-DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"`, install and then set `export TBBROOT=<universal oneTBB install root>` which will be used by OpenVINO.
+Or you have to explicitly find / compile x86_64 (or even `universal2`) dependencies by yourself and pass it to OpenVINO cmake scripts. E.g. compile oneTBB using additional option `-DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"`, install and then set `export TBBROOT=<universal oneTBB install root>` which will be used by OpenVINO.
 
 [CMake]:https://cmake.org/download/
 [brew]:https://brew.sh
