@@ -18,7 +18,7 @@ The software was validated on:
 
 - [brew] package manager to install additional dependencies. Use [install brew](https://brew.sh) guide to achieve this.
 
-- The step to install python and python libraries is different depending on target architecture:
+- The step to install python and python libraries is different depending on host architecture:
   - **arm64** Python\* 3.6 or higher for the OpenVINO Runtime Python API, Development tools (Model Optimizer, POT and others):
   ```sh
   % # let's have a look what python versions are available in brew
