@@ -30,12 +30,12 @@ The software was validated on:
   % # select preferred version of python based on available ones, e.g. 3.10
   % brew install python@3.10
   % # update pip and setuptools to newer versions
-  % python3 -m pip install -U pip setuptools 
+  % python3 -m pip install -U pip setuptools
+  % python3 -m pip install cython
   ```
   In order to build OpenVINO Python API and Development tools as wheel packages, additionally install requirements:
   ```sh
   % python3 -m pip install -r src/bindings/python/wheel/requirements-dev.txt
-  % python3 -m pip install cython
   ```
 - libusb library for MYRIAD device and `pkg-config` which is used to find `libusb` files:
   ```sh
