@@ -1,0 +1,76 @@
+# Build on macOS* Systems for Apple Silicon
+
+The software was validated on:
+- macOS\* 11.x, 12.x, arm64
+
+## Table of content
+
+  - [Software Requirements](#software-requirements)
+  - [Build Steps](#build-steps)
+  - [Additional Build Options](#additional-build-options)
+
+### Software Requirements
+
+- [brew] package manager to install additional dependencies
+- [CMake]\* 3.13 or higher (e.g., **brew install cmake**)
+- Clang\* compiler from Xcode\* 10.1 or higher (e.g., **xcode-select --install**)
+- Python\* 3.6 or higher for the OpenVINO Runtime Python API (e.g., **brew install python@3.10**, or select desired version among ones found by **brew search python**)
+- libusb library for MYRIAD (e.g., **brew install pkg-config libusb**)
+- TBB library for Apple Silicon (e.g., **brew install tbb**)
+
+### Build Steps
+
+1. Clone submodules:
+    ```sh
+   git clone https://github.com/openvinotoolkit/openvino.git
+   cd openvino
+   git submodule update --init
+    ```
+2. Create a build folder:
+```sh
+  mkdir build && cd build
+```
+3. OpenVINO uses a CMake-based build system. In the created `build`
+   directory, run `cmake` to fetch project dependencies and create Unix makefiles,
+   then run `make` to build the project:
+```sh
+  cmake -DCMAKE_BUILD_TYPE=Release ..
+  make --jobs=$(nproc --all)
+```
+### Additional Build Options
+
+You can use the following additional build options:
+
+- Required versions of TBB and OpenCV packages are downloaded automatically by
+  the CMake-based script. If you want to use the automatically downloaded
+  packages but you have already installed TBB or OpenCV packages configured in
+  your environment, you may need to clean the `TBBROOT` and `OpenCV_DIR`
+  environment variables before running the `cmake` command, otherwise they won't
+  be downloaded and the build may fail if incompatible versions were installed.
+
+- If the CMake-based build script can not find and download the OpenCV package
+  that is supported on your platform, or if you want to use a custom build of
+  the OpenCV library, see how to
+  [Use Custom OpenCV Builds](https://github.com/openvinotoolkit/openvino/wiki/CMakeOptionsForCustomCompilation#Building-with-custom-OpenCV).
+ 
+- To build the OpenVINO Runtime Python API, you must enable the `-DENABLE_PYTHON=ON` option. To
+  specify an exact Python version, use the following suggested options:
+   - If you installed Python through Homebrew* (recommended), please first install the following libraries and dependencies.
+   ```sh
+   python3 -m pip install -U pip cython wheel setuptools
+   ```
+   - Then, you can enable OpenVINO Runtime Python API with the option enabled (please refer to step # 3 above). 
+   ```
+   cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_PYTHON=ON \
+   -DPYTHON_EXECUTABLE=/usr/local/Cellar/python@3.7/3.7.11/Frameworks/Python.framework/Versions/3.7/bin/python3.7m \
+   -DPYTHON_LIBRARY=/usr/local/Cellar/python@3.7/3.7.11/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib \
+   -DPYTHON_INCLUDE_DIR=/usr/local/Cellar/python@3.7/3.7.11/Frameworks/Python.framework/Versions/3.7/include/python3.7m ..
+   ```
+   - If you installed Python other ways, you can use the following commands to find where the `dylib` and `include_dir` are located, respectively, and update the option parameters above accordingly:
+   ```sh
+   find /usr/ -name 'libpython*m.dylib'
+   find /usr/ -type d -name python3.7m
+   ```
+
+[CMake]:https://cmake.org/download/
+[brew]:https://brew.sh
