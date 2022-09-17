@@ -11,7 +11,8 @@
 * [[Building for different OSes|BuildingCode]]:
   * [[Windows* systems|BuildingForWindows]]
   * [[Linux* Systems|BuildingForLinux]]
-  * [[macOS* Systems|BuildingForMacOS]]
+  * [[macOS* Systems for Intel CPU|BuildingForMacOS_x86_64]]
+  * [[macOS* Systems for Apple Silicon|BuildingForMacOS_arm64]]
   * [[Android* Systems|BuildingForAndroid]]
   * [[Raspbian Stretch* OS|BuildingForRaspbianStretchOS]]
 * [[Building in a Docker image|BuildingCode#building-in-a-docker-image]]
