@@ -103,3 +103,4 @@ Or you have to explicitly find / compile x86_64 (or even `universal2`) dependenc
 [CMake]:https://cmake.org/download/
 [brew]:https://brew.sh
 [Rosetta]:https://support.apple.com/en-us/HT211861
+[Python releases]: https://www.python.org/downloads/macos/
