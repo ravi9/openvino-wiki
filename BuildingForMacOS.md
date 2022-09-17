@@ -4,8 +4,9 @@
 inference on Intel CPUs only.
 
 The software was validated on:
-- macOS\* 10.15, 64-bit
-- macOS\* 11.5, 64-bit
+- macOS\* 10.15, x86 64-bit
+- macOS\* 11.5, x86 64-bit
+- macOS\* 11, 12, arm64
 
 ## Table of content
 
@@ -15,10 +16,12 @@ The software was validated on:
 
 ### Software Requirements
 
-- [CMake]\* 3.13 or higher
-- Clang\* compiler from Xcode\* 10.1 or higher
-- Python\* 3.6 or higher for the OpenVINO Runtime Python API
-- libusb library (e.g., **brew install pkg-config libusb**)
+- [brew] package manager to install additional dependencies
+- [CMake]\* 3.13 or higher (e.g., **brew install cmake**)
+- Clang\* compiler from Xcode\* 10.1 or higher (e.g., **xcode-select --install**)
+- Python\* 3.6 or higher for the OpenVINO Runtime Python API (e.g., **brew install python@3.10**, or select desired version among ones found by **brew search python**)
+- libusb library for MYRIAD (e.g., **brew install pkg-config libusb**)
+- TBB library for Apple Silicon (e.g., **brew install tbb**)
 
 ### Build Steps
 
@@ -43,11 +46,6 @@ The software was validated on:
 
 You can use the following additional build options:
 
-- Internal JIT GEMM implementation is used by default.
-
-- Threading Building Blocks (TBB) is used by default. To build the Inference
-  Engine with OpenMP* threading, set the `-DTHREADING=OMP` option.
-
 - Required versions of TBB and OpenCV packages are downloaded automatically by
   the CMake-based script. If you want to use the automatically downloaded
   packages but you have already installed TBB or OpenCV packages configured in
@@ -64,9 +62,7 @@ You can use the following additional build options:
   specify an exact Python version, use the following suggested options:
    - If you installed Python through Homebrew* (recommended), please first install the following libraries and dependencies.
    ```sh
-   pip3 install clang==9.0
-   pip3 install cython
-   pip3 install pyyaml
+   python3 -m pip install -U pip cython wheel setuptools
    ```
    - Then, you can enable OpenVINO Runtime Python API with the option enabled (please refer to step # 3 above). 
    ```
@@ -80,8 +76,6 @@ You can use the following additional build options:
    find /usr/ -name 'libpython*m.dylib'
    find /usr/ -type d -name python3.7m
    ```
-- OpenVINO runtime compilation options:
-  `-DENABLE_OV_ONNX_FRONTEND=ON` enables the building of the ONNX importer.
-
 
 [CMake]:https://cmake.org/download/
+[brew]:https://brew.sh
