@@ -1,7 +1,7 @@
 # Build on macOS* Systems for Intel CPU
 
 This guide shows how to build OpenVINO Runtime for later inference on Intel CPU & MYRIAD devices on OSX with Intel CPU underneath. This can be done using two ways:
-- Compile on Intel CPU host using native compilation. Note, that [Build steps] show this scenario.
+- Compile on Intel CPU host using native compilation. Note, that [Build steps](#build-steps) show this scenario.
 - Cross-compile on OSX Apple Silicon.
 
 The software was validated on:
@@ -84,13 +84,7 @@ All built binaries are located in `<openvino_source_dir>/bin/intel64/Release/` a
 
 ### Cross-compilation 
 
-Since OSX version 11.x and Xcode version 12.2, the Apple development tools allows to compile arm64 code on x86 hosts and vice-versa. Based on this, OpenVINO can be compiled even on Apple Silicon machines, then such artifacts can be run on both Intel CPU hosts and Apple Silicon hosts (using [Rosetta]). For this, first of all Rosetta must be installed:
-
-```sh
-% softwareupdate --install-rosetta
-```
-
-Then try to compile OpenVINO using the steps above, but adding `-DCMAKE_OSX_ARCHITECTURES=x86_64 -DENABLE_INTEL_MYRIAD=OFF` on cmake configure stage. But, **don't enable any system library usage explicitly** via CMake options, because they have `arm64` architecture, e.g.:
+Since OSX version 11.x and Xcode version 12.2, the Apple development tools allows to compile arm64 code on x86 hosts and vice-versa. Based on this, OpenVINO can be compiled even on Apple Silicon machines, then such artifacts can be run on both Intel CPU hosts and Apple Silicon hosts (using [Rosetta]). For this, try to compile OpenVINO using the steps above, but adding `-DCMAKE_OSX_ARCHITECTURES=x86_64 -DENABLE_INTEL_MYRIAD=OFF` on cmake configure stage. But, **don't enable any system library usage explicitly** via CMake options, because they have `arm64` architecture, e.g.:
 ```sh
 % file /opt/homebrew/Cellar/tbb/2021.5.0_2/lib/libtbb.12.5.dylib
 /opt/homebrew/Cellar/tbb/2021.5.0_2/lib/libtbb.12.5.dylib: Mach-O 64-bit dynamically linked shared library arm64
