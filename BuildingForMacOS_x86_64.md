@@ -90,6 +90,19 @@ Since OSX version 11.x and Xcode version 12.2, the Apple development tools allow
 /opt/homebrew/Cellar/tbb/2021.5.0_2/lib/libtbb.12.5.dylib: Mach-O 64-bit dynamically linked shared library arm64
 ```
 
+If you will see the errors like below:
+```sh
+ld: warning: ignoring file /opt/homebrew/lib/libopencv_imgproc.4.6.0.dylib, building for macOS-x86_64 but attempting to link with file built for macOS-arm64
+Undefined symbols for architecture x86_64:
+  "cv::Mat::Mat(cv::Size_<int>, int, void*, unsigned long)", referenced from:
+      _image_resize in opencv_c_wrapper.cpp.o
+      _image_save in opencv_c_wrapper.cpp.o
+....
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+```
+Disable its usage in cmake or totally remove such library from the system (e.g. `brew remove opencv`), because it's pure arm64 and cannot be used to compile x86_64 binaries.
+
 > **Note:** using such way OpenVINO Intel CPU plugin can be cross-compiled, because MYRIAD plugin cannot be linked against `arm64` version of `libusb`
 
 Or you have to explicitly find / compile x86_64 (or even `universal2`) dependencies by yourself and pass it to OpenVINO cmake scripts. E.g. compile oneTBB using additional option `-DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"`, install and then set `export TBBROOT=<universal oneTBB install root>` which will be used by OpenVINO.
