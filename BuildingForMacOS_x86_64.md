@@ -101,7 +101,7 @@ Undefined symbols for architecture x86_64:
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 ```
-Disable its usage in cmake or totally remove such library from the system (e.g. `brew remove opencv`), because it's pure arm64 and cannot be used to compile x86_64 binaries.
+Disable its usage in cmake or totally remove such library from the system (e.g. `brew uninstall opencv`), because it's pure arm64 and cannot be used to compile x86_64 binaries.
 
 > **Note:** using such way OpenVINO Intel CPU plugin can be cross-compiled, because MYRIAD plugin cannot be linked against `arm64` version of `libusb`
 
