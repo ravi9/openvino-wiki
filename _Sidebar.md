@@ -10,13 +10,6 @@
     * [[Conditional compilation for particular models|ConditionalCompilation]]
     * [[Building static libraries|StaticLibraries]]
 * [[Developer documentation|https://github.com/openvinotoolkit/openvino/wiki#developer-documentation]]
-    * [[nGraph architecture|nGraphArchitecture]]
-        * [[nGraph code structure|nGraphCodeStructure]]
-        * [[nGraph components|nGraphComponents]]
-        * Graph structure
-        * Transformations API
-        * nGraph operations enabling flow
-        * [[nGraph Debug capabilities|nGraphDebugCapabilities]]
     * Inference Engine architecture
     * [[CPU plugin|CPUPluginDevelopersDocs]]
         * [[Debug capabilities|CPUPluginDebugCapabilities]]
