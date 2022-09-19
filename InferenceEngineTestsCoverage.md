@@ -37,7 +37,7 @@ $ ctest -V -L IE
 After sufficient number of tests are executed, the coverage numbers can be calculated. In order to do this, run:
 
 ```bash
-$ make ie_coverage
+$ make ov_coverage
 ```
 
 The following tree of reports are generated:
