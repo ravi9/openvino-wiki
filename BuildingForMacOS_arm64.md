@@ -35,7 +35,11 @@ The software was validated on:
 - Clang\* compiler, git and other command line tools from Xcode\* 10.1 or higher:
   ```sh
   % xcode-select --install
-  ``` 
+  ```
+- (arm64 only) `scons` to build ARM compute library:
+  ```sh
+  % brew install scons
+  ```
 - (arm64 only) libusb library for MYRIAD device and `pkg-config` which is used to find `libusb` files:
   ```sh
   % brew install pkg-config libusb
