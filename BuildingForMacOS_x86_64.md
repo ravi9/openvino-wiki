@@ -73,7 +73,7 @@ The software was validated on:
 > **Note:** By default OpenVINO CMake scripts try to introspect the system and enable all possible functionality based on that. You can look at the CMake output and see warnings, which show that some functionality is turned off and the corresponding reason, guiding what to do to install additionally to enable unavailable functionality. Additionally, you can change CMake options to enable / disable some functionality, add / remove compilation flags, provide custom version of dependencies like TBB, PugiXML, OpenCV, Protobuf. Please, read [CMake options for custom compilation](CMakeOptionsForCustomCompilation) for this information.
 4. (CMake build) Build OpenVINO project:
 ```sh
-% cmake --build . --config Release --jobs=$(sysctl -n hw.ncpu)
+% cmake --build . --config Release --parallel $(sysctl -n hw.ncpu)
 ```
 All built binaries are located in `<openvino_source_dir>/bin/intel64/Release/` and wheel packages are located in `<openvino_build_dir>/wheels`.
 
