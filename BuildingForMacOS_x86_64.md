@@ -24,6 +24,7 @@ The software was validated on:
 - Clang\* compiler, git and other command line tools from Xcode\* 10.1 or higher:
   ```sh
   % xcode-select --install
+  % brew install git-lfs
   ``` 
 - The step to install python and python libraries is different depending on host architecture:
   - **x86_64** Python\* 3.6 or higher for the OpenVINO Runtime Python API, Development tools (Model Optimizer, POT and others):
