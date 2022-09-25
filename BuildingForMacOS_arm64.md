@@ -35,6 +35,7 @@ The software was validated on:
 - Clang\* compiler, git and other command line tools from Xcode\* 10.1 or higher:
   ```sh
   % xcode-select --install
+  % brew install git-lfs
   ```
 - (arm64 only) `scons` to build ARM compute library:
   ```sh
