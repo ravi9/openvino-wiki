@@ -39,7 +39,7 @@ The software was validated on:
   ```
 - (arm64 only) `scons` to build ARM compute library:
   ```sh
-  % brew install scons
+  % python3 -m pip install scons
   ```
 - (arm64 only) libusb library for MYRIAD device and `pkg-config` which is used to find `libusb` files:
   ```sh
