@@ -57,7 +57,7 @@ Native compilation of the Inference Engine is the most straightforward solution.
 ### Cross Compilation Using Docker*
 
   To cross-compile using pre-configured `Dockerfile` one can follow the following instruction: [Build OpenCV, OpenVINO™ and the plugin using pre- 
-  configured Dockerfile](https://github.com/openvinotoolkit/openvino_contrib/wiki/How-to-build-ARM-CPU-plugin#approach-1-build-opencv-openvino-and-the-plugin-using-pre-configured-dockerfile-cross-compiling-the-preferred-way). Otherwise follow the next few steps.
+configured Dockerfile](https://github.com/openvinotoolkit/openvino_contrib/wiki/How-to-build-ARM-CPU-plugin#approach-1-build-opencv-openvino-and-the-plugin-using-pre-configured-dockerfile-cross-compiling-the-preferred-way). Otherwise follow the next few steps.
 
   This compilation was tested on the following configuration:
 
