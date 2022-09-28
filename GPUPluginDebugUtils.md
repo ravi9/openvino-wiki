@@ -42,10 +42,20 @@ Some options also allow multiple prefixes: `OV` and `OV_GPU`. `OV` prefix is int
 * `OV_GPU_Verbose`: Verbose execution. Currently, Verbose=1 and 2 are supported.
 * `OV_GPU_PrintMultiKernelPerf`: Print kernel latency for multi-kernel primitives. This is turned on by setting 1. Execution time is printed.
 * `OV_GPU_DisableUsm`: Disable the usage of usm (unified shared memory). This is turned on by setting 1.
+* `OV_GPU_DisableOnednn`: Disable onednn for discrete GPU (no effect for integrated GPU)
 * `OV_GPU_DumpGraphs`: Dump optimized graph into the path that this variable points. This is turned on by setting the destination path into this variable.
+* `OV_GPU_DumpSources`: Dump opencl sources
 * `OV_GPU_DumpLayersPath`: Enable intermediate buffer dump and store the tensors. This is turned on by setting the destination path into this variable. You can check the exact layer name from `OV_GPU_Verbose=1`.
 * `OV_GPU_DumpLayers`: Dump intermediate buffers only for the layers that this variable specifies. Multiple layers can be specified with space delimiter. Dump feature should be enabled through `OV_GPU_DumpLayersPath`
+* `OV_GPU_DumpLayersResult`: Dump output buffers of result layers only
 * `OV_GPU_DumpLayersDstOnly`: When dumping intermediate buffer, dump destination buffer only. This is turned on by setting 1.
+* `OV_GPU_DumpLayersLimitBatch`:        Limit the size of batch to dump
+* `OV_GPU_DryRunPath`:                  Dry run and serialize execution graph into the specified path
+* `OV_GPU_BaseBatchForMemEstimation`:   Base batch size to be used in memory estimation
+* `OV_GPU_AfterProc`:                   Run inference after the specified process PIDs are finished, separated by space. Supported on only on linux.
+* `OV_GPU_SerialCompile`:               Serialize creating primitives and compiling kernels
+* `OV_GPU_ForceImplType`:               Force implementation type of a target primitive or layer. [primitive or layout_name]:[impl_type] For primitives, fc:onednn, fc:ocl, do:cpu, do:ocl, reduce:ocl and reduce:onednn are supported
+* `OV_GPU_MaxKernelsPerBatch`:          Maximum number of kernels in a batch during compiling kernels
 
 ## Dump execution graph
 The execution graph (also known as runtime graph) is a device specific graph after all transformations applied by the plugin. It's a very useful
