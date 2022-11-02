@@ -98,18 +98,14 @@ benchmark_app -m ~/ov_models/public/resnet-50-pytorch/FP32/resnet-50-pytorch.xml
 ## 4. Troubleshooting
 For general troubleshooting steps and issues, see [Troubleshooting Guide for OpenVINO Installation](https://docs.openvino.ai/2022.2/openvino_docs_get_started_guide_troubleshooting.html). The following provide explanations to error messages during building OpenVINO on LINUX platforms.
 
-### Error: /usr/local/lib/libgflags_nothreads.a(gflags.cc.o): relocation R_X86_64_32 against '.bss' can not be used when making a PIE object; recompile wi
-th --fPIC
+### Error: /usr/local/lib/libgflags_nothreads.a(gflags.cc.o): relocation R_X86_64_32 against '.bss' can not be used when making a PIE object; recompile with \-fPIC
 
 ```sh
-/usr/local/lib/libgflags_nothreads.a(gflags.cc.o): relocation R_X86_64_32 against '.bss' can not be used when making a PIE object; recompile wi
-th -fPIC
+/usr/local/lib/libgflags_nothreads.a(gflags.cc.o): relocation R_X86_64_32 against '.bss' can not be used when making a PIE object; recompile with -fPIC
 
-/usr/local/lib/libgflags_nothreads.a(gflags reporting.cc.o): relocation R_X86_64_32 against symbol '__pthread key create@@GLIBC 2.2.5' can not
-be used when making a PIE object; recompile with -fPIC
+/usr/local/lib/libgflags_nothreads.a(gflags reporting.cc.o): relocation R_X86_64_32 against symbol '__pthread key create@@GLIBC 2.2.5' can not be used when making a PIE object; recompile with -fPIC
 
-/usr/local/lib/libgflags_nothreads.a(gflags completions.cc.o0): relocation R_X86 64 32S against symbol '__ZNSs4 Rep20 S empty _rep_storageE@@GLIBC
-XX_3.4' can not be used when making a PIE object; recompile with -fPIC
+/usr/local/lib/libgflags_nothreads.a(gflags completions.cc.o0): relocation R_X86 64 32S against symbol '__ZNSs4 Rep20 S empty _rep_storageE@@GLIBCXX_3.4' can not be used when making a PIE object; recompile with -fPIC
 ```
 To solve the the above issue:
 - Make sure there’s no system installed `gflags`. OpenVINO will use sources in `openvino/thirdparty/gflags/` to build new static lib to use. OpenVINO will use [this path](https://github.com/openvinotoolkit/openvino/blob/master/thirdparty/CMakeLists.txt#L212) but will not use system installed `gflags`.
