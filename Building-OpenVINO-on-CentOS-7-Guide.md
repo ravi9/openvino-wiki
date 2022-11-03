@@ -108,12 +108,12 @@ For general troubleshooting steps and issues, see [Troubleshooting Guide for Ope
 /usr/local/lib/libgflags_nothreads.a(gflags completions.cc.o0): relocation R_X86 64 32S against symbol '__ZNSs4 Rep20 S empty _rep_storageE@@GLIBCXX_3.4' can not be used when making a PIE object; recompile with -fPIC
 ```
 #### Root cause:
-- This issue probably appears in OpenVINO 2022.1 and 2022.2 versions. OpenVINO requires third-party's libraries built with -fPIC option, which generates position-independent code (PIC) to be used in a shared library. For more detailed PIC usage and limitation, please check with [user guide of GCC compiler](https://gcc.gnu.org/onlinedocs/gcc/Code-Gen-Options.html#Code-Gen-Options).
+- This issue may appear in OpenVINO 2022.1 and 2022.2 versions. OpenVINO requires third-party's libraries built with -fPIC option, which generates position-independent code (PIC) to be used in a shared library. For more detailed PIC usage and limitation, please refer to [user guide of GCC compiler](https://gcc.gnu.org/onlinedocs/gcc/Code-Gen-Options.html#Code-Gen-Options).
 - User will not have this issue in master branch that OpenVINO allows to use system-installed gflags in Fedora and CentOS.
 
 To solve the above issue:
 - Make sure you use OpenVINO submodule to download third-party's libraries to compile and generate local static libs for linking.
-- Use 'gflags' as an example, OpenVINO will use sources in `openvino/thirdparty/gflags/` to build new static lib to use.
+- Use `gflags` as an example, OpenVINO will use sources in `openvino/thirdparty/gflags/` to build new static lib to use.
 
 #### Solution 1 for OpenVINO version before 2022.3:
 
