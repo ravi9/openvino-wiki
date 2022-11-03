@@ -108,35 +108,38 @@ For general troubleshooting steps and issues, see [Troubleshooting Guide for Ope
 /usr/local/lib/libgflags_nothreads.a(gflags completions.cc.o0): relocation R_X86 64 32S against symbol '__ZNSs4 Rep20 S empty _rep_storageE@@GLIBCXX_3.4' can not be used when making a PIE object; recompile with -fPIC
 ```
 #### Root cause:
-- OpenVINO requires third-party's libraries build with -fPIC option which generates position-independent code (PIC) suitable for use in a shared library. For more detailed PIC usage and limitation, please cehck with [user guide of GCC compiler](https://gcc.gnu.org/onlinedocs/gcc/Code-Gen-Options.html#Code-Gen-Options).
+- This issue probably appear in OpenVINO 2022.1 and 2022.2 version. OpenVINO requires third-party's libraries build with -fPIC option which generates position-independent code (PIC) suitable for use in a shared library. For more detailed PIC usage and limitation, please cehck with [user guide of GCC compiler](https://gcc.gnu.org/onlinedocs/gcc/Code-Gen-Options.html#Code-Gen-Options).
+- User will not see this problem in master branch that OpenVINO will allow to use system installed gflags in Fedora and CentOS.
 
 To solve the the above issue:
 - Make sure you use ask OpenVINO to download third-party's library to compile and generate local static libs for linking. Use 'gflags' as an example, OpenVINO will use sources in `openvino/thirdparty/gflags/` to build new static lib to use.
 
-#### Solution:
+#### Solution 1 for Version before 2022.3:
 
-- Remove CentOS-7 installed `gflags` by running `yum remove gflags` and any other installation of `gflags`.
+- Remove CentOS-7 installed `gflags` by running `yum remove gflags-devel` and any other installation of `gflags`.
 - Verify that `gflags` is removed
 ```sh
 echo "$(ldconfig -p | grep libgflags.so | tr ' ' '\n' | grep /)"
 
 rpm -ql gflags-devel
 ```
-- Use -D<packagename>_DIR=<your custom path> to specify the path of dwonloaded `gflags` with OpenVINO package.
-```sh
-cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=../openvino_dist \
-      -DENABLE_OPENCV=OFF -DENABLE_INTEL_GNA=OFF -DENABLE_INTEL_MYRIAD_COMMON=OFF \
-      -DTREAT_WARNING_AS_ERROR=OFF -DENABLE_PYTHON=ON -DENABLE_WHEEL=ON \
-      -DPYTHON_EXECUTABLE=`which python3.7` \
-      -DPYTHON_LIBRARY=~/miniconda3/envs/ov_py37/lib/libpython3.7m.so \
-      -DPYTHON_INCLUDE_DIR=~/miniconda3/envs/ov_py37/include/python3.7m \
-      -Dgflags_DIR=../thirdparty/gflags/gflags/cmake ..
-```
+Make sure there's no system installed gflags lib. 
+
+- Build OpenVINO package
+Set OpenVINO build configuration and build. The package will build gflags in thridparty folder and set -Dgflags_DIR value to lib installed locally in OpenVINO package.
+
 Will get configration log like below:
 
 `The name gflags is an ALIAS for gflags_nothreads_static. It will be exported to the OpenVINODeveloperPackage with the original name.`
 - Then continue to compile and install the OpenVINO.
 
+#### Solution 2 for Version since 2022.3:
+
+- Install `gflags` by running `yum install gflags-devel`. Two dynamic library `libgflags.so` and `libgflags_nothreads.so` will be installed in `/usr/lib64/`.
+- Build OpenVINO package
+Set OpenVINO build configuration and build. The package will use system installed gflags lib, and get configuration log like below:
+
+`gflags (2.1.1) is found at /usr/lib64/cmake/gflags`
 
  
 
