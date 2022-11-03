@@ -98,7 +98,7 @@ benchmark_app -m ~/ov_models/public/resnet-50-pytorch/FP32/resnet-50-pytorch.xml
 ## 4. Troubleshooting
 For general troubleshooting steps and issues, see [Troubleshooting Guide for OpenVINO Installation](https://docs.openvino.ai/2022.2/openvino_docs_get_started_guide_troubleshooting.html). The following provide explanations to error messages during building OpenVINO on LINUX platforms.
 
-### 4.1 Error: /usr/local/lib/libgflags_nothreads.a(gflags.cc.o): relocation R_X86_64_32 against '.bss' can not be used when making a PIE object; recompile with \-fPIC
+### Error: /usr/local/lib/libgflags_nothreads.a(gflags.cc.o): relocation R_X86_64_32 against '.bss' can not be used when making a PIE object; recompile with \-fPIC
 
 ```sh
 /usr/local/lib/libgflags_nothreads.a(gflags.cc.o): relocation R_X86_64_32 against '.bss' can not be used when making a PIE object; recompile with -fPIC
@@ -107,10 +107,13 @@ For general troubleshooting steps and issues, see [Troubleshooting Guide for Ope
 
 /usr/local/lib/libgflags_nothreads.a(gflags completions.cc.o0): relocation R_X86 64 32S against symbol '__ZNSs4 Rep20 S empty _rep_storageE@@GLIBCXX_3.4' can not be used when making a PIE object; recompile with -fPIC
 ```
-To solve the the above issue:
+#### Root cause:
+- OpenVINO requires third-party's libraries build with -fPIC option which generates position-independent code (PIC) suitable for use in a shared library. For more detailed PIC usage and limitation, please cehck with [user guide of GCC compiler](https://gcc.gnu.org/onlinedocs/gcc/Code-Gen-Options.html#Code-Gen-Options).
 
-#### Option 1:
-- Make sure there’s no system installed `gflags`. OpenVINO will use sources in `openvino/thirdparty/gflags/` to build new static lib to use. OpenVINO will use [this path](https://github.com/openvinotoolkit/openvino/blob/master/thirdparty/CMakeLists.txt#L212) but will not use system installed `gflags`.
+To solve the the above issue:
+- Make sure you use ask OpenVINO to download third-party's library to compile and generate local static libs for linking. Use 'gflags' as an example, OpenVINO will use sources in `openvino/thirdparty/gflags/` to build new static lib to use.
+
+#### Solution:
 
 - Remove CentOS-7 installed `gflags` by running `yum remove gflags` and any other installation of `gflags`.
 - Verify that `gflags` is removed
@@ -119,40 +122,20 @@ echo "$(ldconfig -p | grep libgflags.so | tr ' ' '\n' | grep /)"
 
 rpm -ql gflags-devel
 ```
-- Verify system `gflags` is not used in CMAKE output log as well.
+- Use -D<packagename>_DIR=<your custom path> to specify the path of dwonloaded `gflags` with OpenVINO package.
 ```sh
-cmake -DCMAKE_BUILD_TYPE=Release \
--DCMAKE_INSTALL_PREFIX=../openvino_dist \
--DENABLE_OPENCV=OFF -DENABLE_INTEL_GNA=OFF -DENABLE_INTEL_MYRIAD_COMMON=OFF \
--DTREAT_WARNING_AS_ERROR=OFF  .. >& cmake_output.log
-
-# Inspect CMAKE log to make sure system gflags is not used.
-grep gflags cmake_output.log
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=../openvino_dist \
+      -DENABLE_OPENCV=OFF -DENABLE_INTEL_GNA=OFF -DENABLE_INTEL_MYRIAD_COMMON=OFF \
+      -DTREAT_WARNING_AS_ERROR=OFF -DENABLE_PYTHON=ON -DENABLE_WHEEL=ON \
+      -DPYTHON_EXECUTABLE=`which python3.7` \
+      -DPYTHON_LIBRARY=~/miniconda3/envs/ov_py37/lib/libpython3.7m.so \
+      -DPYTHON_INCLUDE_DIR=~/miniconda3/envs/ov_py37/include/python3.7m \
+      -Dgflags_DIR=../thirdparty/gflags/gflags/cmake ..
 ```
+Will get configration log like below:
 
-#### Option 2:
-Ignore system installed `gflags` by modifying `openvino/thirdparty/CMakeLists.txt`.
-Replace LINES 186-207 in [openvino/thirdparty/CMakeLists.txt](https://github.com/openvinotoolkit/openvino/blob/master/thirdparty/CMakeLists.txt#L186) with the following:
-```sh
-#if(gflags_FOUND)
-#    if(TARGET gflags)
-#        set_target_properties(gflags PROPERTIES IMPORTED_GLOBAL ON)
-#    elseif(TARGET gflags_nothreads-static)
-        # debian_9_arm case
-#        set_target_properties(gflags_nothreads-static PROPERTIES IMPORTED_GLOBAL ON)
-#        add_library(gflags ALIAS gflags_nothreads-static)
-#    elseif(TARGET ${GFLAGS_TARGET})
-#        set_target_properties(${GFLAGS_TARGET} PROPERTIES IMPORTED_GLOBAL ON)
-#        add_library(gflags ALIAS ${GFLAGS_TARGET})
-#    else()
-#        message(FATAL_ERROR "Internal error: failed to find imported target 'gflags'")
-#    endif()
-#    message(STATUS "gflags (${gflags_VERSION}) is found at ${gflags_DIR}")
-#else()
-add_subdirectory(gflags EXCLUDE_FROM_ALL)
-openvino_developer_export_targets(COMPONENT openvino_common TARGETS gflags)
-#endif()
-```
+`The name gflags is an ALIAS for gflags_nothreads_static. It will be exported to the OpenVINODeveloperPackage with the original name.`
+- Then continue to compile and install the OpenVINO.
 
 
  
